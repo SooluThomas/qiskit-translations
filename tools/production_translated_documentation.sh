@@ -15,6 +15,7 @@
 # Script for publishing production the translated documentation.
 
 # Non-travis variables used by this script.
+SOURCE_REPOSITORY="https://github.com/Qiskit/qiskit.git"
 TARGET_REPOSITORY="https://github.com/SooluThomas/qiskit-translations.git"
 TARGET_DOC_DIR="locale/"
 SOURCE_DOC_DIR="docs/_build/html/locale"
