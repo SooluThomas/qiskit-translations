@@ -41,8 +41,17 @@ sphinx-build -b html -j auto -D content_prefix=documentation -D language=$TRANSL
 git config user.name "Qiskit Autodeploy"
 git config user.email "qiskit@qiskit.org"
 
+echo "Make directory locale/"
 mkdir -p $TARGET_DOC_DIR
+echo "made directory"
+
+echo "List files"
+ls
+
+echo "copy html files to locale/"
 cp -r $SOURCE_DIR/$SOURCE_DOC_DIR/* $TARGET_DOC_DIR/
+
+echo "git add"
 git add $TARGET_DOC_DIR
 
 # Commit and push the changes.
