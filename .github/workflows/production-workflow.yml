@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Testing the translated Documentation
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR]  
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -U virtualenv setuptools wheel
+        pip install -U -r requirements-dev.txt sphinx-intl qiskit
+        sudo apt-get install graphviz pandoc
+    - name: Prodution Build
+      env:
+        TRANSLATION_LANG: ${{ matrix.language }}
+      run: |
+        tools/production_translated_documentation.sh
