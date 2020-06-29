@@ -40,9 +40,6 @@ sphinx-build -b html -j auto -D content_prefix=documentation -D language=$TRANSL
 
 git clone https://SooluThomas:$REPO-TOKEN@github.com/SooluThomas/qiskit-translations.git --branch=gh-pages gh-pages
 
-git config user.name "Qiskit Autodeploy"
-git config user.email "qiskit@qiskit.org"
-
 echo "Make directory locale/"
 mkdir -p $TARGET_DOC_DIR
 echo "made directory"
@@ -54,6 +51,11 @@ echo "copy html files to locale/"
 cp -r $SOURCE_DIR/$SOURCE_DOC_DIR/* gh-pages/$TARGET_DOC_DIR/
 
 cd gh-pages
+ls
+
+git config user.name "Qiskit Autodeploy"
+git config user.email "qiskit@qiskit.org"
+
 echo "git add"
 git add $TARGET_DOC_DIR
 
