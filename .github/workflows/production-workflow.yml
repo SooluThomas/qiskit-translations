@@ -31,6 +31,12 @@ jobs:
         pip install -U virtualenv setuptools wheel
         pip install -U -r requirements-dev.txt sphinx-intl qiskit
         sudo apt-get install graphviz pandoc
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.5.6
+      with:
+        SSH: true
+        key: ${{ secrets.DEPLOY_KEY }}
+        BRANCH: gh-pages
     - name: Prodution Build
       env:
         TRANSLATION_LANG: ${{ matrix.language }}
