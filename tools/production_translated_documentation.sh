@@ -53,7 +53,7 @@ cp -r $SOURCE_DIR/$SOURCE_DOC_DIR/* gh-pages/$TARGET_DOC_DIR/
 cd gh-pages
 ls
 
-git remote set-url origin https://SooluThomas:$REPO-TOKEN@github.com/SooluThomas/qiskit-translations.git --branch=gh-pages gh-pages
+git remote set-url origin https://SooluThomas:$REPO-TOKEN@github.com/SooluThomas/qiskit-translations.git
 echo "Repo token"
 echo $REPO-TOKEN
 
