@@ -38,7 +38,7 @@ pushd $SOURCE_DIR/docs
 # Make translated document
 sphinx-build -b html -j auto -D content_prefix=documentation -D language=$TRANSLATION_LANG . _build/html/locale/$TRANSLATION_LANG
 
-git clone https://SooluThomas:$REPO-TOKEN@github.com/SooluThomas/qiskit-translations.git --branch=gh-pages gh-pages
+git clone https://SooluThomas:$REPO_TOKEN@github.com/SooluThomas/qiskit-translations.git --branch=gh-pages gh-pages
 
 echo "Make directory locale/"
 mkdir -p $TARGET_DOC_DIR
