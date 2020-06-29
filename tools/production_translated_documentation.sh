@@ -54,11 +54,6 @@ cd gh-pages
 ls
 
 git remote set-url origin https://SooluThomas:$REPO-TOKEN@github.com/SooluThomas/qiskit-translations.git
-echo "Repo token"
-echo "$REPO_TOKEN"
-
-git config user.name "Qiskit Autodeploy"
-git config user.email "qiskit@qiskit.org"
 
 echo "git add"
 git add $TARGET_DOC_DIR
