@@ -31,13 +31,10 @@ jobs:
         pip install -U virtualenv setuptools wheel
         pip install -U -r requirements-dev.txt sphinx-intl qiskit
         sudo apt-get install graphviz pandoc
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.5.6
+    - name: Verify keys
+      uses: actions/labeler@v2
       with:
-        SSH: true
-        key: ${{ secrets.DEPLOY_KEY }}
-        BRANCH: gh-pages
-        FOLDER: locale/
+        REPO-TOKEN: ${{ secrets.STAGING_KEY }}
     - name: Prodution Build
       env:
         TRANSLATION_LANG: ${{ matrix.language }}
