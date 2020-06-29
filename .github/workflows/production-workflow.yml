@@ -31,12 +31,9 @@ jobs:
         pip install -U virtualenv setuptools wheel
         pip install -U -r requirements-dev.txt sphinx-intl qiskit
         sudo apt-get install graphviz pandoc
-    - name: Verify keys
-      uses: actions/labeler@v2
-      with:
-        REPO-TOKEN: ${{ secrets.STAGING_KEY }}
     - name: Prodution Build
       env:
         TRANSLATION_LANG: ${{ matrix.language }}
+        REPO-TOKEN: ${{ secrets.STAGING_KEY }}
       run: |
         tools/production_translated_documentation.sh
