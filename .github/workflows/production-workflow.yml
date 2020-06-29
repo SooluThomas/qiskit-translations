@@ -37,6 +37,7 @@ jobs:
         SSH: true
         key: ${{ secrets.DEPLOY_KEY }}
         BRANCH: gh-pages
+        FOLDER: locale/
     - name: Prodution Build
       env:
         TRANSLATION_LANG: ${{ matrix.language }}
