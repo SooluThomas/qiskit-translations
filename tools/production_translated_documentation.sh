@@ -53,6 +53,10 @@ cp -r $SOURCE_DIR/$SOURCE_DOC_DIR/* gh-pages/$TARGET_DOC_DIR/
 cd gh-pages
 ls
 
+git remote set-url origin https://SooluThomas:$REPO-TOKEN@github.com/SooluThomas/qiskit-translations.git --branch=gh-pages gh-pages
+echo "Repo token"
+echo $REPO-TOKEN
+
 git config user.name "Qiskit Autodeploy"
 git config user.email "qiskit@qiskit.org"
 
@@ -60,7 +64,7 @@ echo "git add"
 git add $TARGET_DOC_DIR
 
 # Commit and push the changes.
-git commit -m "Automated documentation update from meta-qiskit" -m "Commit: $TRAVIS_COMMIT" -m "Travis build: https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
+git commit -m "Automated documentation update from meta-qiskit"
 git push --quiet origin $TARGET_BRANCH
 
 popd
