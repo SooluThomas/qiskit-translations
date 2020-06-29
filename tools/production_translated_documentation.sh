@@ -55,6 +55,9 @@ ls
 
 git remote set-url origin https://SooluThomas:$REPO-TOKEN@github.com/SooluThomas/qiskit-translations.git
 
+git config user.name "SooluThomas"
+git config user.email "soolu.elto@gmail.com"
+
 echo "git add"
 git add $TARGET_DOC_DIR
 
