@@ -17,8 +17,8 @@
 # Non-travis variables used by this script.
 SOURCE_REPOSITORY="https://github.com/Qiskit/qiskit.git"
 TARGET_REPOSITORY="git@github.com:SooluThomas/qiskit-translations.git"
-TARGET_DOC_DIR="locale/"
-SOURCE_DOC_DIR="docs/_build/html/locale"
+TARGET_DOC_DIR="documentation/"
+SOURCE_DOC_DIR="docs/_build/html/"
 SOURCE_DIR=`pwd`
 TARGET_BRANCH="gh-pages"
 
@@ -38,6 +38,8 @@ pushd $SOURCE_DIR/docs
 # Make translated document
 sphinx-build -b html -j auto -D content_prefix=documentation -D language=$TRANSLATION_LANG . _build/html/locale/$TRANSLATION_LANG
 
+git clone https://SooluThomas:$REPO-TOKEN@github.com/SooluThomas/qiskit-translations.git --branch=gh-pages gh-pages
+
 git config user.name "Qiskit Autodeploy"
 git config user.email "qiskit@qiskit.org"
 
@@ -49,8 +51,9 @@ echo "List files"
 ls
 
 echo "copy html files to locale/"
-cp -r $SOURCE_DIR/$SOURCE_DOC_DIR/* $TARGET_DOC_DIR/
+cp -r $SOURCE_DIR/$SOURCE_DOC_DIR/* gh-pages/$TARGET_DOC_DIR/
 
+cd gh-pages
 echo "git add"
 git add $TARGET_DOC_DIR
 
