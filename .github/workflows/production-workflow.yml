@@ -34,6 +34,6 @@ jobs:
     - name: Prodution Build
       env:
         TRANSLATION_LANG: ${{ matrix.language }}
-        REPO-TOKEN: ${{ secrets.STAGING_KEY }}
+        REPO_TOKEN: ${{ secrets.STAGING_KEY }}
       run: |
         tools/production_translated_documentation.sh
