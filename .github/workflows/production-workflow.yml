@@ -48,10 +48,10 @@ jobs:
     
     - name: Deploy to gh-pages
       uses: JamesIves/github-pages-deploy-action@3.5.6
-        with:
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: build
-          CLEAN: true
-          SSH: true # SSH must be set to true so the deploy action knows which protocol to deploy with.
+      with:
+        BASE_BRANCH: master
+        BRANCH: gh-pages
+        FOLDER: build
+        CLEAN: true
+        SSH: true # SSH must be set to true so the deploy action knows which protocol to deploy with.
       
