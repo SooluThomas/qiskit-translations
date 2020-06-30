@@ -39,6 +39,6 @@ pushd $SOURCE_DIR/docs
 sphinx-build -b html -j auto -D content_prefix=documentation -D language=$TRANSLATION_LANG . _build/html/locale/$TRANSLATION_LANG
 
 echo "move html files from _build/ to build/"
-mv $SOURCE_DIR/$SOURCE_DOC_DIR/* $SOURCE_DIR/build/
+mv $SOURCE_DIR/$SOURCE_DOC_DIR/$TRANSLATION_LANG $SOURCE_DIR/build/
 
 popd
