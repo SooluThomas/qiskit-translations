@@ -1,0 +1,841 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="de-DE" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AND &mdash; Qiskit 0.19.6 Dokumentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme-override.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0-alpha.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="AND.clbits" href="qiskit.circuit.library.AND.clbits.html" />
+    <link rel="prev" title="GMS.z" href="qiskit.circuit.library.GMS.z.html" />
+    <script>
+    (function () {
+      'use strict'
+      window._analytics = {
+        segment_key: 'ffdYLviQze3kzomaINXNk6NwpY9LlXcw',
+        coremetrics: false,
+        optimizely: false,
+        googleAddServices: false,
+        fullStory: false,
+        autoPageEventSpa: false,
+        autoFormEvents: false,
+        autoPageView: false
+      }
+
+      window.digitalData = {
+        page: {
+          pageInfo: {
+            productTitle: 'IBM Q Experience',
+            analytics: {
+              category: 'Qiskit.org'
+            }
+          }
+        }
+      }
+
+      window._analyticsReady = window._analyticsReady || new Promise((resolve) => {
+        const script = document.createElement('script')
+        script.async = true
+        script.src = 'https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js'
+        document.head.appendChild(script)
+        script.onload = resolve
+        script.onerror = (err) => {
+          console.warn('Error loading Bluemix Analytics script:', err)
+          resolve()
+        }
+      })
+
+      window._analyticsReady.then(() => {
+        if (!window.bluemixAnalytics || !window.digitalData) { return }
+
+        const category = window.digitalData.page.pageInfo.analytics.category
+        const productTitle = window.digitalData.page.pageInfo.productTitle
+        const routeName = 'api-documentation'
+
+        window.bluemixAnalytics.pageEvent(category, routeName, {
+          navigationType: 'pushState',
+          productTitle: productTitle,
+          title: document.title
+        })
+      })
+    }());
+    </script>
+     
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #212121" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Qiskit
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Qiskit installieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Einführung in Qiskit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_elements.html">Die Qiskit Elemente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development_strategy.html">Development Strategy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">An Qiskit mitwirken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Häufig gestellte Fragen</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/circuits/index.html">Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/circuits_advanced/index.html">Advanced Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/simulators/index.html">High-Performance Simulators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/noise/index.html">Quantum System Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/optimization/index.html">Optimization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Libraries</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../apidoc/circuit_library.html">Circuit Library</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../apidoc/circuit_library.html#circuit-library-qiskit-circuit-library">Circuit Library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit.circuit.library</span></code>)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#standard-gates">Standard Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#generalized-gates">Generalized Gates</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../apidoc/circuit_library.html#boolean-logic-circuits">Boolean Logic Circuits</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">AND</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.OR.html">OR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.XOR.html">XOR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.InnerProduct.html">InnerProduct</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#basis-change-circuits">Basis Change Circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#arithmetic-circuits">Arithmetic Circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#particular-quantum-circuits">Particular Quantum Circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#n-local-circuits">N-local circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#data-encoding-circuits">Data encoding circuits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API-Referenzen</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/terra.html">Qiskit Terra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/aer.html">Qiskit Aer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/ignis.html">Qiskit Ignis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/aqua.html">Qiskit Aqua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/ibmq-provider.html">Qiskit IBM Quantum Provider</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://quantum-computing.ibm.com/docs/cloud/errors">Quantum Experience API error codes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qiskit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../apidoc/circuit_library.html">Circuit Library</a> &raquo;</li>
+        
+      <li>AND</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/stubs/qiskit.circuit.library.AND.rst" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="and">
+<h1>AND<a class="headerlink" href="#and" title="Link zu dieser Überschrift">¶</a></h1>
+<dl class="py class">
+<dt id="qiskit.circuit.library.AND">
+<em class="property">class </em><code class="sig-name descname">AND</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_variable_qubits</span></em>, <em class="sig-param"><span class="n">flags</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mcx_mode</span><span class="o">=</span><span class="default_value">'noancilla'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/library/boolean_logic/quantum_and.html#AND"><span class="viewcode-link">[Quellcode]</span></a><a class="headerlink" href="#qiskit.circuit.library.AND" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>A circuit implementing the logical AND operation on a number of qubits.</p>
+<p>For the AND operation the state <span class="math notranslate nohighlight">\(|1\rangle\)</span> is interpreted as <code class="docutils literal notranslate"><span class="pre">True</span></code>. The result
+qubit is flipped, if the state of all variable qubits is <code class="docutils literal notranslate"><span class="pre">True</span></code>. In this format, the AND
+operation equals a multi-controlled X gate, which is controlled on all variable qubits.
+Using a list of flags however, qubits can be skipped or negated. Practically, the flags
+allow to skip controls or to apply pre- and post-X gates to the negated qubits.</p>
+<p>The AND gate without special flags equals the multi-controlled-X gate:</p>
+<div class="jupyter_cell docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/qiskit.circuit.library.AND_0_0.png" src="../_images/qiskit.circuit.library.AND_0_0.png" />
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "10a2eb0e421a44ebaf51dea6c4c8a558"}
+</script></div>
+</div>
+<p>Using flags we can negate qubits or skip them. For instance, if we have 5 qubits and want to
+return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the first qubit is <code class="docutils literal notranslate"><span class="pre">False</span></code> and the last two are <code class="docutils literal notranslate"><span class="pre">True</span></code> we use the flags
+<code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1]</span></code>.</p>
+<div class="jupyter_cell docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/qiskit.circuit.library.AND_1_0.png" src="../_images/qiskit.circuit.library.AND_1_0.png" />
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "451ff1effa43444ca1767c31e662071e"}
+</script></div>
+</div>
+<p>Create a new logical AND circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_variable_qubits</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The qubits of which the OR is computed. The result will be written
+into an additional result qubit.</p></li>
+<li><p><strong>flags</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]) – A list of +1/0/-1 marking negations or omisiions of qubits.</p></li>
+<li><p><strong>mcx_mode</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The mode to be used to implement the multi-controlled X gate.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.clbits.html#qiskit.circuit.library.AND.clbits" title="qiskit.circuit.library.AND.clbits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.clbits</span></code></a></p></td>
+<td><p>Returns a list of classical bits in the order that the registers were added.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.data.html#qiskit.circuit.library.AND.data" title="qiskit.circuit.library.AND.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.data</span></code></a></p></td>
+<td><p>Return the circuit data (instructions and context).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.extension_lib.html#qiskit.circuit.library.AND.extension_lib" title="qiskit.circuit.library.AND.extension_lib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.extension_lib</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.header.html#qiskit.circuit.library.AND.header" title="qiskit.circuit.library.AND.header"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.header</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.instances.html#qiskit.circuit.library.AND.instances" title="qiskit.circuit.library.AND.instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.instances</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.n_qubits.html#qiskit.circuit.library.AND.n_qubits" title="qiskit.circuit.library.AND.n_qubits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.n_qubits</span></code></a></p></td>
+<td><p>Deprecated, use <code class="docutils literal notranslate"><span class="pre">num_qubits</span></code> instead.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.num_clbits.html#qiskit.circuit.library.AND.num_clbits" title="qiskit.circuit.library.AND.num_clbits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.num_clbits</span></code></a></p></td>
+<td><p>Return number of classical bits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.num_parameters.html#qiskit.circuit.library.AND.num_parameters" title="qiskit.circuit.library.AND.num_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.num_parameters</span></code></a></p></td>
+<td><p>Convenience function to get the number of parameter objects in the circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.num_qubits.html#qiskit.circuit.library.AND.num_qubits" title="qiskit.circuit.library.AND.num_qubits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.num_qubits</span></code></a></p></td>
+<td><p>Return number of qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.parameters.html#qiskit.circuit.library.AND.parameters" title="qiskit.circuit.library.AND.parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.parameters</span></code></a></p></td>
+<td><p>Convenience function to get the parameters defined in the parameter table.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.prefix.html#qiskit.circuit.library.AND.prefix" title="qiskit.circuit.library.AND.prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.prefix</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.qubits.html#qiskit.circuit.library.AND.qubits" title="qiskit.circuit.library.AND.qubits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.qubits</span></code></a></p></td>
+<td><p>Returns a list of quantum bits in the order that the registers were added.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.AND.html#qiskit.circuit.library.AND.AND" title="qiskit.circuit.library.AND.AND"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.AND</span></code></a>(qr_variables, qb_target, qr_ancillae)</p></td>
+<td><p>Build a collective conjunction (AND) circuit in place using mct.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.OR.html#qiskit.circuit.library.AND.OR" title="qiskit.circuit.library.AND.OR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.OR</span></code></a>(qr_variables, qb_target, qr_ancillae)</p></td>
+<td><p>Build a collective disjunction (OR) circuit in place using mct.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.__getitem__.html#qiskit.circuit.library.AND.__getitem__" title="qiskit.circuit.library.AND.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.__getitem__</span></code></a>(item)</p></td>
+<td><p>Return indexed operation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.__len__.html#qiskit.circuit.library.AND.__len__" title="qiskit.circuit.library.AND.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.__len__</span></code></a>()</p></td>
+<td><p>Return number of operations in circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.add_register.html#qiskit.circuit.library.AND.add_register" title="qiskit.circuit.library.AND.add_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.add_register</span></code></a>(*regs)</p></td>
+<td><p>Add registers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.append.html#qiskit.circuit.library.AND.append" title="qiskit.circuit.library.AND.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.append</span></code></a>(instruction[, qargs, cargs])</p></td>
+<td><p>Append one or more instructions to the end of the circuit, modifying the circuit in place.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.assign_parameters.html#qiskit.circuit.library.AND.assign_parameters" title="qiskit.circuit.library.AND.assign_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.assign_parameters</span></code></a>(param_dict[, inplace])</p></td>
+<td><p>Assign parameters to new parameters or values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.barrier.html#qiskit.circuit.library.AND.barrier" title="qiskit.circuit.library.AND.barrier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.barrier</span></code></a>(*qargs)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">Barrier</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.bind_parameters.html#qiskit.circuit.library.AND.bind_parameters" title="qiskit.circuit.library.AND.bind_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.bind_parameters</span></code></a>(value_dict)</p></td>
+<td><p>Assign numeric parameters to values yielding a new circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cast.html#qiskit.circuit.library.AND.cast" title="qiskit.circuit.library.AND.cast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cast</span></code></a>(value, _type)</p></td>
+<td><p>Best effort to cast value to type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cbit_argument_conversion.html#qiskit.circuit.library.AND.cbit_argument_conversion" title="qiskit.circuit.library.AND.cbit_argument_conversion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cbit_argument_conversion</span></code></a>(…)</p></td>
+<td><p>Converts several classical bit representations (such as indexes, range, etc.) into a list of classical bits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ccx.html#qiskit.circuit.library.AND.ccx" title="qiskit.circuit.library.AND.ccx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ccx</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CCXGate.html#qiskit.circuit.library.CCXGate" title="qiskit.circuit.library.CCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ch.html#qiskit.circuit.library.AND.ch" title="qiskit.circuit.library.AND.ch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ch</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CHGate.html#qiskit.circuit.library.CHGate" title="qiskit.circuit.library.CHGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CHGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cls_instances.html#qiskit.circuit.library.AND.cls_instances" title="qiskit.circuit.library.AND.cls_instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cls_instances</span></code></a>()</p></td>
+<td><p>Return the current number of instances of this class, useful for auto naming.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cls_prefix.html#qiskit.circuit.library.AND.cls_prefix" title="qiskit.circuit.library.AND.cls_prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cls_prefix</span></code></a>()</p></td>
+<td><p>Return the prefix to use for auto naming.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cnot.html#qiskit.circuit.library.AND.cnot" title="qiskit.circuit.library.AND.cnot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cnot</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CXGate.html#qiskit.circuit.library.CXGate" title="qiskit.circuit.library.CXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.combine.html#qiskit.circuit.library.AND.combine" title="qiskit.circuit.library.AND.combine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.combine</span></code></a>(rhs)</p></td>
+<td><p>Append rhs to self if self contains compatible registers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.compose.html#qiskit.circuit.library.AND.compose" title="qiskit.circuit.library.AND.compose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.compose</span></code></a>(other[, qubits, clbits, front, …])</p></td>
+<td><p>Compose circuit with <code class="docutils literal notranslate"><span class="pre">other</span></code> circuit or instruction, optionally permuting wires.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.copy.html#qiskit.circuit.library.AND.copy" title="qiskit.circuit.library.AND.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.copy</span></code></a>([name])</p></td>
+<td><p>Copy the circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.count_ops.html#qiskit.circuit.library.AND.count_ops" title="qiskit.circuit.library.AND.count_ops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.count_ops</span></code></a>()</p></td>
+<td><p>Count each operation kind in the circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.crx.html#qiskit.circuit.library.AND.crx" title="qiskit.circuit.library.AND.crx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.crx</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CRXGate.html#qiskit.circuit.library.CRXGate" title="qiskit.circuit.library.CRXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CRXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cry.html#qiskit.circuit.library.AND.cry" title="qiskit.circuit.library.AND.cry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cry</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CRYGate.html#qiskit.circuit.library.CRYGate" title="qiskit.circuit.library.CRYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CRYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.crz.html#qiskit.circuit.library.AND.crz" title="qiskit.circuit.library.AND.crz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.crz</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CRZGate.html#qiskit.circuit.library.CRZGate" title="qiskit.circuit.library.CRZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CRZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cswap.html#qiskit.circuit.library.AND.cswap" title="qiskit.circuit.library.AND.cswap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cswap</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CSwapGate.html#qiskit.circuit.library.CSwapGate" title="qiskit.circuit.library.CSwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cu1.html#qiskit.circuit.library.AND.cu1" title="qiskit.circuit.library.AND.cu1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cu1</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CU1Gate.html#qiskit.circuit.library.CU1Gate" title="qiskit.circuit.library.CU1Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CU1Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cu3.html#qiskit.circuit.library.AND.cu3" title="qiskit.circuit.library.AND.cu3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cu3</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CU3Gate.html#qiskit.circuit.library.CU3Gate" title="qiskit.circuit.library.CU3Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CU3Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cx.html#qiskit.circuit.library.AND.cx" title="qiskit.circuit.library.AND.cx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cx</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CXGate.html#qiskit.circuit.library.CXGate" title="qiskit.circuit.library.CXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cy.html#qiskit.circuit.library.AND.cy" title="qiskit.circuit.library.AND.cy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cy</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CYGate.html#qiskit.circuit.library.CYGate" title="qiskit.circuit.library.CYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.cz.html#qiskit.circuit.library.AND.cz" title="qiskit.circuit.library.AND.cz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.cz</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CZGate.html#qiskit.circuit.library.CZGate" title="qiskit.circuit.library.CZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.dcx.html#qiskit.circuit.library.AND.dcx" title="qiskit.circuit.library.AND.dcx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.dcx</span></code></a>(qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.DCXGate.html#qiskit.circuit.library.DCXGate" title="qiskit.circuit.library.DCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">DCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.decompose.html#qiskit.circuit.library.AND.decompose" title="qiskit.circuit.library.AND.decompose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.decompose</span></code></a>()</p></td>
+<td><p>Call a decomposition pass on this circuit, to decompose one level (shallow decompose).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.depth.html#qiskit.circuit.library.AND.depth" title="qiskit.circuit.library.AND.depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.depth</span></code></a>()</p></td>
+<td><p>Return circuit depth (i.e., length of critical path).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.diag_gate.html#qiskit.circuit.library.AND.diag_gate" title="qiskit.circuit.library.AND.diag_gate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.diag_gate</span></code></a>(diag, qubit)</p></td>
+<td><p>Deprecated version of QuantumCircuit.diagonal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.diagonal.html#qiskit.circuit.library.AND.diagonal" title="qiskit.circuit.library.AND.diagonal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.diagonal</span></code></a>(diag, qubit)</p></td>
+<td><p>Attach a diagonal gate to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.draw.html#qiskit.circuit.library.AND.draw" title="qiskit.circuit.library.AND.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.draw</span></code></a>([output, scale, filename, style, …])</p></td>
+<td><p>Draw the quantum circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.extend.html#qiskit.circuit.library.AND.extend" title="qiskit.circuit.library.AND.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.extend</span></code></a>(rhs)</p></td>
+<td><p>Append QuantumCircuit to the right hand side if it contains compatible registers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.fredkin.html#qiskit.circuit.library.AND.fredkin" title="qiskit.circuit.library.AND.fredkin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.fredkin</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CSwapGate.html#qiskit.circuit.library.CSwapGate" title="qiskit.circuit.library.CSwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.from_qasm_file.html#qiskit.circuit.library.AND.from_qasm_file" title="qiskit.circuit.library.AND.from_qasm_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.from_qasm_file</span></code></a>(path)</p></td>
+<td><p>Take in a QASM file and generate a QuantumCircuit object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.from_qasm_str.html#qiskit.circuit.library.AND.from_qasm_str" title="qiskit.circuit.library.AND.from_qasm_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.from_qasm_str</span></code></a>(qasm_str)</p></td>
+<td><p>Take in a QASM string and generate a QuantumCircuit object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.h.html#qiskit.circuit.library.AND.h" title="qiskit.circuit.library.AND.h"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.h</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.HGate.html#qiskit.circuit.library.HGate" title="qiskit.circuit.library.HGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">HGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.hamiltonian.html#qiskit.circuit.library.AND.hamiltonian" title="qiskit.circuit.library.AND.hamiltonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.hamiltonian</span></code></a>(operator, time, qubits[, label])</p></td>
+<td><p>Apply hamiltonian evolution to to qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.has_register.html#qiskit.circuit.library.AND.has_register" title="qiskit.circuit.library.AND.has_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.has_register</span></code></a>(register)</p></td>
+<td><p>Test if this circuit has the register r.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.i.html#qiskit.circuit.library.AND.i" title="qiskit.circuit.library.AND.i"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.i</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.IGate.html#qiskit.circuit.library.IGate" title="qiskit.circuit.library.IGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.id.html#qiskit.circuit.library.AND.id" title="qiskit.circuit.library.AND.id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.id</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.IGate.html#qiskit.circuit.library.IGate" title="qiskit.circuit.library.IGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.iden.html#qiskit.circuit.library.AND.iden" title="qiskit.circuit.library.AND.iden"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.iden</span></code></a>(**kwargs)</p></td>
+<td><p>Deprecated identity gate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.initialize.html#qiskit.circuit.library.AND.initialize" title="qiskit.circuit.library.AND.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.initialize</span></code></a>(params, qubits)</p></td>
+<td><p>Apply initialize to circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.inverse.html#qiskit.circuit.library.AND.inverse" title="qiskit.circuit.library.AND.inverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.inverse</span></code></a>()</p></td>
+<td><p>Invert this circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.iso.html#qiskit.circuit.library.AND.iso" title="qiskit.circuit.library.AND.iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.iso</span></code></a>(isometry, q_input, q_ancillas_for_output)</p></td>
+<td><p>Attach an arbitrary isometry from m to n qubits to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.isometry.html#qiskit.circuit.library.AND.isometry" title="qiskit.circuit.library.AND.isometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.isometry</span></code></a>(isometry, q_input, …[, …])</p></td>
+<td><p>Attach an arbitrary isometry from m to n qubits to a circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.iswap.html#qiskit.circuit.library.AND.iswap" title="qiskit.circuit.library.AND.iswap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.iswap</span></code></a>(qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.iSwapGate.html#qiskit.circuit.library.iSwapGate" title="qiskit.circuit.library.iSwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">iSwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.mcmt.html#qiskit.circuit.library.AND.mcmt" title="qiskit.circuit.library.AND.mcmt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.mcmt</span></code></a>(**kwargs)</p></td>
+<td><p>Apply a multi-control, multi-target using a generic gate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.mcrx.html#qiskit.circuit.library.AND.mcrx" title="qiskit.circuit.library.AND.mcrx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.mcrx</span></code></a>(theta, q_controls, q_target[, …])</p></td>
+<td><p>Apply Multiple-Controlled X rotation gate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.mcry.html#qiskit.circuit.library.AND.mcry" title="qiskit.circuit.library.AND.mcry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.mcry</span></code></a>(theta, q_controls, q_target, q_ancillae)</p></td>
+<td><p>Apply Multiple-Controlled Y rotation gate</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.mcrz.html#qiskit.circuit.library.AND.mcrz" title="qiskit.circuit.library.AND.mcrz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.mcrz</span></code></a>(lam, q_controls, q_target[, …])</p></td>
+<td><p>Apply Multiple-Controlled Z rotation gate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.mct.html#qiskit.circuit.library.AND.mct" title="qiskit.circuit.library.AND.mct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.mct</span></code></a>(control_qubits, target_qubit[, …])</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">MCXGate</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.mcu1.html#qiskit.circuit.library.AND.mcu1" title="qiskit.circuit.library.AND.mcu1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.mcu1</span></code></a>(lam, control_qubits, target_qubit)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">MCU1Gate</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.mcx.html#qiskit.circuit.library.AND.mcx" title="qiskit.circuit.library.AND.mcx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.mcx</span></code></a>(control_qubits, target_qubit[, …])</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">MCXGate</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.measure.html#qiskit.circuit.library.AND.measure" title="qiskit.circuit.library.AND.measure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.measure</span></code></a>(qubit, cbit)</p></td>
+<td><p>Measure quantum bit into classical bit (tuples).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.measure_active.html#qiskit.circuit.library.AND.measure_active" title="qiskit.circuit.library.AND.measure_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.measure_active</span></code></a>([inplace])</p></td>
+<td><p>Adds measurement to all non-idle qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.measure_all.html#qiskit.circuit.library.AND.measure_all" title="qiskit.circuit.library.AND.measure_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.measure_all</span></code></a>([inplace])</p></td>
+<td><p>Adds measurement to all qubits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.mirror.html#qiskit.circuit.library.AND.mirror" title="qiskit.circuit.library.AND.mirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.mirror</span></code></a>()</p></td>
+<td><p>Mirror the circuit by reversing the instructions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ms.html#qiskit.circuit.library.AND.ms" title="qiskit.circuit.library.AND.ms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ms</span></code></a>(theta, qubits)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.MSGate.html#qiskit.circuit.library.MSGate" title="qiskit.circuit.library.MSGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">MSGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.num_connected_components.html#qiskit.circuit.library.AND.num_connected_components" title="qiskit.circuit.library.AND.num_connected_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.num_connected_components</span></code></a>([unitary_only])</p></td>
+<td><p>How many non-entangled subcircuits can the circuit be factored to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.num_nonlocal_gates.html#qiskit.circuit.library.AND.num_nonlocal_gates" title="qiskit.circuit.library.AND.num_nonlocal_gates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.num_nonlocal_gates</span></code></a>()</p></td>
+<td><p>Return number of non-local gates (i.e.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.num_tensor_factors.html#qiskit.circuit.library.AND.num_tensor_factors" title="qiskit.circuit.library.AND.num_tensor_factors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.num_tensor_factors</span></code></a>()</p></td>
+<td><p>Computes the number of tensor factors in the unitary (quantum) part of the circuit only.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.num_unitary_factors.html#qiskit.circuit.library.AND.num_unitary_factors" title="qiskit.circuit.library.AND.num_unitary_factors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.num_unitary_factors</span></code></a>()</p></td>
+<td><p>Computes the number of tensor factors in the unitary (quantum) part of the circuit only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.qasm.html#qiskit.circuit.library.AND.qasm" title="qiskit.circuit.library.AND.qasm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.qasm</span></code></a>([formatted, filename])</p></td>
+<td><p>Return OpenQASM string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.qbit_argument_conversion.html#qiskit.circuit.library.AND.qbit_argument_conversion" title="qiskit.circuit.library.AND.qbit_argument_conversion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.qbit_argument_conversion</span></code></a>(…)</p></td>
+<td><p>Converts several qubit representations (such as indexes, range, etc.) into a list of qubits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.r.html#qiskit.circuit.library.AND.r" title="qiskit.circuit.library.AND.r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.r</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">RGate</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.rcccx.html#qiskit.circuit.library.AND.rcccx" title="qiskit.circuit.library.AND.rcccx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.rcccx</span></code></a>(control_qubit1, control_qubit2, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RC3XGate.html#qiskit.circuit.library.RC3XGate" title="qiskit.circuit.library.RC3XGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC3XGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.rccx.html#qiskit.circuit.library.AND.rccx" title="qiskit.circuit.library.AND.rccx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.rccx</span></code></a>(control_qubit1, control_qubit2, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RCCXGate.html#qiskit.circuit.library.RCCXGate" title="qiskit.circuit.library.RCCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RCCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.remove_final_measurements.html#qiskit.circuit.library.AND.remove_final_measurements" title="qiskit.circuit.library.AND.remove_final_measurements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.remove_final_measurements</span></code></a>([inplace])</p></td>
+<td><p>Removes final measurement on all qubits if they are present.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.reset.html#qiskit.circuit.library.AND.reset" title="qiskit.circuit.library.AND.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.reset</span></code></a>(qubit)</p></td>
+<td><p>Reset q.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.rx.html#qiskit.circuit.library.AND.rx" title="qiskit.circuit.library.AND.rx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.rx</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RXGate.html#qiskit.circuit.library.RXGate" title="qiskit.circuit.library.RXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.rxx.html#qiskit.circuit.library.AND.rxx" title="qiskit.circuit.library.AND.rxx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.rxx</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RXXGate.html#qiskit.circuit.library.RXXGate" title="qiskit.circuit.library.RXXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RXXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ry.html#qiskit.circuit.library.AND.ry" title="qiskit.circuit.library.AND.ry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ry</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RYGate.html#qiskit.circuit.library.RYGate" title="qiskit.circuit.library.RYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ryy.html#qiskit.circuit.library.AND.ryy" title="qiskit.circuit.library.AND.ryy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ryy</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RYYGate.html#qiskit.circuit.library.RYYGate" title="qiskit.circuit.library.RYYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RYYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.rz.html#qiskit.circuit.library.AND.rz" title="qiskit.circuit.library.AND.rz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.rz</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RZGate.html#qiskit.circuit.library.RZGate" title="qiskit.circuit.library.RZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.rzx.html#qiskit.circuit.library.AND.rzx" title="qiskit.circuit.library.AND.rzx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.rzx</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RZXGate.html#qiskit.circuit.library.RZXGate" title="qiskit.circuit.library.RZXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RZXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.rzz.html#qiskit.circuit.library.AND.rzz" title="qiskit.circuit.library.AND.rzz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.rzz</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RZZGate.html#qiskit.circuit.library.RZZGate" title="qiskit.circuit.library.RZZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RZZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.s.html#qiskit.circuit.library.AND.s" title="qiskit.circuit.library.AND.s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.s</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SGate.html#qiskit.circuit.library.SGate" title="qiskit.circuit.library.SGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.sdg.html#qiskit.circuit.library.AND.sdg" title="qiskit.circuit.library.AND.sdg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.sdg</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SdgGate.html#qiskit.circuit.library.SdgGate" title="qiskit.circuit.library.SdgGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SdgGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.size.html#qiskit.circuit.library.AND.size" title="qiskit.circuit.library.AND.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.size</span></code></a>()</p></td>
+<td><p>Returns total number of gate operations in circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.snapshot.html#qiskit.circuit.library.AND.snapshot" title="qiskit.circuit.library.AND.snapshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.snapshot</span></code></a>(label[, snapshot_type, qubits, …])</p></td>
+<td><p>Take a statevector snapshot of the internal simulator representation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.snapshot_density_matrix.html#qiskit.circuit.library.AND.snapshot_density_matrix" title="qiskit.circuit.library.AND.snapshot_density_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.snapshot_density_matrix</span></code></a>(label[, qubits])</p></td>
+<td><p>Take a density matrix snapshot of simulator state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.snapshot_expectation_value.html#qiskit.circuit.library.AND.snapshot_expectation_value" title="qiskit.circuit.library.AND.snapshot_expectation_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.snapshot_expectation_value</span></code></a>(label, op, qubits)</p></td>
+<td><p>Take a snapshot of expectation value &lt;O&gt; of an Operator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.snapshot_probabilities.html#qiskit.circuit.library.AND.snapshot_probabilities" title="qiskit.circuit.library.AND.snapshot_probabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.snapshot_probabilities</span></code></a>(label, qubits[, …])</p></td>
+<td><p>Take a probability snapshot of the simulator state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.snapshot_stabilizer.html#qiskit.circuit.library.AND.snapshot_stabilizer" title="qiskit.circuit.library.AND.snapshot_stabilizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.snapshot_stabilizer</span></code></a>(label)</p></td>
+<td><p>Take a stabilizer snapshot of the simulator state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.snapshot_statevector.html#qiskit.circuit.library.AND.snapshot_statevector" title="qiskit.circuit.library.AND.snapshot_statevector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.snapshot_statevector</span></code></a>(label)</p></td>
+<td><p>Take a statevector snapshot of the simulator state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.squ.html#qiskit.circuit.library.AND.squ" title="qiskit.circuit.library.AND.squ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.squ</span></code></a>(**kwargs)</p></td>
+<td><p>Decompose an arbitrary 2*2 unitary into three rotation gates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.swap.html#qiskit.circuit.library.AND.swap" title="qiskit.circuit.library.AND.swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.swap</span></code></a>(qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SwapGate.html#qiskit.circuit.library.SwapGate" title="qiskit.circuit.library.SwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.t.html#qiskit.circuit.library.AND.t" title="qiskit.circuit.library.AND.t"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.t</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.TGate.html#qiskit.circuit.library.TGate" title="qiskit.circuit.library.TGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.tdg.html#qiskit.circuit.library.AND.tdg" title="qiskit.circuit.library.AND.tdg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.tdg</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.TdgGate.html#qiskit.circuit.library.TdgGate" title="qiskit.circuit.library.TdgGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TdgGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.to_gate.html#qiskit.circuit.library.AND.to_gate" title="qiskit.circuit.library.AND.to_gate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.to_gate</span></code></a>([parameter_map])</p></td>
+<td><p>Create a Gate out of this circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.to_instruction.html#qiskit.circuit.library.AND.to_instruction" title="qiskit.circuit.library.AND.to_instruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.to_instruction</span></code></a>([parameter_map])</p></td>
+<td><p>Create an Instruction out of this circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.toffoli.html#qiskit.circuit.library.AND.toffoli" title="qiskit.circuit.library.AND.toffoli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.toffoli</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CCXGate.html#qiskit.circuit.library.CCXGate" title="qiskit.circuit.library.CCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.u1.html#qiskit.circuit.library.AND.u1" title="qiskit.circuit.library.AND.u1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.u1</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.U1Gate.html#qiskit.circuit.library.U1Gate" title="qiskit.circuit.library.U1Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">U1Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.u2.html#qiskit.circuit.library.AND.u2" title="qiskit.circuit.library.AND.u2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.u2</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.U2Gate.html#qiskit.circuit.library.U2Gate" title="qiskit.circuit.library.U2Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">U2Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.u3.html#qiskit.circuit.library.AND.u3" title="qiskit.circuit.library.AND.u3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.u3</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.U3Gate.html#qiskit.circuit.library.U3Gate" title="qiskit.circuit.library.U3Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">U3Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.uc.html#qiskit.circuit.library.AND.uc" title="qiskit.circuit.library.AND.uc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.uc</span></code></a>(gate_list, q_controls, q_target[, …])</p></td>
+<td><p>Attach a uniformly controlled gates (also called multiplexed gates) to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ucg.html#qiskit.circuit.library.AND.ucg" title="qiskit.circuit.library.AND.ucg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ucg</span></code></a>(angle_list, q_controls, q_target[, …])</p></td>
+<td><p>Deprecated version of uc.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ucrx.html#qiskit.circuit.library.AND.ucrx" title="qiskit.circuit.library.AND.ucrx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ucrx</span></code></a>(angle_list, q_controls, q_target)</p></td>
+<td><p>Attach a uniformly controlled (also called multiplexed) Rx rotation gate to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ucry.html#qiskit.circuit.library.AND.ucry" title="qiskit.circuit.library.AND.ucry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ucry</span></code></a>(angle_list, q_controls, q_target)</p></td>
+<td><p>Attach a uniformly controlled (also called multiplexed) Ry rotation gate to a circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ucrz.html#qiskit.circuit.library.AND.ucrz" title="qiskit.circuit.library.AND.ucrz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ucrz</span></code></a>(angle_list, q_controls, q_target)</p></td>
+<td><p>Attach a uniformly controlled (also called multiplexed gates) Rz rotation gate to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ucx.html#qiskit.circuit.library.AND.ucx" title="qiskit.circuit.library.AND.ucx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ucx</span></code></a>(angle_list, q_controls, q_target)</p></td>
+<td><p>Deprecated version of ucrx.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ucy.html#qiskit.circuit.library.AND.ucy" title="qiskit.circuit.library.AND.ucy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ucy</span></code></a>(angle_list, q_controls, q_target)</p></td>
+<td><p>Deprecated version of ucry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.ucz.html#qiskit.circuit.library.AND.ucz" title="qiskit.circuit.library.AND.ucz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.ucz</span></code></a>(angle_list, q_controls, q_target)</p></td>
+<td><p>Deprecated version of ucrz.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.unitary.html#qiskit.circuit.library.AND.unitary" title="qiskit.circuit.library.AND.unitary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.unitary</span></code></a>(obj, qubits[, label])</p></td>
+<td><p>Apply unitary gate to q.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.width.html#qiskit.circuit.library.AND.width" title="qiskit.circuit.library.AND.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.width</span></code></a>()</p></td>
+<td><p>Return number of qubits plus clbits in circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.x.html#qiskit.circuit.library.AND.x" title="qiskit.circuit.library.AND.x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.x</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.XGate.html#qiskit.circuit.library.XGate" title="qiskit.circuit.library.XGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">XGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.y.html#qiskit.circuit.library.AND.y" title="qiskit.circuit.library.AND.y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.y</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.YGate.html#qiskit.circuit.library.YGate" title="qiskit.circuit.library.YGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">YGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.z.html#qiskit.circuit.library.AND.z" title="qiskit.circuit.library.AND.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.z</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.ZGate.html#qiskit.circuit.library.ZGate" title="qiskit.circuit.library.ZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.__getitem__.html#qiskit.circuit.library.AND.__getitem__" title="qiskit.circuit.library.AND.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.__getitem__</span></code></a>(item)</p></td>
+<td><p>Return indexed operation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.AND.__len__.html#qiskit.circuit.library.AND.__len__" title="qiskit.circuit.library.AND.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AND.__len__</span></code></a>()</p></td>
+<td><p>Return number of operations in circuit.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"889a6e8af9b64fb5ae000b0aa3ca43a1": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6ab2dc7f7b424bb8961b3d84ba8c3129": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "ef8e636fd3e94157b84d2f5c5a2fbaa4": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_889a6e8af9b64fb5ae000b0aa3ca43a1", "placeholder": "\u200b", "style": "IPY_MODEL_6ab2dc7f7b424bb8961b3d84ba8c3129", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>Circuit Properties</p>"}}, "8117e003d56642d795a48ae77751c1d3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": "right", "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": "0px 0px 0px 0px", "right": null, "top": null, "visibility": null, "width": "70px"}}, "f0a35d4ba0f64322a38d92907487c35f": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "067ae974114b47dead21f9bab3a1a156": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "primary", "description": "Clear", "disabled": false, "icon": "", "layout": "IPY_MODEL_8117e003d56642d795a48ae77751c1d3", "style": "IPY_MODEL_f0a35d4ba0f64322a38d92907487c35f", "tabbable": null, "tooltip": null}}, "4a9650c7645747df8676bc6ae56322da": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": "\n                                       \". . . . right \"\n                                        ", "grid_template_columns": "20% 20% 20% 20% 20%", "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "9100910414b94dfa8ce6aa4c59d9b398": {"model_name": "GridBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "GridBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "GridBoxView", "box_style": "", "children": ["IPY_MODEL_067ae974114b47dead21f9bab3a1a156"], "layout": "IPY_MODEL_4a9650c7645747df8676bc6ae56322da", "tabbable": null, "tooltip": null}}, "1d85a4b5270f483f8013decc599acb4f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "190px"}}, "c24d5c1fa4c640939168f66517fc7c9f": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "68d7b14b79b04c35b7f1c059617a8165": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_1d85a4b5270f483f8013decc599acb4f", "placeholder": "\u200b", "style": "IPY_MODEL_c24d5c1fa4c640939168f66517fc7c9f", "tabbable": null, "tooltip": null, "value": "<h5>Job ID</h5>"}}, "f996bb9379bc4f2a8fd15237500f3ef9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "145px"}}, "22e684b37014435886ab50673c74f90f": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "56a3af6e93324bd587f8b2efc44b423e": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_f996bb9379bc4f2a8fd15237500f3ef9", "placeholder": "\u200b", "style": "IPY_MODEL_22e684b37014435886ab50673c74f90f", "tabbable": null, "tooltip": null, "value": "<h5>Backend</h5>"}}, "809fea6452aa477ba50a55e20df5c1cc": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "95px"}}, "7444f1c69b964a1b82cb178de7549ecc": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "9a4bc0b2e1c642009232560be8d19a68": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_809fea6452aa477ba50a55e20df5c1cc", "placeholder": "\u200b", "style": "IPY_MODEL_7444f1c69b964a1b82cb178de7549ecc", "tabbable": null, "tooltip": null, "value": "<h5>Status</h5>"}}, "54c36bd1cd70476bb238c997dd4377ee": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "70px"}}, "f4e3b2b7524f4213a360d48b39e3566e": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "a1d302ff73f04ee7b2515ff8db99d2b5": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_54c36bd1cd70476bb238c997dd4377ee", "placeholder": "\u200b", "style": "IPY_MODEL_f4e3b2b7524f4213a360d48b39e3566e", "tabbable": null, "tooltip": null, "value": "<h5>Queue</h5>"}}, "8012ac7dd6264e0189bca5a473c1d71b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6dce785a4d1e4c158154c3b1e8148806": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "e9af9f5c59a54a3a8b94861d213c9d8e": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_8012ac7dd6264e0189bca5a473c1d71b", "placeholder": "\u200b", "style": "IPY_MODEL_6dce785a4d1e4c158154c3b1e8148806", "tabbable": null, "tooltip": null, "value": "<h5>Message</h5>"}}, "805b88758a334f85bee327be6a15f1b9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 37px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "600px"}}, "918ec986c2e745e6b5f5501f25b48684": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_68d7b14b79b04c35b7f1c059617a8165", "IPY_MODEL_56a3af6e93324bd587f8b2efc44b423e", "IPY_MODEL_9a4bc0b2e1c642009232560be8d19a68", "IPY_MODEL_a1d302ff73f04ee7b2515ff8db99d2b5", "IPY_MODEL_e9af9f5c59a54a3a8b94861d213c9d8e"], "layout": "IPY_MODEL_805b88758a334f85bee327be6a15f1b9", "tabbable": null, "tooltip": null}}, "09ce5814ed4f46be84121fcba4e7df68": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "27356fa14f2346b0860c7672674b6751": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "3d51b3749f58443882031f6215d7c1c2": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_09ce5814ed4f46be84121fcba4e7df68", "placeholder": "\u200b", "style": "IPY_MODEL_27356fa14f2346b0860c7672674b6751", "tabbable": null, "tooltip": null, "value": "\n    <style>\n     .highlight\n                {\n                    font-family: monospace;\n                    font-size: 14px;\n                    line-height: 1.7em;\n                }\n     .highlight .err { color: #000000; background-color: #FFFFFF }\n    .highlight .hll { background-color: #ffffcc }\n.highlight  { background: #ffffff; }\n.highlight .kd { color: #007f00 } /* Keyword.Declaration */\n.highlight .kr { color: #007f00 } /* Keyword.Reserved */\n.highlight .kt { color: #7f007f } /* Keyword.Type */\n.highlight .m { color: #007f7f } /* Literal.Number */\n.highlight .s { color: #7f0000 } /* Literal.String */\n.highlight .nb { color: #00007f } /* Name.Builtin */\n.highlight .nf { color: #7f7fe0 } /* Name.Function */\n.highlight .mb { color: #007f7f } /* Literal.Number.Bin */\n.highlight .mf { color: #007f7f } /* Literal.Number.Float */\n.highlight .mh { color: #007f7f } /* Literal.Number.Hex */\n.highlight .mi { color: #007f7f } /* Literal.Number.Integer */\n.highlight .mo { color: #007f7f } /* Literal.Number.Oct */\n.highlight .sa { color: #7f0000 } /* Literal.String.Affix */\n.highlight .sb { color: #7f0000 } /* Literal.String.Backtick */\n.highlight .sc { color: #7f0000 } /* Literal.String.Char */\n.highlight .dl { color: #7f0000 } /* Literal.String.Delimiter */\n.highlight .sd { color: #7f0000 } /* Literal.String.Doc */\n.highlight .s2 { color: #7f0000 } /* Literal.String.Double */\n.highlight .se { color: #7f0000 } /* Literal.String.Escape */\n.highlight .sh { color: #7f0000 } /* Literal.String.Heredoc */\n.highlight .si { color: #7f0000 } /* Literal.String.Interpol */\n.highlight .sx { color: #7f0000 } /* Literal.String.Other */\n.highlight .sr { color: #7f0000 } /* Literal.String.Regex */\n.highlight .s1 { color: #7f0000 } /* Literal.String.Single */\n.highlight .ss { color: #7f0000 } /* Literal.String.Symbol */\n.highlight .bp { color: #00007f } /* Name.Builtin.Pseudo */\n.highlight .fm { color: #7f7fe0 } /* Name.Function.Magic */\n.highlight .il { color: #007f7f } /* Literal.Number.Integer.Long */\n    </style>\n    <div class=\"highlight\"><pre><span></span><span class=\"kr\">OPENQASM</span><span class=\"err\"> </span><span class=\"m\">2</span><span class=\"err\">.</span><span class=\"m\">0</span><span class=\"err\">;</span>\n<span class=\"kr\">include</span><span class=\"s\"> &quot;qelib1.inc&quot;</span><span class=\"err\">;</span>\n<span class=\"kd\">qreg</span> variable<span class=\"err\">[</span><span class=\"m\">5</span><span class=\"err\">];</span>\n<span class=\"kd\">qreg</span> <span class=\"kt\">r</span>esult<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\nmcx_gray<span class=\"err\"> variable[</span><span class=\"m\">0</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">3</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">4</span><span class=\"err\">],</span><span class=\"kt\">r</span>esult<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n</pre></div>\n"}}, "94d61c17cfab47f484653f5e3985694a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "720886ee902543048e70a9570ee274e9": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "ed0c2394521a48b2892e0072b5f6d982": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_94d61c17cfab47f484653f5e3985694a", "placeholder": "\u200b", "style": "IPY_MODEL_720886ee902543048e70a9570ee274e9", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>OpenQASM</p>"}}, "1545e89b18684419ae6cd3edcfb8715d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 20px", "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "a074e79ae6404f80a1c22c8afd7b83ca": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_ed0c2394521a48b2892e0072b5f6d982", "IPY_MODEL_3d51b3749f58443882031f6215d7c1c2"], "layout": "IPY_MODEL_1545e89b18684419ae6cd3edcfb8715d", "tabbable": null, "tooltip": null}}, "83f1ceaf349b4131abbe8ad16aad7ed6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "40px 0px 0px 20px", "max_height": "495px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "43e0a00d652b4e02bf2160c40a25e153": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "c87c7ddd833541a0bceeb0f20e5924da": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_83f1ceaf349b4131abbe8ad16aad7ed6", "placeholder": "\u200b", "style": "IPY_MODEL_43e0a00d652b4e02bf2160c40a25e153", "tabbable": null, "tooltip": null, "value": "<div style='border-left: 3px solid #212121;height: 120px;'></div>"}}, "10fd009d001c47469b35bd9b09bd8485": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "33f5f83c7c2d40009e2225bd7e5164b0": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "2749cb6226dc4401be7bd9bc9a5e2d33": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_10fd009d001c47469b35bd9b09bd8485", "placeholder": "\u200b", "style": "IPY_MODEL_33f5f83c7c2d40009e2225bd7e5164b0", "tabbable": null, "tooltip": null, "value": "<table><style>\ntable {\n    font-family: \"IBM Plex Sans\", Arial, Helvetica, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n    border-left: 2px solid #212121;\n}\n\nth {\n    text-align: left;\n    padding: 5px 5px 5px 5px;\n    width: 100%;\n    background-color: #3700BE;\n    color: #fff;\n    font-size: 16px;\n    border-left: 2px solid #3700BE;\n}\n\ntd {\n    font-family: \"IBM Plex Mono\", monospace;\n    text-align: left;\n    padding: 5px 5px 5px 5px;\n    width: 100%;\n    font-size: 13px;\n    font-weight: medium;\n}\n\ntr:nth-child(even) {background-color: #f6f6f6;}\n</style><tr><th>and</th><th></tr><tr><td>Width</td><td>6</td></tr><tr><td>Depth</td><td>1</td></tr><tr><td>Total Gates</td><td>1</td></tr><tr><td>Non-local Gates</td><td>1</td></tr></table>"}}, "2a161d92404a48b4a5a4cacdc55ec658": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "40%"}}, "aac14536f4f24a4c82beb14127625bbc": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_ef8e636fd3e94157b84d2f5c5a2fbaa4", "IPY_MODEL_2749cb6226dc4401be7bd9bc9a5e2d33"], "layout": "IPY_MODEL_2a161d92404a48b4a5a4cacdc55ec658", "tabbable": null, "tooltip": null}}, "d1eb40e9d7684af2bd862d226fc04137": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9b01900a99b1465a9d67c8af40bfdd9e": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "92e6a545735d42cdbee1c07e20176756": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_d1eb40e9d7684af2bd862d226fc04137", "placeholder": "\u200b", "style": "IPY_MODEL_9b01900a99b1465a9d67c8af40bfdd9e", "tabbable": null, "tooltip": null, "value": "\n    <style>\n     .highlight\n                {\n                    font-family: monospace;\n                    font-size: 14px;\n                    line-height: 1.7em;\n                }\n     .highlight .err { color: #000000; background-color: #FFFFFF }\n    .highlight .hll { background-color: #ffffcc }\n.highlight  { background: #ffffff; }\n.highlight .kd { color: #007f00 } /* Keyword.Declaration */\n.highlight .kr { color: #007f00 } /* Keyword.Reserved */\n.highlight .kt { color: #7f007f } /* Keyword.Type */\n.highlight .m { color: #007f7f } /* Literal.Number */\n.highlight .s { color: #7f0000 } /* Literal.String */\n.highlight .nb { color: #00007f } /* Name.Builtin */\n.highlight .nf { color: #7f7fe0 } /* Name.Function */\n.highlight .mb { color: #007f7f } /* Literal.Number.Bin */\n.highlight .mf { color: #007f7f } /* Literal.Number.Float */\n.highlight .mh { color: #007f7f } /* Literal.Number.Hex */\n.highlight .mi { color: #007f7f } /* Literal.Number.Integer */\n.highlight .mo { color: #007f7f } /* Literal.Number.Oct */\n.highlight .sa { color: #7f0000 } /* Literal.String.Affix */\n.highlight .sb { color: #7f0000 } /* Literal.String.Backtick */\n.highlight .sc { color: #7f0000 } /* Literal.String.Char */\n.highlight .dl { color: #7f0000 } /* Literal.String.Delimiter */\n.highlight .sd { color: #7f0000 } /* Literal.String.Doc */\n.highlight .s2 { color: #7f0000 } /* Literal.String.Double */\n.highlight .se { color: #7f0000 } /* Literal.String.Escape */\n.highlight .sh { color: #7f0000 } /* Literal.String.Heredoc */\n.highlight .si { color: #7f0000 } /* Literal.String.Interpol */\n.highlight .sx { color: #7f0000 } /* Literal.String.Other */\n.highlight .sr { color: #7f0000 } /* Literal.String.Regex */\n.highlight .s1 { color: #7f0000 } /* Literal.String.Single */\n.highlight .ss { color: #7f0000 } /* Literal.String.Symbol */\n.highlight .bp { color: #00007f } /* Name.Builtin.Pseudo */\n.highlight .fm { color: #7f7fe0 } /* Name.Function.Magic */\n.highlight .il { color: #007f7f } /* Literal.Number.Integer.Long */\n    </style>\n    <div class=\"highlight\"><pre><span></span><span class=\"kr\">OPENQASM</span><span class=\"err\"> </span><span class=\"m\">2</span><span class=\"err\">.</span><span class=\"m\">0</span><span class=\"err\">;</span>\n<span class=\"kr\">include</span><span class=\"s\"> &quot;qelib1.inc&quot;</span><span class=\"err\">;</span>\n<span class=\"kd\">qreg</span> variable<span class=\"err\">[</span><span class=\"m\">5</span><span class=\"err\">];</span>\n<span class=\"kd\">qreg</span> <span class=\"kt\">r</span>esult<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\nmcx_gray<span class=\"err\"> variable[</span><span class=\"m\">0</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">3</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">4</span><span class=\"err\">],</span><span class=\"kt\">r</span>esult<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n</pre></div>\n"}}, "162b9bf38f814f35bc4e196001247964": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "79875467816243f0972c5168e763c94d": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "3b2e326742de444bb825ad99c62fdcc7": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_162b9bf38f814f35bc4e196001247964", "placeholder": "\u200b", "style": "IPY_MODEL_79875467816243f0972c5168e763c94d", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>OpenQASM</p>"}}, "17870f97f4d94195bde3aa0bbef1b1e5": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 20px", "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "5d063cd35b554fe0a8fe76da4bb5f684": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_3b2e326742de444bb825ad99c62fdcc7", "IPY_MODEL_92e6a545735d42cdbee1c07e20176756"], "layout": "IPY_MODEL_17870f97f4d94195bde3aa0bbef1b1e5", "tabbable": null, "tooltip": null}}, "c0b36d0e83e24a8f89dea3932058404e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "550px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8f299b14d1474ceaa0073d510ea6d1e5": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_aac14536f4f24a4c82beb14127625bbc", "IPY_MODEL_c87c7ddd833541a0bceeb0f20e5924da", "IPY_MODEL_5d063cd35b554fe0a8fe76da4bb5f684"], "layout": "IPY_MODEL_c0b36d0e83e24a8f89dea3932058404e", "tabbable": null, "tooltip": null}}, "17aa8363ef744e86a06ad64263063f6a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "1000px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "hidden scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "22017057f832436aba2742402046c3d0": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_17aa8363ef744e86a06ad64263063f6a", "msg_id": "", "outputs": [], "tabbable": null, "tooltip": null}}, "46b823c54b0f4a86939906c9749b018c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "b9eff1ea6e974144ab473e97878186b5": {"model_name": "BoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "BoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "BoxView", "box_style": "", "children": ["IPY_MODEL_22017057f832436aba2742402046c3d0"], "layout": "IPY_MODEL_46b823c54b0f4a86939906c9749b018c", "tabbable": null, "tooltip": null}}, "eaecabccc1cb42a4a23969351dc32ebd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "10a2eb0e421a44ebaf51dea6c4c8a558": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_b9eff1ea6e974144ab473e97878186b5", "IPY_MODEL_8f299b14d1474ceaa0073d510ea6d1e5"], "layout": "IPY_MODEL_eaecabccc1cb42a4a23969351dc32ebd", "tabbable": null, "tooltip": null}}, "d2af2521085e4277a4f3afa7911b9765": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "28297459d9764f888646989b034f849c": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "716ec51ac80c4e1c9bf46bd8f1c6fb3b": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_d2af2521085e4277a4f3afa7911b9765", "placeholder": "\u200b", "style": "IPY_MODEL_28297459d9764f888646989b034f849c", "tabbable": null, "tooltip": null, "value": "\n    <style>\n     .highlight\n                {\n                    font-family: monospace;\n                    font-size: 14px;\n                    line-height: 1.7em;\n                }\n     .highlight .err { color: #000000; background-color: #FFFFFF }\n    .highlight .hll { background-color: #ffffcc }\n.highlight  { background: #ffffff; }\n.highlight .kd { color: #007f00 } /* Keyword.Declaration */\n.highlight .kr { color: #007f00 } /* Keyword.Reserved */\n.highlight .kt { color: #7f007f } /* Keyword.Type */\n.highlight .m { color: #007f7f } /* Literal.Number */\n.highlight .s { color: #7f0000 } /* Literal.String */\n.highlight .nb { color: #00007f } /* Name.Builtin */\n.highlight .nf { color: #7f7fe0 } /* Name.Function */\n.highlight .mb { color: #007f7f } /* Literal.Number.Bin */\n.highlight .mf { color: #007f7f } /* Literal.Number.Float */\n.highlight .mh { color: #007f7f } /* Literal.Number.Hex */\n.highlight .mi { color: #007f7f } /* Literal.Number.Integer */\n.highlight .mo { color: #007f7f } /* Literal.Number.Oct */\n.highlight .sa { color: #7f0000 } /* Literal.String.Affix */\n.highlight .sb { color: #7f0000 } /* Literal.String.Backtick */\n.highlight .sc { color: #7f0000 } /* Literal.String.Char */\n.highlight .dl { color: #7f0000 } /* Literal.String.Delimiter */\n.highlight .sd { color: #7f0000 } /* Literal.String.Doc */\n.highlight .s2 { color: #7f0000 } /* Literal.String.Double */\n.highlight .se { color: #7f0000 } /* Literal.String.Escape */\n.highlight .sh { color: #7f0000 } /* Literal.String.Heredoc */\n.highlight .si { color: #7f0000 } /* Literal.String.Interpol */\n.highlight .sx { color: #7f0000 } /* Literal.String.Other */\n.highlight .sr { color: #7f0000 } /* Literal.String.Regex */\n.highlight .s1 { color: #7f0000 } /* Literal.String.Single */\n.highlight .ss { color: #7f0000 } /* Literal.String.Symbol */\n.highlight .bp { color: #00007f } /* Name.Builtin.Pseudo */\n.highlight .fm { color: #7f7fe0 } /* Name.Function.Magic */\n.highlight .il { color: #007f7f } /* Literal.Number.Integer.Long */\n    </style>\n    <div class=\"highlight\"><pre><span></span><span class=\"kr\">OPENQASM</span><span class=\"err\"> </span><span class=\"m\">2</span><span class=\"err\">.</span><span class=\"m\">0</span><span class=\"err\">;</span>\n<span class=\"kr\">include</span><span class=\"s\"> &quot;qelib1.inc&quot;</span><span class=\"err\">;</span>\n<span class=\"kd\">qreg</span> variable<span class=\"err\">[</span><span class=\"m\">5</span><span class=\"err\">];</span>\n<span class=\"kd\">qreg</span> <span class=\"kt\">r</span>esult<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n<span class=\"kt\">x</span><span class=\"err\"> </span>variable<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\nmcx_gray<span class=\"err\"> variable[</span><span class=\"m\">0</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">3</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">4</span><span class=\"err\">],</span><span class=\"kt\">r</span>esult<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">x</span><span class=\"err\"> </span>variable<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n</pre></div>\n"}}, "7574ffd50ac14525b16e42ab2296c811": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b432fba1eeda4b7ea1babf73223bb331": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "f597d7fa29b740edbe849575d5e44f15": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_7574ffd50ac14525b16e42ab2296c811", "placeholder": "\u200b", "style": "IPY_MODEL_b432fba1eeda4b7ea1babf73223bb331", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>OpenQASM</p>"}}, "a3430f88995645a391b346e0fea10456": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 20px", "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "7a79dfe6392049a88e9ea47418c7c6fe": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_f597d7fa29b740edbe849575d5e44f15", "IPY_MODEL_716ec51ac80c4e1c9bf46bd8f1c6fb3b"], "layout": "IPY_MODEL_a3430f88995645a391b346e0fea10456", "tabbable": null, "tooltip": null}}, "696526cb53b64ce4bfa8002ed68f279a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "40px 0px 0px 20px", "max_height": "495px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "31e7e3dc994649b89020d596e44f108e": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "4fd6e0315a004c8b8bf9410d1a906dfc": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_696526cb53b64ce4bfa8002ed68f279a", "placeholder": "\u200b", "style": "IPY_MODEL_31e7e3dc994649b89020d596e44f108e", "tabbable": null, "tooltip": null, "value": "<div style='border-left: 3px solid #212121;height: 160px;'></div>"}}, "955bde1556d646b6b74a3edb78653cdd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b67c4fe0aaa247c7bb5394153aae895b": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "714bcd68efa848d4b98487c0c1726bb5": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_955bde1556d646b6b74a3edb78653cdd", "placeholder": "\u200b", "style": "IPY_MODEL_b67c4fe0aaa247c7bb5394153aae895b", "tabbable": null, "tooltip": null, "value": "<table><style>\ntable {\n    font-family: \"IBM Plex Sans\", Arial, Helvetica, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n    border-left: 2px solid #212121;\n}\n\nth {\n    text-align: left;\n    padding: 5px 5px 5px 5px;\n    width: 100%;\n    background-color: #3700BE;\n    color: #fff;\n    font-size: 16px;\n    border-left: 2px solid #3700BE;\n}\n\ntd {\n    font-family: \"IBM Plex Mono\", monospace;\n    text-align: left;\n    padding: 5px 5px 5px 5px;\n    width: 100%;\n    font-size: 13px;\n    font-weight: medium;\n}\n\ntr:nth-child(even) {background-color: #f6f6f6;}\n</style><tr><th>and</th><th></tr><tr><td>Width</td><td>6</td></tr><tr><td>Depth</td><td>3</td></tr><tr><td>Total Gates</td><td>3</td></tr><tr><td>Non-local Gates</td><td>1</td></tr></table>"}}, "fe94746a310f4d71815585d924247285": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "40%"}}, "a768cbd5b831474ea276b092d20acd7e": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_ef8e636fd3e94157b84d2f5c5a2fbaa4", "IPY_MODEL_714bcd68efa848d4b98487c0c1726bb5"], "layout": "IPY_MODEL_fe94746a310f4d71815585d924247285", "tabbable": null, "tooltip": null}}, "9602a3e193744db69e7e53134648be80": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "65dc9866dc3c47aa8508f3315e4e8996": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "4b2ce77a1dfb41878fa1af1af8374667": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_9602a3e193744db69e7e53134648be80", "placeholder": "\u200b", "style": "IPY_MODEL_65dc9866dc3c47aa8508f3315e4e8996", "tabbable": null, "tooltip": null, "value": "\n    <style>\n     .highlight\n                {\n                    font-family: monospace;\n                    font-size: 14px;\n                    line-height: 1.7em;\n                }\n     .highlight .err { color: #000000; background-color: #FFFFFF }\n    .highlight .hll { background-color: #ffffcc }\n.highlight  { background: #ffffff; }\n.highlight .kd { color: #007f00 } /* Keyword.Declaration */\n.highlight .kr { color: #007f00 } /* Keyword.Reserved */\n.highlight .kt { color: #7f007f } /* Keyword.Type */\n.highlight .m { color: #007f7f } /* Literal.Number */\n.highlight .s { color: #7f0000 } /* Literal.String */\n.highlight .nb { color: #00007f } /* Name.Builtin */\n.highlight .nf { color: #7f7fe0 } /* Name.Function */\n.highlight .mb { color: #007f7f } /* Literal.Number.Bin */\n.highlight .mf { color: #007f7f } /* Literal.Number.Float */\n.highlight .mh { color: #007f7f } /* Literal.Number.Hex */\n.highlight .mi { color: #007f7f } /* Literal.Number.Integer */\n.highlight .mo { color: #007f7f } /* Literal.Number.Oct */\n.highlight .sa { color: #7f0000 } /* Literal.String.Affix */\n.highlight .sb { color: #7f0000 } /* Literal.String.Backtick */\n.highlight .sc { color: #7f0000 } /* Literal.String.Char */\n.highlight .dl { color: #7f0000 } /* Literal.String.Delimiter */\n.highlight .sd { color: #7f0000 } /* Literal.String.Doc */\n.highlight .s2 { color: #7f0000 } /* Literal.String.Double */\n.highlight .se { color: #7f0000 } /* Literal.String.Escape */\n.highlight .sh { color: #7f0000 } /* Literal.String.Heredoc */\n.highlight .si { color: #7f0000 } /* Literal.String.Interpol */\n.highlight .sx { color: #7f0000 } /* Literal.String.Other */\n.highlight .sr { color: #7f0000 } /* Literal.String.Regex */\n.highlight .s1 { color: #7f0000 } /* Literal.String.Single */\n.highlight .ss { color: #7f0000 } /* Literal.String.Symbol */\n.highlight .bp { color: #00007f } /* Name.Builtin.Pseudo */\n.highlight .fm { color: #7f7fe0 } /* Name.Function.Magic */\n.highlight .il { color: #007f7f } /* Literal.Number.Integer.Long */\n    </style>\n    <div class=\"highlight\"><pre><span></span><span class=\"kr\">OPENQASM</span><span class=\"err\"> </span><span class=\"m\">2</span><span class=\"err\">.</span><span class=\"m\">0</span><span class=\"err\">;</span>\n<span class=\"kr\">include</span><span class=\"s\"> &quot;qelib1.inc&quot;</span><span class=\"err\">;</span>\n<span class=\"kd\">qreg</span> variable<span class=\"err\">[</span><span class=\"m\">5</span><span class=\"err\">];</span>\n<span class=\"kd\">qreg</span> <span class=\"kt\">r</span>esult<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n<span class=\"kt\">x</span><span class=\"err\"> </span>variable<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\nmcx_gray<span class=\"err\"> variable[</span><span class=\"m\">0</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">3</span><span class=\"err\">],</span>variable<span class=\"err\">[</span><span class=\"m\">4</span><span class=\"err\">],</span><span class=\"kt\">r</span>esult<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">x</span><span class=\"err\"> </span>variable<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n</pre></div>\n"}}, "2ef8f03887cd4ee2976acf8b876580ab": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4e8c87cabf7342a496030d9f73c6b803": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "b20182433eec4eceb2ddf89c305b558c": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_2ef8f03887cd4ee2976acf8b876580ab", "placeholder": "\u200b", "style": "IPY_MODEL_4e8c87cabf7342a496030d9f73c6b803", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>OpenQASM</p>"}}, "0ed3487bb0f349608585d46e5030bd69": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 20px", "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "d01ae923f2714cb1aa0ce2b3ea241c07": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_b20182433eec4eceb2ddf89c305b558c", "IPY_MODEL_4b2ce77a1dfb41878fa1af1af8374667"], "layout": "IPY_MODEL_0ed3487bb0f349608585d46e5030bd69", "tabbable": null, "tooltip": null}}, "d95b7e2d2c9f44aa8e4783aee8324444": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "550px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "49812c3d24074cd7a3b59905bca310df": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_a768cbd5b831474ea276b092d20acd7e", "IPY_MODEL_4fd6e0315a004c8b8bf9410d1a906dfc", "IPY_MODEL_d01ae923f2714cb1aa0ce2b3ea241c07"], "layout": "IPY_MODEL_d95b7e2d2c9f44aa8e4783aee8324444", "tabbable": null, "tooltip": null}}, "f3f09ae42abf4341b76f48ee4109d176": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "1000px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "hidden scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "894ae636fee243be9167ae23c3008e1c": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_f3f09ae42abf4341b76f48ee4109d176", "msg_id": "", "outputs": [], "tabbable": null, "tooltip": null}}, "82a8d31f61264b539a1892351f523015": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "5ff7158c5a3048ceaad1dfcb19f5709b": {"model_name": "BoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "BoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "BoxView", "box_style": "", "children": ["IPY_MODEL_894ae636fee243be9167ae23c3008e1c"], "layout": "IPY_MODEL_82a8d31f61264b539a1892351f523015", "tabbable": null, "tooltip": null}}, "5d788d8dab824925be31b95f36453d0a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "451ff1effa43444ca1767c31e662071e": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_5ff7158c5a3048ceaad1dfcb19f5709b", "IPY_MODEL_49812c3d24074cd7a3b59905bca310df"], "layout": "IPY_MODEL_5d788d8dab824925be31b95f36453d0a", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qiskit.circuit.library.AND.clbits.html" class="btn btn-neutral float-right" title="AND.clbits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qiskit.circuit.library.GMS.z.html" class="btn btn-neutral float-left" title="GMS.z" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Qiskit Development Team
+      <span class="lastupdated">
+        Zuletzt aktualisiert am 2020/06/30.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Zu sehen ist</span>
+    lang: German
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Sprachen</dt>
+      
+        <dd><a class="version" href="/documentation/stubs/qiskit.circuit.library.AND.html">English</a></dd>
+      
+        <dd><a class="version" href="/documentation/locale/ja_JP/stubs/qiskit.circuit.library.AND.html">Japanese</a></dd>
+      
+        <dd><a class="version" href="/documentation/locale/de_DE/stubs/qiskit.circuit.library.AND.html">German</a></dd>
+      
+    </dl>
+    
+  </div>
+  <script>
+    jQuery('.version').click((evt) => {
+      const hash = window.location.hash
+      const complete_url = evt.target.href + hash
+      window.location = complete_url
+      evt.preventDefault()
+    })
+  </script>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

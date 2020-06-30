@@ -1,0 +1,18 @@
+
+
+
+=========================
+
+.. automodule:: qiskit.pulse.instructions
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
