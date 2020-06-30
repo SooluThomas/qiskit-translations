@@ -18,7 +18,7 @@
 SOURCE_REPOSITORY="https://github.com/Qiskit/qiskit.git"
 TARGET_REPOSITORY="git@github.com:SooluThomas/qiskit-translations.git"
 TARGET_DOC_DIR="documentation/"
-SOURCE_DOC_DIR="docs/_build/"
+SOURCE_DOC_DIR="docs/_build"
 SOURCE_DIR=`pwd`
 TARGET_BRANCH="gh-pages"
 
@@ -39,6 +39,6 @@ pushd $SOURCE_DIR/docs
 sphinx-build -b html -j auto -D content_prefix=documentation -D language=$TRANSLATION_LANG . _build/html/locale/$TRANSLATION_LANG
 
 echo "move html files from _build/ to build/"
-mv $SOURCE_DIR/$SOURCE_DOC_DIR/* build/
+mv $SOURCE_DIR/$SOURCE_DOC_DIR/* $SOURCE_DIR/build/
 
 popd
