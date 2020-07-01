@@ -154,8 +154,8 @@ Diagonal
       Diagonal.y
       Diagonal.z
    
-      Diagonal.__getitem__
       Diagonal.__len__
+      Diagonal.__getitem__
 
    
    

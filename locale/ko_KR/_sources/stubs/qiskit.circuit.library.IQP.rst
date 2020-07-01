@@ -154,8 +154,8 @@ IQP
       IQP.y
       IQP.z
    
-      IQP.__getitem__
       IQP.__len__
+      IQP.__getitem__
 
    
    

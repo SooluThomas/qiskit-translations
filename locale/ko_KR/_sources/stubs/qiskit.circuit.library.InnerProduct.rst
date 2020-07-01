@@ -154,8 +154,8 @@ InnerProduct
       InnerProduct.y
       InnerProduct.z
    
-      InnerProduct.__getitem__
       InnerProduct.__len__
+      InnerProduct.__getitem__
 
    
    
