@@ -297,25 +297,22 @@
 <h2>Installation<a class="headerlink" href="#install" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Um Qiskit sauber von anderen Anwendungen zu separieren und die Nutzung zu vereinfachen, wird die Verwendung von Python Virtual Environments empfohlen.</p>
 <p>Der einfachste Weg, Environments zu verwenden, ist der in Anaconda verfügbare <code class="docutils literal notranslate"><span class="pre">conda</span></code> Befehl. Ein Conda Environment erlaubt es, eine spezifische Python-Version und eine Liste an Paketen festzulegen. In dem gewünschten Arbeitsverzeichnis kann dann ein Terminal-Fenster geöffnet werden.</p>
+<p>It is preferred that you use Anaconda prompt installed with the Anaconda.
+All you have to do is create a virtual environment inside Anaconda and activate the environment.
+These commands can be run in Anaconda prompt irrespective of Windows or linux machine.</p>
 <p>Eine minimale, ausschließlich Python enthaltende Umgebung wird erstellt.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda create -n name_of_my_env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
 </pre></div>
 </div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> activate name_of_my_env
+<p>Activate your new environment.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda activate name_of_my_env
 </pre></div>
 </div>
-<p>Oder, wenn Windows verwendet wird</p>
-<ol class="arabic simple">
-<li><p>Anaconda installieren</p></li>
-<li><p>Nach dem Anaconda-Prompt suchen</p></li>
-<li><p>Den Anaconda-Prompt öffnen</p></li>
-</ol>
-<p>Die folgenden Befehle verwenden</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda create -n name_of_my_env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
-</pre></div>
-</div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>activate name_of_my_env
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Bemerkung</p>
+<p>If you are using conda versions prior to 4.6, use:
+For Linux or macOS: <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">activate</span> <span class="pre">name_of_my_env</span></code>
+For Windows: <code class="docutils literal notranslate"><span class="pre">activate</span> <span class="pre">name_of_my_env</span></code></p>
 </div>
 <p>Als nächstes wird das Qiskit Paket Installiert, welches Terra, Aer, Ignis und Aqua enthält.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install qiskit
@@ -432,7 +429,7 @@ versions of macOS) you’ll need to put <code class="docutils literal notranslat
         
         &copy; Copyright 2020, Qiskit Development Team
       <span class="lastupdated">
-        Zuletzt aktualisiert am 2020/06/30.
+        Zuletzt aktualisiert am 2020/07/01.
       </span>
 
     </p>
