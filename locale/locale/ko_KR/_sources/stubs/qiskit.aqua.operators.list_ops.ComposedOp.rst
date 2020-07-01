@@ -63,8 +63,8 @@ ComposedOp
       ComposedOp.to_spmatrix
       ComposedOp.traverse
    
-      ComposedOp.__mul__
       ComposedOp.__len__
+      ComposedOp.__mul__
       ComposedOp.__getitem__
 
    
