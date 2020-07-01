@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Add more: ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR
-        language: [de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR]
+        # Add more: de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR
+        language: [it_IT, ko_KR]
     # if: "contains(github.event.head_commit.message, 'New translations')"
     steps:
     - uses: actions/checkout@v2
@@ -52,6 +52,6 @@ jobs:
         BASE_BRANCH: master
         BRANCH: gh-pages
         FOLDER: build
-        CLEAN: true
+        TARGET_FOLDER: locale
         SSH: true # SSH must be set to true so the deploy action knows which protocol to deploy with.
       
