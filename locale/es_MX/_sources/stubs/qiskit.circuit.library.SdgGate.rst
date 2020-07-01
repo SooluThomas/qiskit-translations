@@ -1,0 +1,52 @@
+
+
+SdgGate
+==============================
+
+.. currentmodule:: qiskit.circuit.library
+
+.. autoclass:: SdgGate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      SdgGate.decompositions
+      SdgGate.definition
+      SdgGate.label
+      SdgGate.params
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      SdgGate.add_decomposition
+      SdgGate.assemble
+      SdgGate.broadcast_arguments
+      SdgGate.c_if
+      SdgGate.control
+      SdgGate.copy
+      SdgGate.inverse
+      SdgGate.is_parameterized
+      SdgGate.mirror
+      SdgGate.power
+      SdgGate.qasm
+      SdgGate.repeat
+      SdgGate.to_matrix
+   
+
+   
+   
