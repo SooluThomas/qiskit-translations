@@ -18,7 +18,7 @@
 SOURCE_REPOSITORY="https://github.com/Qiskit/qiskit.git"
 TARGET_REPOSITORY="git@github.com:SooluThomas/qiskit-translations.git"
 TARGET_DOC_DIR="documentation/"
-SOURCE_DOC_DIR="docs/_build/locale"
+SOURCE_DOC_DIR="docs/_build"
 SOURCE_DIR=`pwd`
 TARGET_BRANCH="gh-pages"
 
