@@ -562,7 +562,7 @@ div.rendered_html tbody tr:hover {
 
 <span class="c1"># execute the quantum circuit</span>
 <span class="n">backend</span> <span class="o">=</span> <span class="n">BasicAer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span> <span class="c1"># the device to run on</span>
-<span class="n">circ</span> <span class="o">=</span> <span class="n">bell</span><span class="o">+</span><span class="n">meas</span>
+<span class="n">circ</span> <span class="o">=</span> <span class="n">bell</span> <span class="o">+</span> <span class="n">meas</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
 <span class="n">counts</span>  <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>

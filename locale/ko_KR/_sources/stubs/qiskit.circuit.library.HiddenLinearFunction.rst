@@ -154,8 +154,8 @@ HiddenLinearFunction
       HiddenLinearFunction.y
       HiddenLinearFunction.z
    
-      HiddenLinearFunction.__len__
       HiddenLinearFunction.__getitem__
+      HiddenLinearFunction.__len__
 
    
    

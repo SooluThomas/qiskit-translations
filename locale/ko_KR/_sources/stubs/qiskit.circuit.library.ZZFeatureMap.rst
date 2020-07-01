@@ -174,8 +174,8 @@ ZZFeatureMap
       ZZFeatureMap.y
       ZZFeatureMap.z
    
-      ZZFeatureMap.__len__
       ZZFeatureMap.__getitem__
+      ZZFeatureMap.__len__
 
    
    

@@ -62,9 +62,9 @@ SummedOp
       SummedOp.to_spmatrix
       SummedOp.traverse
    
+      SummedOp.__getitem__
       SummedOp.__len__
       SummedOp.__mul__
-      SummedOp.__getitem__
 
    
    
