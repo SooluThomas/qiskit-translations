@@ -1,0 +1,850 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="it-IT" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FourierChecking &mdash; Qiskit 0.19.6 documentazione</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme-override.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0-alpha.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Indice" href="../genindex.html" />
+    <link rel="search" title="Cerca" href="../search.html" />
+    <link rel="next" title="FourierChecking.clbits" href="qiskit.circuit.library.FourierChecking.clbits.html" />
+    <link rel="prev" title="IntegerComparator.z" href="qiskit.circuit.library.IntegerComparator.z.html" />
+    <script>
+    (function () {
+      'use strict'
+      window._analytics = {
+        segment_key: 'ffdYLviQze3kzomaINXNk6NwpY9LlXcw',
+        coremetrics: false,
+        optimizely: false,
+        googleAddServices: false,
+        fullStory: false,
+        autoPageEventSpa: false,
+        autoFormEvents: false,
+        autoPageView: false
+      }
+
+      window.digitalData = {
+        page: {
+          pageInfo: {
+            productTitle: 'IBM Q Experience',
+            analytics: {
+              category: 'Qiskit.org'
+            }
+          }
+        }
+      }
+
+      window._analyticsReady = window._analyticsReady || new Promise((resolve) => {
+        const script = document.createElement('script')
+        script.async = true
+        script.src = 'https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js'
+        document.head.appendChild(script)
+        script.onload = resolve
+        script.onerror = (err) => {
+          console.warn('Error loading Bluemix Analytics script:', err)
+          resolve()
+        }
+      })
+
+      window._analyticsReady.then(() => {
+        if (!window.bluemixAnalytics || !window.digitalData) { return }
+
+        const category = window.digitalData.page.pageInfo.analytics.category
+        const productTitle = window.digitalData.page.pageInfo.productTitle
+        const routeName = 'api-documentation'
+
+        window.bluemixAnalytics.pageEvent(category, routeName, {
+          navigationType: 'pushState',
+          productTitle: productTitle,
+          title: document.title
+        })
+      })
+    }());
+    </script>
+     
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #212121" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Qiskit
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing Qiskit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Come Iniziare con Qiskit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_elements.html">The Qiskit Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development_strategy.html">Development Strategy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/circuits/index.html">Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/circuits_advanced/index.html">Advanced Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/simulators/index.html">High-Performance Simulators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/noise/index.html">Quantum System Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/optimization/index.html">Optimization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Libraries</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../apidoc/circuit_library.html">Circuit Library</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../apidoc/circuit_library.html#circuit-library-qiskit-circuit-library">Circuit Library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit.circuit.library</span></code>)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#standard-gates">Standard Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#generalized-gates">Generalized Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#boolean-logic-circuits">Boolean Logic Circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#basis-change-circuits">Basis Change Circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#arithmetic-circuits">Arithmetic Circuits</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../apidoc/circuit_library.html#particular-quantum-circuits">Particular Quantum Circuits</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">FourierChecking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.GraphState.html">GraphState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.HiddenLinearFunction.html">HiddenLinearFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.IQP.html">IQP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.QuantumVolume.html">QuantumVolume</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#n-local-circuits">N-local circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#data-encoding-circuits">Data encoding circuits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/terra.html">Qiskit Terra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/aer.html">Qiskit Aer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/ignis.html">Qiskit Ignis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/aqua.html">Qiskit Aqua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/ibmq-provider.html">Qiskit IBM Quantum Provider</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://quantum-computing.ibm.com/docs/cloud/errors">Quantum Experience API error codes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qiskit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../apidoc/circuit_library.html">Circuit Library</a> &raquo;</li>
+        
+      <li>FourierChecking</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/stubs/qiskit.circuit.library.FourierChecking.rst" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="fourierchecking">
+<h1>FourierChecking<a class="headerlink" href="#fourierchecking" title="Link a questa intestazione">¶</a></h1>
+<dl class="py class">
+<dt id="qiskit.circuit.library.FourierChecking">
+<em class="property">class </em><code class="sig-name descname">FourierChecking</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em>, <em class="sig-param"><span class="n">g</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/library/fourier_checking.html#FourierChecking"><span class="viewcode-link">[sorgente]</span></a><a class="headerlink" href="#qiskit.circuit.library.FourierChecking" title="Link a questa definizione">¶</a></dt>
+<dd><p>Fourier checking circuit.</p>
+<p>The circuit for the Fourier checking algorithm, introduced in [1],
+involves a layer of Hadamards, the function <span class="math notranslate nohighlight">\(f\)</span>, another layer of
+Hadamards, the function <span class="math notranslate nohighlight">\(g\)</span>, followed by a final layer of Hadamards.
+The functions <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are classical functions realized
+as phase oracles (diagonal operators with {-1, 1} on the diagonal).</p>
+<p>The probability of observing the all-zeros string is <span class="math notranslate nohighlight">\(p(f,g)\)</span>.
+The algorithm solves the promise Fourier checking problem,
+which decides if f is correlated with the Fourier transform
+of g, by testing if <span class="math notranslate nohighlight">\(p(f,g) &lt;= 0.01\)</span> or <span class="math notranslate nohighlight">\(p(f,g) &gt;= 0.05\)</span>,
+promised that one or the other of these is true.</p>
+<p>The functions <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are currently implemented
+from their truth tables but could be represented concisely and
+implemented efficiently for special classes of functions.</p>
+<p>Fourier checking is a special case of <span class="math notranslate nohighlight">\(k\)</span>-fold forrelation [2].</p>
+<p><strong>Reference:</strong></p>
+<p>[1] S. Aaronson, BQP and the Polynomial Hierarchy, 2009 (Section 3.2).
+<a class="reference external" href="https://arxiv.org/abs/0910.4698">arXiv:0910.4698</a></p>
+<p>[2] S. Aaronson, A. Ambainis, Forrelation: a problem that
+optimally separates quantum from classical computing, 2014.
+<a class="reference external" href="https://arxiv.org/abs/1411.5729">arXiv:1411.5729</a></p>
+<p>Create Fourier checking circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parametri</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – truth table for f, length 2**n list of {1,-1}.</p></li>
+<li><p><strong>g</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – truth table for g, length 2**n list of {1,-1}.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Solleva</dt>
+<dd class="field-even"><p><strong>CircuitError</strong> – if the inputs f and g are not valid.</p>
+</dd>
+</dl>
+<dl>
+<dt>Reference Circuit:</dt><dd><div class="jupyter_cell docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/qiskit.circuit.library.FourierChecking_0_0.png" src="../_images/qiskit.circuit.library.FourierChecking_0_0.png" />
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "635243d4af5d4fcab23dec127cf74004"}
+</script></div>
+</div>
+</dd>
+</dl>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.clbits.html#qiskit.circuit.library.FourierChecking.clbits" title="qiskit.circuit.library.FourierChecking.clbits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.clbits</span></code></a></p></td>
+<td><p>Returns a list of classical bits in the order that the registers were added.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.data.html#qiskit.circuit.library.FourierChecking.data" title="qiskit.circuit.library.FourierChecking.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.data</span></code></a></p></td>
+<td><p>Return the circuit data (instructions and context).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.extension_lib.html#qiskit.circuit.library.FourierChecking.extension_lib" title="qiskit.circuit.library.FourierChecking.extension_lib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.extension_lib</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.header.html#qiskit.circuit.library.FourierChecking.header" title="qiskit.circuit.library.FourierChecking.header"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.header</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.instances.html#qiskit.circuit.library.FourierChecking.instances" title="qiskit.circuit.library.FourierChecking.instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.instances</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.n_qubits.html#qiskit.circuit.library.FourierChecking.n_qubits" title="qiskit.circuit.library.FourierChecking.n_qubits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.n_qubits</span></code></a></p></td>
+<td><p>Deprecated, use <code class="docutils literal notranslate"><span class="pre">num_qubits</span></code> instead.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.num_clbits.html#qiskit.circuit.library.FourierChecking.num_clbits" title="qiskit.circuit.library.FourierChecking.num_clbits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.num_clbits</span></code></a></p></td>
+<td><p>Return number of classical bits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.num_parameters.html#qiskit.circuit.library.FourierChecking.num_parameters" title="qiskit.circuit.library.FourierChecking.num_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.num_parameters</span></code></a></p></td>
+<td><p>Convenience function to get the number of parameter objects in the circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.num_qubits.html#qiskit.circuit.library.FourierChecking.num_qubits" title="qiskit.circuit.library.FourierChecking.num_qubits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.num_qubits</span></code></a></p></td>
+<td><p>Return number of qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.parameters.html#qiskit.circuit.library.FourierChecking.parameters" title="qiskit.circuit.library.FourierChecking.parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.parameters</span></code></a></p></td>
+<td><p>Convenience function to get the parameters defined in the parameter table.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.prefix.html#qiskit.circuit.library.FourierChecking.prefix" title="qiskit.circuit.library.FourierChecking.prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.prefix</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.qubits.html#qiskit.circuit.library.FourierChecking.qubits" title="qiskit.circuit.library.FourierChecking.qubits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.qubits</span></code></a></p></td>
+<td><p>Returns a list of quantum bits in the order that the registers were added.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.AND.html#qiskit.circuit.library.FourierChecking.AND" title="qiskit.circuit.library.FourierChecking.AND"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.AND</span></code></a>(qr_variables, qb_target, …)</p></td>
+<td><p>Build a collective conjunction (AND) circuit in place using mct.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.OR.html#qiskit.circuit.library.FourierChecking.OR" title="qiskit.circuit.library.FourierChecking.OR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.OR</span></code></a>(qr_variables, qb_target, …)</p></td>
+<td><p>Build a collective disjunction (OR) circuit in place using mct.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.__getitem__.html#qiskit.circuit.library.FourierChecking.__getitem__" title="qiskit.circuit.library.FourierChecking.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.__getitem__</span></code></a>(item)</p></td>
+<td><p>Return indexed operation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.__len__.html#qiskit.circuit.library.FourierChecking.__len__" title="qiskit.circuit.library.FourierChecking.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.__len__</span></code></a>()</p></td>
+<td><p>Return number of operations in circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.add_register.html#qiskit.circuit.library.FourierChecking.add_register" title="qiskit.circuit.library.FourierChecking.add_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.add_register</span></code></a>(*regs)</p></td>
+<td><p>Add registers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.append.html#qiskit.circuit.library.FourierChecking.append" title="qiskit.circuit.library.FourierChecking.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.append</span></code></a>(instruction[, qargs, …])</p></td>
+<td><p>Append one or more instructions to the end of the circuit, modifying the circuit in place.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.assign_parameters.html#qiskit.circuit.library.FourierChecking.assign_parameters" title="qiskit.circuit.library.FourierChecking.assign_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.assign_parameters</span></code></a>(param_dict)</p></td>
+<td><p>Assign parameters to new parameters or values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.barrier.html#qiskit.circuit.library.FourierChecking.barrier" title="qiskit.circuit.library.FourierChecking.barrier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.barrier</span></code></a>(*qargs)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">Barrier</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.bind_parameters.html#qiskit.circuit.library.FourierChecking.bind_parameters" title="qiskit.circuit.library.FourierChecking.bind_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.bind_parameters</span></code></a>(value_dict)</p></td>
+<td><p>Assign numeric parameters to values yielding a new circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cast.html#qiskit.circuit.library.FourierChecking.cast" title="qiskit.circuit.library.FourierChecking.cast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cast</span></code></a>(value, _type)</p></td>
+<td><p>Best effort to cast value to type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cbit_argument_conversion.html#qiskit.circuit.library.FourierChecking.cbit_argument_conversion" title="qiskit.circuit.library.FourierChecking.cbit_argument_conversion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cbit_argument_conversion</span></code></a>(…)</p></td>
+<td><p>Converts several classical bit representations (such as indexes, range, etc.) into a list of classical bits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ccx.html#qiskit.circuit.library.FourierChecking.ccx" title="qiskit.circuit.library.FourierChecking.ccx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ccx</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CCXGate.html#qiskit.circuit.library.CCXGate" title="qiskit.circuit.library.CCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ch.html#qiskit.circuit.library.FourierChecking.ch" title="qiskit.circuit.library.FourierChecking.ch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ch</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CHGate.html#qiskit.circuit.library.CHGate" title="qiskit.circuit.library.CHGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CHGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cls_instances.html#qiskit.circuit.library.FourierChecking.cls_instances" title="qiskit.circuit.library.FourierChecking.cls_instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cls_instances</span></code></a>()</p></td>
+<td><p>Return the current number of instances of this class, useful for auto naming.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cls_prefix.html#qiskit.circuit.library.FourierChecking.cls_prefix" title="qiskit.circuit.library.FourierChecking.cls_prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cls_prefix</span></code></a>()</p></td>
+<td><p>Return the prefix to use for auto naming.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cnot.html#qiskit.circuit.library.FourierChecking.cnot" title="qiskit.circuit.library.FourierChecking.cnot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cnot</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CXGate.html#qiskit.circuit.library.CXGate" title="qiskit.circuit.library.CXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.combine.html#qiskit.circuit.library.FourierChecking.combine" title="qiskit.circuit.library.FourierChecking.combine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.combine</span></code></a>(rhs)</p></td>
+<td><p>Append rhs to self if self contains compatible registers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.compose.html#qiskit.circuit.library.FourierChecking.compose" title="qiskit.circuit.library.FourierChecking.compose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.compose</span></code></a>(other[, qubits, …])</p></td>
+<td><p>Compose circuit with <code class="docutils literal notranslate"><span class="pre">other</span></code> circuit or instruction, optionally permuting wires.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.copy.html#qiskit.circuit.library.FourierChecking.copy" title="qiskit.circuit.library.FourierChecking.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.copy</span></code></a>([name])</p></td>
+<td><p>Copy the circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.count_ops.html#qiskit.circuit.library.FourierChecking.count_ops" title="qiskit.circuit.library.FourierChecking.count_ops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.count_ops</span></code></a>()</p></td>
+<td><p>Count each operation kind in the circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.crx.html#qiskit.circuit.library.FourierChecking.crx" title="qiskit.circuit.library.FourierChecking.crx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.crx</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CRXGate.html#qiskit.circuit.library.CRXGate" title="qiskit.circuit.library.CRXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CRXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cry.html#qiskit.circuit.library.FourierChecking.cry" title="qiskit.circuit.library.FourierChecking.cry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cry</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CRYGate.html#qiskit.circuit.library.CRYGate" title="qiskit.circuit.library.CRYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CRYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.crz.html#qiskit.circuit.library.FourierChecking.crz" title="qiskit.circuit.library.FourierChecking.crz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.crz</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CRZGate.html#qiskit.circuit.library.CRZGate" title="qiskit.circuit.library.CRZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CRZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cswap.html#qiskit.circuit.library.FourierChecking.cswap" title="qiskit.circuit.library.FourierChecking.cswap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cswap</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CSwapGate.html#qiskit.circuit.library.CSwapGate" title="qiskit.circuit.library.CSwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cu1.html#qiskit.circuit.library.FourierChecking.cu1" title="qiskit.circuit.library.FourierChecking.cu1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cu1</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CU1Gate.html#qiskit.circuit.library.CU1Gate" title="qiskit.circuit.library.CU1Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CU1Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cu3.html#qiskit.circuit.library.FourierChecking.cu3" title="qiskit.circuit.library.FourierChecking.cu3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cu3</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CU3Gate.html#qiskit.circuit.library.CU3Gate" title="qiskit.circuit.library.CU3Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CU3Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cx.html#qiskit.circuit.library.FourierChecking.cx" title="qiskit.circuit.library.FourierChecking.cx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cx</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CXGate.html#qiskit.circuit.library.CXGate" title="qiskit.circuit.library.CXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cy.html#qiskit.circuit.library.FourierChecking.cy" title="qiskit.circuit.library.FourierChecking.cy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cy</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CYGate.html#qiskit.circuit.library.CYGate" title="qiskit.circuit.library.CYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.cz.html#qiskit.circuit.library.FourierChecking.cz" title="qiskit.circuit.library.FourierChecking.cz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.cz</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CZGate.html#qiskit.circuit.library.CZGate" title="qiskit.circuit.library.CZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.dcx.html#qiskit.circuit.library.FourierChecking.dcx" title="qiskit.circuit.library.FourierChecking.dcx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.dcx</span></code></a>(qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.DCXGate.html#qiskit.circuit.library.DCXGate" title="qiskit.circuit.library.DCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">DCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.decompose.html#qiskit.circuit.library.FourierChecking.decompose" title="qiskit.circuit.library.FourierChecking.decompose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.decompose</span></code></a>()</p></td>
+<td><p>Call a decomposition pass on this circuit, to decompose one level (shallow decompose).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.depth.html#qiskit.circuit.library.FourierChecking.depth" title="qiskit.circuit.library.FourierChecking.depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.depth</span></code></a>()</p></td>
+<td><p>Return circuit depth (i.e., length of critical path).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.diag_gate.html#qiskit.circuit.library.FourierChecking.diag_gate" title="qiskit.circuit.library.FourierChecking.diag_gate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.diag_gate</span></code></a>(diag, qubit)</p></td>
+<td><p>Deprecated version of QuantumCircuit.diagonal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.diagonal.html#qiskit.circuit.library.FourierChecking.diagonal" title="qiskit.circuit.library.FourierChecking.diagonal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.diagonal</span></code></a>(diag, qubit)</p></td>
+<td><p>Attach a diagonal gate to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.draw.html#qiskit.circuit.library.FourierChecking.draw" title="qiskit.circuit.library.FourierChecking.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.draw</span></code></a>([output, scale, …])</p></td>
+<td><p>Draw the quantum circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.extend.html#qiskit.circuit.library.FourierChecking.extend" title="qiskit.circuit.library.FourierChecking.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.extend</span></code></a>(rhs)</p></td>
+<td><p>Append QuantumCircuit to the right hand side if it contains compatible registers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.fredkin.html#qiskit.circuit.library.FourierChecking.fredkin" title="qiskit.circuit.library.FourierChecking.fredkin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.fredkin</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CSwapGate.html#qiskit.circuit.library.CSwapGate" title="qiskit.circuit.library.CSwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.from_qasm_file.html#qiskit.circuit.library.FourierChecking.from_qasm_file" title="qiskit.circuit.library.FourierChecking.from_qasm_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.from_qasm_file</span></code></a>(path)</p></td>
+<td><p>Take in a QASM file and generate a QuantumCircuit object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.from_qasm_str.html#qiskit.circuit.library.FourierChecking.from_qasm_str" title="qiskit.circuit.library.FourierChecking.from_qasm_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.from_qasm_str</span></code></a>(qasm_str)</p></td>
+<td><p>Take in a QASM string and generate a QuantumCircuit object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.h.html#qiskit.circuit.library.FourierChecking.h" title="qiskit.circuit.library.FourierChecking.h"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.h</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.HGate.html#qiskit.circuit.library.HGate" title="qiskit.circuit.library.HGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">HGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.hamiltonian.html#qiskit.circuit.library.FourierChecking.hamiltonian" title="qiskit.circuit.library.FourierChecking.hamiltonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.hamiltonian</span></code></a>(operator, time, …)</p></td>
+<td><p>Apply hamiltonian evolution to to qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.has_register.html#qiskit.circuit.library.FourierChecking.has_register" title="qiskit.circuit.library.FourierChecking.has_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.has_register</span></code></a>(register)</p></td>
+<td><p>Test if this circuit has the register r.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.i.html#qiskit.circuit.library.FourierChecking.i" title="qiskit.circuit.library.FourierChecking.i"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.i</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.IGate.html#qiskit.circuit.library.IGate" title="qiskit.circuit.library.IGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.id.html#qiskit.circuit.library.FourierChecking.id" title="qiskit.circuit.library.FourierChecking.id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.id</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.IGate.html#qiskit.circuit.library.IGate" title="qiskit.circuit.library.IGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.iden.html#qiskit.circuit.library.FourierChecking.iden" title="qiskit.circuit.library.FourierChecking.iden"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.iden</span></code></a>(**kwargs)</p></td>
+<td><p>Deprecated identity gate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.initialize.html#qiskit.circuit.library.FourierChecking.initialize" title="qiskit.circuit.library.FourierChecking.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.initialize</span></code></a>(params, qubits)</p></td>
+<td><p>Apply initialize to circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.inverse.html#qiskit.circuit.library.FourierChecking.inverse" title="qiskit.circuit.library.FourierChecking.inverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.inverse</span></code></a>()</p></td>
+<td><p>Invert this circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.iso.html#qiskit.circuit.library.FourierChecking.iso" title="qiskit.circuit.library.FourierChecking.iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.iso</span></code></a>(isometry, q_input, …)</p></td>
+<td><p>Attach an arbitrary isometry from m to n qubits to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.isometry.html#qiskit.circuit.library.FourierChecking.isometry" title="qiskit.circuit.library.FourierChecking.isometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.isometry</span></code></a>(isometry, q_input, …)</p></td>
+<td><p>Attach an arbitrary isometry from m to n qubits to a circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.iswap.html#qiskit.circuit.library.FourierChecking.iswap" title="qiskit.circuit.library.FourierChecking.iswap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.iswap</span></code></a>(qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.iSwapGate.html#qiskit.circuit.library.iSwapGate" title="qiskit.circuit.library.iSwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">iSwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.mcmt.html#qiskit.circuit.library.FourierChecking.mcmt" title="qiskit.circuit.library.FourierChecking.mcmt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.mcmt</span></code></a>(**kwargs)</p></td>
+<td><p>Apply a multi-control, multi-target using a generic gate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.mcrx.html#qiskit.circuit.library.FourierChecking.mcrx" title="qiskit.circuit.library.FourierChecking.mcrx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.mcrx</span></code></a>(theta, q_controls, q_target)</p></td>
+<td><p>Apply Multiple-Controlled X rotation gate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.mcry.html#qiskit.circuit.library.FourierChecking.mcry" title="qiskit.circuit.library.FourierChecking.mcry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.mcry</span></code></a>(theta, q_controls, …)</p></td>
+<td><p>Apply Multiple-Controlled Y rotation gate</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.mcrz.html#qiskit.circuit.library.FourierChecking.mcrz" title="qiskit.circuit.library.FourierChecking.mcrz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.mcrz</span></code></a>(lam, q_controls, q_target)</p></td>
+<td><p>Apply Multiple-Controlled Z rotation gate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.mct.html#qiskit.circuit.library.FourierChecking.mct" title="qiskit.circuit.library.FourierChecking.mct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.mct</span></code></a>(control_qubits, target_qubit)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">MCXGate</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.mcu1.html#qiskit.circuit.library.FourierChecking.mcu1" title="qiskit.circuit.library.FourierChecking.mcu1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.mcu1</span></code></a>(lam, control_qubits, …)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">MCU1Gate</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.mcx.html#qiskit.circuit.library.FourierChecking.mcx" title="qiskit.circuit.library.FourierChecking.mcx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.mcx</span></code></a>(control_qubits, target_qubit)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">MCXGate</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.measure.html#qiskit.circuit.library.FourierChecking.measure" title="qiskit.circuit.library.FourierChecking.measure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.measure</span></code></a>(qubit, cbit)</p></td>
+<td><p>Measure quantum bit into classical bit (tuples).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.measure_active.html#qiskit.circuit.library.FourierChecking.measure_active" title="qiskit.circuit.library.FourierChecking.measure_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.measure_active</span></code></a>([inplace])</p></td>
+<td><p>Adds measurement to all non-idle qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.measure_all.html#qiskit.circuit.library.FourierChecking.measure_all" title="qiskit.circuit.library.FourierChecking.measure_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.measure_all</span></code></a>([inplace])</p></td>
+<td><p>Adds measurement to all qubits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.mirror.html#qiskit.circuit.library.FourierChecking.mirror" title="qiskit.circuit.library.FourierChecking.mirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.mirror</span></code></a>()</p></td>
+<td><p>Mirror the circuit by reversing the instructions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ms.html#qiskit.circuit.library.FourierChecking.ms" title="qiskit.circuit.library.FourierChecking.ms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ms</span></code></a>(theta, qubits)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.MSGate.html#qiskit.circuit.library.MSGate" title="qiskit.circuit.library.MSGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">MSGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.num_connected_components.html#qiskit.circuit.library.FourierChecking.num_connected_components" title="qiskit.circuit.library.FourierChecking.num_connected_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.num_connected_components</span></code></a>([…])</p></td>
+<td><p>How many non-entangled subcircuits can the circuit be factored to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.num_nonlocal_gates.html#qiskit.circuit.library.FourierChecking.num_nonlocal_gates" title="qiskit.circuit.library.FourierChecking.num_nonlocal_gates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.num_nonlocal_gates</span></code></a>()</p></td>
+<td><p>Return number of non-local gates (i.e.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.num_tensor_factors.html#qiskit.circuit.library.FourierChecking.num_tensor_factors" title="qiskit.circuit.library.FourierChecking.num_tensor_factors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.num_tensor_factors</span></code></a>()</p></td>
+<td><p>Computes the number of tensor factors in the unitary (quantum) part of the circuit only.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.num_unitary_factors.html#qiskit.circuit.library.FourierChecking.num_unitary_factors" title="qiskit.circuit.library.FourierChecking.num_unitary_factors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.num_unitary_factors</span></code></a>()</p></td>
+<td><p>Computes the number of tensor factors in the unitary (quantum) part of the circuit only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.qasm.html#qiskit.circuit.library.FourierChecking.qasm" title="qiskit.circuit.library.FourierChecking.qasm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.qasm</span></code></a>([formatted, filename])</p></td>
+<td><p>Return OpenQASM string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.qbit_argument_conversion.html#qiskit.circuit.library.FourierChecking.qbit_argument_conversion" title="qiskit.circuit.library.FourierChecking.qbit_argument_conversion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.qbit_argument_conversion</span></code></a>(…)</p></td>
+<td><p>Converts several qubit representations (such as indexes, range, etc.) into a list of qubits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.r.html#qiskit.circuit.library.FourierChecking.r" title="qiskit.circuit.library.FourierChecking.r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.r</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">RGate</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.rcccx.html#qiskit.circuit.library.FourierChecking.rcccx" title="qiskit.circuit.library.FourierChecking.rcccx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.rcccx</span></code></a>(control_qubit1, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RC3XGate.html#qiskit.circuit.library.RC3XGate" title="qiskit.circuit.library.RC3XGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC3XGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.rccx.html#qiskit.circuit.library.FourierChecking.rccx" title="qiskit.circuit.library.FourierChecking.rccx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.rccx</span></code></a>(control_qubit1, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RCCXGate.html#qiskit.circuit.library.RCCXGate" title="qiskit.circuit.library.RCCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RCCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.remove_final_measurements.html#qiskit.circuit.library.FourierChecking.remove_final_measurements" title="qiskit.circuit.library.FourierChecking.remove_final_measurements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.remove_final_measurements</span></code></a>([…])</p></td>
+<td><p>Removes final measurement on all qubits if they are present.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.reset.html#qiskit.circuit.library.FourierChecking.reset" title="qiskit.circuit.library.FourierChecking.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.reset</span></code></a>(qubit)</p></td>
+<td><p>Reset q.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.rx.html#qiskit.circuit.library.FourierChecking.rx" title="qiskit.circuit.library.FourierChecking.rx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.rx</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RXGate.html#qiskit.circuit.library.RXGate" title="qiskit.circuit.library.RXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.rxx.html#qiskit.circuit.library.FourierChecking.rxx" title="qiskit.circuit.library.FourierChecking.rxx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.rxx</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RXXGate.html#qiskit.circuit.library.RXXGate" title="qiskit.circuit.library.RXXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RXXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ry.html#qiskit.circuit.library.FourierChecking.ry" title="qiskit.circuit.library.FourierChecking.ry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ry</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RYGate.html#qiskit.circuit.library.RYGate" title="qiskit.circuit.library.RYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ryy.html#qiskit.circuit.library.FourierChecking.ryy" title="qiskit.circuit.library.FourierChecking.ryy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ryy</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RYYGate.html#qiskit.circuit.library.RYYGate" title="qiskit.circuit.library.RYYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RYYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.rz.html#qiskit.circuit.library.FourierChecking.rz" title="qiskit.circuit.library.FourierChecking.rz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.rz</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RZGate.html#qiskit.circuit.library.RZGate" title="qiskit.circuit.library.RZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.rzx.html#qiskit.circuit.library.FourierChecking.rzx" title="qiskit.circuit.library.FourierChecking.rzx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.rzx</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RZXGate.html#qiskit.circuit.library.RZXGate" title="qiskit.circuit.library.RZXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RZXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.rzz.html#qiskit.circuit.library.FourierChecking.rzz" title="qiskit.circuit.library.FourierChecking.rzz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.rzz</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RZZGate.html#qiskit.circuit.library.RZZGate" title="qiskit.circuit.library.RZZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RZZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.s.html#qiskit.circuit.library.FourierChecking.s" title="qiskit.circuit.library.FourierChecking.s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.s</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SGate.html#qiskit.circuit.library.SGate" title="qiskit.circuit.library.SGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.sdg.html#qiskit.circuit.library.FourierChecking.sdg" title="qiskit.circuit.library.FourierChecking.sdg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.sdg</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SdgGate.html#qiskit.circuit.library.SdgGate" title="qiskit.circuit.library.SdgGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SdgGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.size.html#qiskit.circuit.library.FourierChecking.size" title="qiskit.circuit.library.FourierChecking.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.size</span></code></a>()</p></td>
+<td><p>Returns total number of gate operations in circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.snapshot.html#qiskit.circuit.library.FourierChecking.snapshot" title="qiskit.circuit.library.FourierChecking.snapshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.snapshot</span></code></a>(label[, …])</p></td>
+<td><p>Take a statevector snapshot of the internal simulator representation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.snapshot_density_matrix.html#qiskit.circuit.library.FourierChecking.snapshot_density_matrix" title="qiskit.circuit.library.FourierChecking.snapshot_density_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.snapshot_density_matrix</span></code></a>(label)</p></td>
+<td><p>Take a density matrix snapshot of simulator state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.snapshot_expectation_value.html#qiskit.circuit.library.FourierChecking.snapshot_expectation_value" title="qiskit.circuit.library.FourierChecking.snapshot_expectation_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.snapshot_expectation_value</span></code></a>(…)</p></td>
+<td><p>Take a snapshot of expectation value &lt;O&gt; of an Operator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.snapshot_probabilities.html#qiskit.circuit.library.FourierChecking.snapshot_probabilities" title="qiskit.circuit.library.FourierChecking.snapshot_probabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.snapshot_probabilities</span></code></a>(…)</p></td>
+<td><p>Take a probability snapshot of the simulator state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.snapshot_stabilizer.html#qiskit.circuit.library.FourierChecking.snapshot_stabilizer" title="qiskit.circuit.library.FourierChecking.snapshot_stabilizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.snapshot_stabilizer</span></code></a>(label)</p></td>
+<td><p>Take a stabilizer snapshot of the simulator state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.snapshot_statevector.html#qiskit.circuit.library.FourierChecking.snapshot_statevector" title="qiskit.circuit.library.FourierChecking.snapshot_statevector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.snapshot_statevector</span></code></a>(label)</p></td>
+<td><p>Take a statevector snapshot of the simulator state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.squ.html#qiskit.circuit.library.FourierChecking.squ" title="qiskit.circuit.library.FourierChecking.squ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.squ</span></code></a>(**kwargs)</p></td>
+<td><p>Decompose an arbitrary 2*2 unitary into three rotation gates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.swap.html#qiskit.circuit.library.FourierChecking.swap" title="qiskit.circuit.library.FourierChecking.swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.swap</span></code></a>(qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SwapGate.html#qiskit.circuit.library.SwapGate" title="qiskit.circuit.library.SwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.t.html#qiskit.circuit.library.FourierChecking.t" title="qiskit.circuit.library.FourierChecking.t"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.t</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.TGate.html#qiskit.circuit.library.TGate" title="qiskit.circuit.library.TGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.tdg.html#qiskit.circuit.library.FourierChecking.tdg" title="qiskit.circuit.library.FourierChecking.tdg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.tdg</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.TdgGate.html#qiskit.circuit.library.TdgGate" title="qiskit.circuit.library.TdgGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TdgGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.to_gate.html#qiskit.circuit.library.FourierChecking.to_gate" title="qiskit.circuit.library.FourierChecking.to_gate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.to_gate</span></code></a>([parameter_map])</p></td>
+<td><p>Create a Gate out of this circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.to_instruction.html#qiskit.circuit.library.FourierChecking.to_instruction" title="qiskit.circuit.library.FourierChecking.to_instruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.to_instruction</span></code></a>([parameter_map])</p></td>
+<td><p>Create an Instruction out of this circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.toffoli.html#qiskit.circuit.library.FourierChecking.toffoli" title="qiskit.circuit.library.FourierChecking.toffoli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.toffoli</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CCXGate.html#qiskit.circuit.library.CCXGate" title="qiskit.circuit.library.CCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.u1.html#qiskit.circuit.library.FourierChecking.u1" title="qiskit.circuit.library.FourierChecking.u1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.u1</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.U1Gate.html#qiskit.circuit.library.U1Gate" title="qiskit.circuit.library.U1Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">U1Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.u2.html#qiskit.circuit.library.FourierChecking.u2" title="qiskit.circuit.library.FourierChecking.u2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.u2</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.U2Gate.html#qiskit.circuit.library.U2Gate" title="qiskit.circuit.library.U2Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">U2Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.u3.html#qiskit.circuit.library.FourierChecking.u3" title="qiskit.circuit.library.FourierChecking.u3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.u3</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.U3Gate.html#qiskit.circuit.library.U3Gate" title="qiskit.circuit.library.U3Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">U3Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.uc.html#qiskit.circuit.library.FourierChecking.uc" title="qiskit.circuit.library.FourierChecking.uc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.uc</span></code></a>(gate_list, q_controls, …)</p></td>
+<td><p>Attach a uniformly controlled gates (also called multiplexed gates) to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ucg.html#qiskit.circuit.library.FourierChecking.ucg" title="qiskit.circuit.library.FourierChecking.ucg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ucg</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Deprecated version of uc.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ucrx.html#qiskit.circuit.library.FourierChecking.ucrx" title="qiskit.circuit.library.FourierChecking.ucrx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ucrx</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Attach a uniformly controlled (also called multiplexed) Rx rotation gate to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ucry.html#qiskit.circuit.library.FourierChecking.ucry" title="qiskit.circuit.library.FourierChecking.ucry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ucry</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Attach a uniformly controlled (also called multiplexed) Ry rotation gate to a circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ucrz.html#qiskit.circuit.library.FourierChecking.ucrz" title="qiskit.circuit.library.FourierChecking.ucrz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ucrz</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Attach a uniformly controlled (also called multiplexed gates) Rz rotation gate to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ucx.html#qiskit.circuit.library.FourierChecking.ucx" title="qiskit.circuit.library.FourierChecking.ucx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ucx</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Deprecated version of ucrx.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ucy.html#qiskit.circuit.library.FourierChecking.ucy" title="qiskit.circuit.library.FourierChecking.ucy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ucy</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Deprecated version of ucry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.ucz.html#qiskit.circuit.library.FourierChecking.ucz" title="qiskit.circuit.library.FourierChecking.ucz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.ucz</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Deprecated version of ucrz.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.unitary.html#qiskit.circuit.library.FourierChecking.unitary" title="qiskit.circuit.library.FourierChecking.unitary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.unitary</span></code></a>(obj, qubits[, label])</p></td>
+<td><p>Apply unitary gate to q.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.width.html#qiskit.circuit.library.FourierChecking.width" title="qiskit.circuit.library.FourierChecking.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.width</span></code></a>()</p></td>
+<td><p>Return number of qubits plus clbits in circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.x.html#qiskit.circuit.library.FourierChecking.x" title="qiskit.circuit.library.FourierChecking.x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.x</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.XGate.html#qiskit.circuit.library.XGate" title="qiskit.circuit.library.XGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">XGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.y.html#qiskit.circuit.library.FourierChecking.y" title="qiskit.circuit.library.FourierChecking.y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.y</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.YGate.html#qiskit.circuit.library.YGate" title="qiskit.circuit.library.YGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">YGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.z.html#qiskit.circuit.library.FourierChecking.z" title="qiskit.circuit.library.FourierChecking.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.z</span></code></a>(**kwargs)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.ZGate.html#qiskit.circuit.library.ZGate" title="qiskit.circuit.library.ZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.__len__.html#qiskit.circuit.library.FourierChecking.__len__" title="qiskit.circuit.library.FourierChecking.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.__len__</span></code></a>()</p></td>
+<td><p>Return number of operations in circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.FourierChecking.__getitem__.html#qiskit.circuit.library.FourierChecking.__getitem__" title="qiskit.circuit.library.FourierChecking.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FourierChecking.__getitem__</span></code></a>(item)</p></td>
+<td><p>Return indexed operation.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"b331f1a0eb4d4311b1e03fb6e286b666": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "da2a9ee89cf244c491f99a98486f7a0c": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "8da23db96831499ba299c9bc0d38a88c": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_b331f1a0eb4d4311b1e03fb6e286b666", "placeholder": "\u200b", "style": "IPY_MODEL_da2a9ee89cf244c491f99a98486f7a0c", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>Circuit Properties</p>"}}, "38231cb9428b44dabcc47a17fe4da88e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": "right", "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": "0px 0px 0px 0px", "right": null, "top": null, "visibility": null, "width": "70px"}}, "ed66b55a13f84a359e88baa62af18574": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "609ebb9354b74ad8a059a55e1b435f28": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "primary", "description": "Clear", "disabled": false, "icon": "", "layout": "IPY_MODEL_38231cb9428b44dabcc47a17fe4da88e", "style": "IPY_MODEL_ed66b55a13f84a359e88baa62af18574", "tabbable": null, "tooltip": null}}, "1715bec46496499dbb935fab23f766b6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": "\n                                       \". . . . right \"\n                                        ", "grid_template_columns": "20% 20% 20% 20% 20%", "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "9300cb6f44b44a0db93eb97b8c75476c": {"model_name": "GridBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "GridBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "GridBoxView", "box_style": "", "children": ["IPY_MODEL_609ebb9354b74ad8a059a55e1b435f28"], "layout": "IPY_MODEL_1715bec46496499dbb935fab23f766b6", "tabbable": null, "tooltip": null}}, "1a59c46fc6104fd08dc12a20985a513a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "190px"}}, "14cc9fa5483e48fd964341ef2abea33c": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "2a46005347234c83a1e74471f2316cab": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_1a59c46fc6104fd08dc12a20985a513a", "placeholder": "\u200b", "style": "IPY_MODEL_14cc9fa5483e48fd964341ef2abea33c", "tabbable": null, "tooltip": null, "value": "<h5>Job ID</h5>"}}, "3cbd1c0b783c4a278a3be9f0c3da9266": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "145px"}}, "235bd8950c3b4152a3be11341ea9f554": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "0b416e1dc33649b69ae7bf57949c0b3c": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_3cbd1c0b783c4a278a3be9f0c3da9266", "placeholder": "\u200b", "style": "IPY_MODEL_235bd8950c3b4152a3be11341ea9f554", "tabbable": null, "tooltip": null, "value": "<h5>Backend</h5>"}}, "a52adf8006b74e448c95248928a8979b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "95px"}}, "368d3ae527de489facfdb4fe1dac7ac9": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "6a89854cbd3447cd85bd7dc5b6a9958e": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_a52adf8006b74e448c95248928a8979b", "placeholder": "\u200b", "style": "IPY_MODEL_368d3ae527de489facfdb4fe1dac7ac9", "tabbable": null, "tooltip": null, "value": "<h5>Status</h5>"}}, "da7dbd6690b447568909c8d3f7ab7084": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "70px"}}, "e57652088783404c881c984aefe75aba": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "590a79cf756e43e9bfc94444c7ebe847": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_da7dbd6690b447568909c8d3f7ab7084", "placeholder": "\u200b", "style": "IPY_MODEL_e57652088783404c881c984aefe75aba", "tabbable": null, "tooltip": null, "value": "<h5>Queue</h5>"}}, "bf526bd7dbaa4f4eaaf90acd0a6568b7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "711441c55d4c499cb376f08c2a070358": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "a0b31cf077c44a1cb1a3fb3cea18107e": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_bf526bd7dbaa4f4eaaf90acd0a6568b7", "placeholder": "\u200b", "style": "IPY_MODEL_711441c55d4c499cb376f08c2a070358", "tabbable": null, "tooltip": null, "value": "<h5>Message</h5>"}}, "c86f70c47f7d430e93352a8746818818": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 37px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "600px"}}, "b2ca5e0ff4244135be587d5036761516": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_2a46005347234c83a1e74471f2316cab", "IPY_MODEL_0b416e1dc33649b69ae7bf57949c0b3c", "IPY_MODEL_6a89854cbd3447cd85bd7dc5b6a9958e", "IPY_MODEL_590a79cf756e43e9bfc94444c7ebe847", "IPY_MODEL_a0b31cf077c44a1cb1a3fb3cea18107e"], "layout": "IPY_MODEL_c86f70c47f7d430e93352a8746818818", "tabbable": null, "tooltip": null}}, "0d74bd40f4494365b43735d3672232ae": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "133855d02bf2480cbff0c22515ded9fa": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "a6178d47d48949a7a63d6a76350f8a11": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_0d74bd40f4494365b43735d3672232ae", "placeholder": "\u200b", "style": "IPY_MODEL_133855d02bf2480cbff0c22515ded9fa", "tabbable": null, "tooltip": null, "value": "\n    <style>\n     .highlight\n                {\n                    font-family: monospace;\n                    font-size: 14px;\n                    line-height: 1.7em;\n                }\n     .highlight .err { color: #000000; background-color: #FFFFFF }\n    .highlight .hll { background-color: #ffffcc }\n.highlight  { background: #ffffff; }\n.highlight .kd { color: #007f00 } /* Keyword.Declaration */\n.highlight .kr { color: #007f00 } /* Keyword.Reserved */\n.highlight .kt { color: #7f007f } /* Keyword.Type */\n.highlight .m { color: #007f7f } /* Literal.Number */\n.highlight .s { color: #7f0000 } /* Literal.String */\n.highlight .nb { color: #00007f } /* Name.Builtin */\n.highlight .nf { color: #7f7fe0 } /* Name.Function */\n.highlight .mb { color: #007f7f } /* Literal.Number.Bin */\n.highlight .mf { color: #007f7f } /* Literal.Number.Float */\n.highlight .mh { color: #007f7f } /* Literal.Number.Hex */\n.highlight .mi { color: #007f7f } /* Literal.Number.Integer */\n.highlight .mo { color: #007f7f } /* Literal.Number.Oct */\n.highlight .sa { color: #7f0000 } /* Literal.String.Affix */\n.highlight .sb { color: #7f0000 } /* Literal.String.Backtick */\n.highlight .sc { color: #7f0000 } /* Literal.String.Char */\n.highlight .dl { color: #7f0000 } /* Literal.String.Delimiter */\n.highlight .sd { color: #7f0000 } /* Literal.String.Doc */\n.highlight .s2 { color: #7f0000 } /* Literal.String.Double */\n.highlight .se { color: #7f0000 } /* Literal.String.Escape */\n.highlight .sh { color: #7f0000 } /* Literal.String.Heredoc */\n.highlight .si { color: #7f0000 } /* Literal.String.Interpol */\n.highlight .sx { color: #7f0000 } /* Literal.String.Other */\n.highlight .sr { color: #7f0000 } /* Literal.String.Regex */\n.highlight .s1 { color: #7f0000 } /* Literal.String.Single */\n.highlight .ss { color: #7f0000 } /* Literal.String.Symbol */\n.highlight .bp { color: #00007f } /* Name.Builtin.Pseudo */\n.highlight .fm { color: #7f7fe0 } /* Name.Function.Magic */\n.highlight .il { color: #007f7f } /* Literal.Number.Integer.Long */\n    </style>\n    <div class=\"highlight\"><pre><span></span><span class=\"kr\">OPENQASM</span><span class=\"err\"> </span><span class=\"m\">2</span><span class=\"err\">.</span><span class=\"m\">0</span><span class=\"err\">;</span>\n<span class=\"kr\">include</span><span class=\"s\"> &quot;qelib1.inc&quot;</span><span class=\"err\">;</span>\n<span class=\"kd\">qreg</span> q<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\ndiagonal<span class=\"err\">(</span><span class=\"m\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">)</span> q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\ndiagonal<span class=\"err\">(</span><span class=\"m\">1</span><span class=\"err\">,</span><span class=\"kt\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">)</span> q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n</pre></div>\n"}}, "4efd62349261467cb0b404170a16c85f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a0f86cfdc2dc497795c1c70eb84f55ad": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "0b0f484dc9954729bb908cfb7f025c1f": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_4efd62349261467cb0b404170a16c85f", "placeholder": "\u200b", "style": "IPY_MODEL_a0f86cfdc2dc497795c1c70eb84f55ad", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>OpenQASM</p>"}}, "4176207b1a584954b6e4b4788a4b3c20": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 20px", "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "0844aabd3eb040d584266ca03e7d99d1": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_0b0f484dc9954729bb908cfb7f025c1f", "IPY_MODEL_a6178d47d48949a7a63d6a76350f8a11"], "layout": "IPY_MODEL_4176207b1a584954b6e4b4788a4b3c20", "tabbable": null, "tooltip": null}}, "c53f9d03448a49bbb9c1c7a3b09507f3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "40px 0px 0px 20px", "max_height": "495px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "871904db605f4e58aab7b77d76ae1587": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "2406fb8ff2894a748ef88bce4dc27e58": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_c53f9d03448a49bbb9c1c7a3b09507f3", "placeholder": "\u200b", "style": "IPY_MODEL_871904db605f4e58aab7b77d76ae1587", "tabbable": null, "tooltip": null, "value": "<div style='border-left: 3px solid #212121;height: 240px;'></div>"}}, "d002fc75d8f44603b79ec1efdc09a094": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fff4b49e9c414ddfb163586af1bdb2b3": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "dca128205f464f1ea5f6fddf027a5d68": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_d002fc75d8f44603b79ec1efdc09a094", "placeholder": "\u200b", "style": "IPY_MODEL_fff4b49e9c414ddfb163586af1bdb2b3", "tabbable": null, "tooltip": null, "value": "<table><style>\ntable {\n    font-family: \"IBM Plex Sans\", Arial, Helvetica, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n    border-left: 2px solid #212121;\n}\n\nth {\n    text-align: left;\n    padding: 5px 5px 5px 5px;\n    width: 100%;\n    background-color: #3700BE;\n    color: #fff;\n    font-size: 16px;\n    border-left: 2px solid #3700BE;\n}\n\ntd {\n    font-family: \"IBM Plex Mono\", monospace;\n    text-align: left;\n    padding: 5px 5px 5px 5px;\n    width: 100%;\n    font-size: 13px;\n    font-weight: medium;\n}\n\ntr:nth-child(even) {background-color: #f6f6f6;}\n</style><tr><th>fc: [1, -1, -1, -1], [1, 1, -1, -1]</th><th></tr><tr><td>Width</td><td>2</td></tr><tr><td>Depth</td><td>5</td></tr><tr><td>Total Gates</td><td>8</td></tr><tr><td>Non-local Gates</td><td>2</td></tr></table>"}}, "b0a0b63c8c8e4112a9554b43462cb8ee": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "40%"}}, "87dc49632ca54fd5a43f3abe33aa077b": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_8da23db96831499ba299c9bc0d38a88c", "IPY_MODEL_dca128205f464f1ea5f6fddf027a5d68"], "layout": "IPY_MODEL_b0a0b63c8c8e4112a9554b43462cb8ee", "tabbable": null, "tooltip": null}}, "8b44e75c843246c4beca972ed01710ab": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2d2dd5592031439f950f7f3b05b7e7c3": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "7c5369793b454b00a50a43865cd40529": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_8b44e75c843246c4beca972ed01710ab", "placeholder": "\u200b", "style": "IPY_MODEL_2d2dd5592031439f950f7f3b05b7e7c3", "tabbable": null, "tooltip": null, "value": "\n    <style>\n     .highlight\n                {\n                    font-family: monospace;\n                    font-size: 14px;\n                    line-height: 1.7em;\n                }\n     .highlight .err { color: #000000; background-color: #FFFFFF }\n    .highlight .hll { background-color: #ffffcc }\n.highlight  { background: #ffffff; }\n.highlight .kd { color: #007f00 } /* Keyword.Declaration */\n.highlight .kr { color: #007f00 } /* Keyword.Reserved */\n.highlight .kt { color: #7f007f } /* Keyword.Type */\n.highlight .m { color: #007f7f } /* Literal.Number */\n.highlight .s { color: #7f0000 } /* Literal.String */\n.highlight .nb { color: #00007f } /* Name.Builtin */\n.highlight .nf { color: #7f7fe0 } /* Name.Function */\n.highlight .mb { color: #007f7f } /* Literal.Number.Bin */\n.highlight .mf { color: #007f7f } /* Literal.Number.Float */\n.highlight .mh { color: #007f7f } /* Literal.Number.Hex */\n.highlight .mi { color: #007f7f } /* Literal.Number.Integer */\n.highlight .mo { color: #007f7f } /* Literal.Number.Oct */\n.highlight .sa { color: #7f0000 } /* Literal.String.Affix */\n.highlight .sb { color: #7f0000 } /* Literal.String.Backtick */\n.highlight .sc { color: #7f0000 } /* Literal.String.Char */\n.highlight .dl { color: #7f0000 } /* Literal.String.Delimiter */\n.highlight .sd { color: #7f0000 } /* Literal.String.Doc */\n.highlight .s2 { color: #7f0000 } /* Literal.String.Double */\n.highlight .se { color: #7f0000 } /* Literal.String.Escape */\n.highlight .sh { color: #7f0000 } /* Literal.String.Heredoc */\n.highlight .si { color: #7f0000 } /* Literal.String.Interpol */\n.highlight .sx { color: #7f0000 } /* Literal.String.Other */\n.highlight .sr { color: #7f0000 } /* Literal.String.Regex */\n.highlight .s1 { color: #7f0000 } /* Literal.String.Single */\n.highlight .ss { color: #7f0000 } /* Literal.String.Symbol */\n.highlight .bp { color: #00007f } /* Name.Builtin.Pseudo */\n.highlight .fm { color: #7f7fe0 } /* Name.Function.Magic */\n.highlight .il { color: #007f7f } /* Literal.Number.Integer.Long */\n    </style>\n    <div class=\"highlight\"><pre><span></span><span class=\"kr\">OPENQASM</span><span class=\"err\"> </span><span class=\"m\">2</span><span class=\"err\">.</span><span class=\"m\">0</span><span class=\"err\">;</span>\n<span class=\"kr\">include</span><span class=\"s\"> &quot;qelib1.inc&quot;</span><span class=\"err\">;</span>\n<span class=\"kd\">qreg</span> q<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\ndiagonal<span class=\"err\">(</span><span class=\"m\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">)</span> q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\ndiagonal<span class=\"err\">(</span><span class=\"m\">1</span><span class=\"err\">,</span><span class=\"kt\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">,-</span><span class=\"kt\">1</span><span class=\"err\">)</span> q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n</pre></div>\n"}}, "d3270445b9ec4aa8b188f48d3cbae77a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "27b04605f95d4520aedfa1b43e6c5e8f": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "8553703279f846bf9c81b8ed126e7c4e": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_d3270445b9ec4aa8b188f48d3cbae77a", "placeholder": "\u200b", "style": "IPY_MODEL_27b04605f95d4520aedfa1b43e6c5e8f", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>OpenQASM</p>"}}, "5f777d1ad2d64ce18a046823442383b8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 20px", "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "c8c6704f73d642f09bc3fe95b8bd7ebe": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_8553703279f846bf9c81b8ed126e7c4e", "IPY_MODEL_7c5369793b454b00a50a43865cd40529"], "layout": "IPY_MODEL_5f777d1ad2d64ce18a046823442383b8", "tabbable": null, "tooltip": null}}, "0d882d0871454abbbbef9547dcc2009b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "550px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "72e6ab5b3abd446abdbb15b43dd54a5a": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_87dc49632ca54fd5a43f3abe33aa077b", "IPY_MODEL_2406fb8ff2894a748ef88bce4dc27e58", "IPY_MODEL_c8c6704f73d642f09bc3fe95b8bd7ebe"], "layout": "IPY_MODEL_0d882d0871454abbbbef9547dcc2009b", "tabbable": null, "tooltip": null}}, "fee86130e8d14a77ad098f4825b8b831": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "1000px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "hidden scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "676ad75ba31c48d485bcd5861e17e36c": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_fee86130e8d14a77ad098f4825b8b831", "msg_id": "", "outputs": [], "tabbable": null, "tooltip": null}}, "f42ffdbf690543349722bb78373e1f79": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "74c4582ee85242c09e180244bd7f0571": {"model_name": "BoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "BoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "BoxView", "box_style": "", "children": ["IPY_MODEL_676ad75ba31c48d485bcd5861e17e36c"], "layout": "IPY_MODEL_f42ffdbf690543349722bb78373e1f79", "tabbable": null, "tooltip": null}}, "eab2703206254658b88878001ac7d42d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "635243d4af5d4fcab23dec127cf74004": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_74c4582ee85242c09e180244bd7f0571", "IPY_MODEL_72e6ab5b3abd446abdbb15b43dd54a5a"], "layout": "IPY_MODEL_eab2703206254658b88878001ac7d42d", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qiskit.circuit.library.FourierChecking.clbits.html" class="btn btn-neutral float-right" title="FourierChecking.clbits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qiskit.circuit.library.IntegerComparator.z.html" class="btn btn-neutral float-left" title="IntegerComparator.z" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Qiskit Development Team
+      <span class="lastupdated">
+        Ultimo aggiornamento 2020/07/01.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> You are viewing</span>
+    lang: it_IT
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      
+        <dd><a class="version" href="/documentation/stubs/qiskit.circuit.library.FourierChecking.html">English</a></dd>
+      
+        <dd><a class="version" href="/documentation/locale/ja_JP/stubs/qiskit.circuit.library.FourierChecking.html">Japanese</a></dd>
+      
+        <dd><a class="version" href="/documentation/locale/de_DE/stubs/qiskit.circuit.library.FourierChecking.html">German</a></dd>
+      
+    </dl>
+    
+  </div>
+  <script>
+    jQuery('.version').click((evt) => {
+      const hash = window.location.hash
+      const complete_url = evt.target.href + hash
+      window.location = complete_url
+      evt.preventDefault()
+    })
+  </script>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
