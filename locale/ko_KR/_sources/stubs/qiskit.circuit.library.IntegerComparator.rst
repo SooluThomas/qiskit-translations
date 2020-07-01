@@ -159,8 +159,8 @@ IntegerComparator
       IntegerComparator.y
       IntegerComparator.z
    
-      IntegerComparator.__len__
       IntegerComparator.__getitem__
+      IntegerComparator.__len__
 
    
    

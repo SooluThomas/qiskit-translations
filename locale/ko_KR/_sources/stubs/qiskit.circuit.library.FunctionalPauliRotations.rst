@@ -158,8 +158,8 @@ FunctionalPauliRotations
       FunctionalPauliRotations.y
       FunctionalPauliRotations.z
    
-      FunctionalPauliRotations.__len__
       FunctionalPauliRotations.__getitem__
+      FunctionalPauliRotations.__len__
 
    
    

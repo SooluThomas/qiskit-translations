@@ -154,8 +154,8 @@ XOR
       XOR.y
       XOR.z
    
-      XOR.__len__
       XOR.__getitem__
+      XOR.__len__
 
    
    
