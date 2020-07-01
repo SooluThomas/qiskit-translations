@@ -63,8 +63,8 @@ TensoredOp
       TensoredOp.traverse
    
       TensoredOp.__len__
-      TensoredOp.__getitem__
       TensoredOp.__mul__
+      TensoredOp.__getitem__
 
    
    
