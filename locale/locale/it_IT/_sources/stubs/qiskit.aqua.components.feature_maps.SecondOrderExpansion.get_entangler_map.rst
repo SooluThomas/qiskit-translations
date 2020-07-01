@@ -1,0 +1,8 @@
+
+
+SecondOrderExpansion.get_entangler_map
+==========================================================================
+
+.. currentmodule:: qiskit.aqua.components.feature_maps
+
+.. automethod:: SecondOrderExpansion.get_entangler_map
