@@ -160,8 +160,8 @@ LinearPauliRotations
       LinearPauliRotations.y
       LinearPauliRotations.z
    
-      LinearPauliRotations.__getitem__
       LinearPauliRotations.__len__
+      LinearPauliRotations.__getitem__
 
    
    

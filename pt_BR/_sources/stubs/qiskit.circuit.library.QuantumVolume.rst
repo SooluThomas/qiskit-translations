@@ -154,8 +154,8 @@ QuantumVolume
       QuantumVolume.y
       QuantumVolume.z
    
-      QuantumVolume.__getitem__
       QuantumVolume.__len__
+      QuantumVolume.__getitem__
 
    
    

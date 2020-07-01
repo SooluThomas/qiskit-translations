@@ -154,8 +154,8 @@ Permutation
       Permutation.y
       Permutation.z
    
-      Permutation.__getitem__
       Permutation.__len__
+      Permutation.__getitem__
 
    
    

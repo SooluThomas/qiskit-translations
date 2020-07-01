@@ -174,8 +174,8 @@ ZFeatureMap
       ZFeatureMap.y
       ZFeatureMap.z
    
-      ZFeatureMap.__getitem__
       ZFeatureMap.__len__
+      ZFeatureMap.__getitem__
 
    
    
