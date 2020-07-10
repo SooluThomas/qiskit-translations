@@ -1,3 +1,7 @@
+---
+permalink: /index.html
+---
+
 # Staging site of Localized Qiskit Documentation
 
 This is the staging site to view the translation progress. Following are the translation progress and the links to view the translations.
