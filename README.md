@@ -1,5 +1,5 @@
 ---
-permalink: /index.md
+permalink: /index.html
 ---
 
 # Staging site of Localized Qiskit Documentation
