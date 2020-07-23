@@ -26,7 +26,7 @@ jobs:
     - name: get labels name
 #       if: contains(github.event.label.name, 'gh-pages')
       run: |
-         echo ${{ github.event.pull_request.labels.*.name }}
+         echo ${{ github.event.pull_request.labels.name }}
           
 #     - name: Set up Python
 #       uses: actions/setup-python@v2
