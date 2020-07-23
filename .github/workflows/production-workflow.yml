@@ -19,6 +19,7 @@ jobs:
         # Add more: de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR
         language: [de_DE]
     if: contains( github.event.pull_request.labels.*.name, 'gh-pages' )
+    
     steps:
     - uses: actions/checkout@v2
           
