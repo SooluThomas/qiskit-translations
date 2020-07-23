@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         # Add more: de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR
-        language: [de_DE, ja_JP, es_ES]
+        language: [de_DE]
 #   if: "contains(github.event.head_commit.message, 'New translations ')"
 
     steps:
@@ -26,7 +26,7 @@ jobs:
     - name: get labels name
 #       if: contains(github.event.label.name, 'gh-pages')
       run: |
-         echo ${{ github.event.label.name }}
+         echo ${{ github.event.pull_request.labels.*.name }}
           
 #     - name: Set up Python
 #       uses: actions/setup-python@v2
