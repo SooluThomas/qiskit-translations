@@ -18,7 +18,7 @@ jobs:
       matrix:
         # Add more: de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR
         language: [de_DE]
-    
+    if: contains( github.event.pull_request.labels.*.name, 'gh-pages' )
     steps:
     - uses: actions/checkout@v2
           
@@ -28,7 +28,6 @@ jobs:
         python-version: '3.8'
         
     - name: Install dependencies
-      if: contains( github.event.pull_request.labels.*.name, 'gh-pages' )
       run: |
         python -m pip install --upgrade pip
         pip install -U virtualenv setuptools wheel
@@ -39,7 +38,6 @@ jobs:
       env:
         TRANSLATION_LANG: ${{ matrix.language }}
         REPO_TOKEN: ${{ secrets.STAGING_KEY }}
-      if: contains( github.event.pull_request.labels.*.name, 'gh-pages' )
       run: |
         tools/production_translated_documentation.sh
         
