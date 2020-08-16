@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         # Add more: de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR
-        language: [de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR]
+        language: [de_DE]
     if: contains( github.event.pull_request.labels.*.name, 'gh-pages' )
     steps:
     - uses: actions/checkout@v2
@@ -41,16 +41,17 @@ jobs:
       run: |
         tools/production_translated_documentation.sh
         
-    - name: Install SSH Client
-      uses: webfactory/ssh-agent@v0.2.0
-      with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+#     - name: Install SSH Client
+#       uses: webfactory/ssh-agent@v0.2.0
+#       with:
+#           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
     
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3.6.4
       with:
         deploy_key: ${{ secrets.DEPLOY_KEY }}
         keep_files: true
+        disable_nojekyll: true
 #         BASE_BRANCH: master
 #         BRANCH: gh-pages
 #         FOLDER: build
