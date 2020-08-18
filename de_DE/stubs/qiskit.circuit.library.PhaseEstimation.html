@@ -1,0 +1,903 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="de-DE" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PhaseEstimation &mdash; Qiskit 0.20.0 Dokumentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme-override.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0-alpha.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="PhaseEstimation.ancillas" href="qiskit.circuit.library.PhaseEstimation.ancillas.html" />
+    <link rel="prev" title="QuantumVolume.z" href="qiskit.circuit.library.QuantumVolume.z.html" />
+    <script>
+    (function () {
+      'use strict'
+      window._analytics = {
+        segment_key: 'ffdYLviQze3kzomaINXNk6NwpY9LlXcw',
+        coremetrics: false,
+        optimizely: false,
+        googleAddServices: false,
+        fullStory: false,
+        autoPageEventSpa: false,
+        autoFormEvents: false,
+        autoPageView: false
+      }
+
+      window.digitalData = {
+        page: {
+          pageInfo: {
+            productTitle: 'IBM Q Experience',
+            analytics: {
+              category: 'Qiskit.org'
+            }
+          }
+        }
+      }
+
+      window._analyticsReady = window._analyticsReady || new Promise((resolve) => {
+        const script = document.createElement('script')
+        script.async = true
+        script.src = 'https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js'
+        document.head.appendChild(script)
+        script.onload = resolve
+        script.onerror = (err) => {
+          console.warn('Error loading Bluemix Analytics script:', err)
+          resolve()
+        }
+      })
+
+      window._analyticsReady.then(() => {
+        if (!window.bluemixAnalytics || !window.digitalData) { return }
+
+        const category = window.digitalData.page.pageInfo.analytics.category
+        const productTitle = window.digitalData.page.pageInfo.productTitle
+        const routeName = 'api-documentation'
+
+        window.bluemixAnalytics.pageEvent(category, routeName, {
+          navigationType: 'pushState',
+          productTitle: productTitle,
+          title: document.title
+        })
+      })
+    }());
+    </script>
+     
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #212121" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Qiskit
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Qiskit installieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Einführung in Qiskit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_elements.html">Die Qiskit Elemente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development_strategy.html">Development Strategy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">An Qiskit mitwirken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Häufig gestellte Fragen</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/circuits/index.html">Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/circuits_advanced/index.html">Advanced Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/pulse/index.html">Pulse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/simulators/index.html">High-Performance Simulators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/noise/index.html">Quantum System Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/optimization/index.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/finance/index.html">Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/chemistry/index.html">Chemistry</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Libraries</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../apidoc/circuit_library.html">Circuit Library</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../apidoc/circuit_library.html#circuit-library-qiskit-circuit-library">Circuit Library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit.circuit.library</span></code>)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#standard-gates">Standard Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#generalized-gates">Generalized Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#boolean-logic-circuits">Boolean Logic Circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#basis-change-circuits">Basis Change Circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#arithmetic-circuits">Arithmetic Circuits</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../apidoc/circuit_library.html#particular-quantum-circuits">Particular Quantum Circuits</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.FourierChecking.html">FourierChecking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.GraphState.html">GraphState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.HiddenLinearFunction.html">HiddenLinearFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.IQP.html">IQP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.library.QuantumVolume.html">QuantumVolume</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">PhaseEstimation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#n-local-circuits">N-local circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apidoc/circuit_library.html#data-encoding-circuits">Data encoding circuits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API-Referenzen</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/terra.html">Qiskit Terra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/aer.html">Qiskit Aer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/ignis.html">Qiskit Ignis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/aqua.html">Qiskit Aqua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apidoc/ibmq-provider.html">Qiskit IBM Quantum Provider</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://quantum-computing.ibm.com/docs/cloud/errors">Quantum Experience API error codes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qiskit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../apidoc/circuit_library.html">Circuit Library</a> &raquo;</li>
+        
+      <li>PhaseEstimation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/stubs/qiskit.circuit.library.PhaseEstimation.rst" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="phaseestimation">
+<h1>PhaseEstimation<a class="headerlink" href="#phaseestimation" title="Link zu dieser Überschrift">¶</a></h1>
+<dl class="py class">
+<dt id="qiskit.circuit.library.PhaseEstimation">
+<em class="property">class </em><code class="sig-name descname">PhaseEstimation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_evaluation_qubits</span></em>, <em class="sig-param"><span class="n">unitary</span></em>, <em class="sig-param"><span class="n">iqft</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">'QPE'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/library/phase_estimation.html#PhaseEstimation"><span class="viewcode-link">[Quellcode]</span></a><a class="headerlink" href="#qiskit.circuit.library.PhaseEstimation" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Phase Estimation circuit.</p>
+<p>In the Quantum Phase Estimation (QPE) algorithm [1, 2, 3], the Phase Estimation circuit is used
+to estimate the phase <span class="math notranslate nohighlight">\(\phi\)</span> of an eigenvalue <span class="math notranslate nohighlight">\(e^{2\pi i\phi}\)</span> of a unitary operator
+<span class="math notranslate nohighlight">\(U\)</span>, provided with the corresponding eigenstate <span class="math notranslate nohighlight">\(|psi\rangle\)</span>.
+That is</p>
+<div class="math notranslate nohighlight">
+\[U|\psi\rangle = e^{2\pi i\phi} |\psi\rangle\]</div>
+<p>This estimation (and thereby this circuit) is a central routine to several well-known
+algorithms, such as Shor’s algorithm or Quantum Amplitude Estimation.</p>
+<p><strong>References:</strong></p>
+<dl class="simple">
+<dt>[1]: Kitaev, A. Y. (1995). Quantum measurements and the Abelian Stabilizer Problem. 1–22.</dt><dd><p><a class="reference external" href="http://arxiv.org/abs/quant-ph/9511026">quant-ph/9511026</a></p>
+</dd>
+<dt>[2]: Michael A. Nielsen and Isaac L. Chuang. 2011.</dt><dd><p>Quantum Computation and Quantum Information: 10th Anniversary Edition (10th ed.).
+Cambridge University Press, New York, NY, USA.</p>
+</dd>
+<dt>[3]: Qiskit</dt><dd><p><a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/quantum-phase-estimation.html">textbook</a></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameter</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_evaluation_qubits</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The number of evaluation qubits.</p></li>
+<li><p><strong>unitary</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code>) – The unitary operation <span class="math notranslate nohighlight">\(U\)</span> which will be repeated and controlled.</p></li>
+<li><p><strong>iqft</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code>]) – A inverse Quantum Fourier Transform, per default the inverse of
+<a class="reference internal" href="qiskit.circuit.library.QFT.html#qiskit.circuit.library.QFT" title="qiskit.circuit.library.QFT"><code class="xref py py-class docutils literal notranslate"><span class="pre">QFT</span></code></a> is used. Note that the QFT should not include
+the usual swaps!</p></li>
+<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The name of the circuit.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Bemerkung</p>
+<p>The inverse QFT should not include a swap of the qubit order.</p>
+</div>
+<dl>
+<dt>Reference Circuit:</dt><dd><div class="jupyter_cell docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/qiskit.circuit.library.PhaseEstimation_0_0.png" src="../_images/qiskit.circuit.library.PhaseEstimation_0_0.png" />
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "b58432cca226409c8a3aef9042883af8"}
+</script></div>
+</div>
+</dd>
+</dl>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ancillas.html#qiskit.circuit.library.PhaseEstimation.ancillas" title="qiskit.circuit.library.PhaseEstimation.ancillas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ancillas</span></code></a></p></td>
+<td><p>Returns a list of ancilla bits in the order that the registers were added.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.clbits.html#qiskit.circuit.library.PhaseEstimation.clbits" title="qiskit.circuit.library.PhaseEstimation.clbits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.clbits</span></code></a></p></td>
+<td><p>Returns a list of classical bits in the order that the registers were added.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.data.html#qiskit.circuit.library.PhaseEstimation.data" title="qiskit.circuit.library.PhaseEstimation.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.data</span></code></a></p></td>
+<td><p>Return the circuit data (instructions and context).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.extension_lib.html#qiskit.circuit.library.PhaseEstimation.extension_lib" title="qiskit.circuit.library.PhaseEstimation.extension_lib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.extension_lib</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.global_phase.html#qiskit.circuit.library.PhaseEstimation.global_phase" title="qiskit.circuit.library.PhaseEstimation.global_phase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.global_phase</span></code></a></p></td>
+<td><p>Return the global phase of the circuit in radians.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.header.html#qiskit.circuit.library.PhaseEstimation.header" title="qiskit.circuit.library.PhaseEstimation.header"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.header</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.instances.html#qiskit.circuit.library.PhaseEstimation.instances" title="qiskit.circuit.library.PhaseEstimation.instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.instances</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.n_qubits.html#qiskit.circuit.library.PhaseEstimation.n_qubits" title="qiskit.circuit.library.PhaseEstimation.n_qubits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.n_qubits</span></code></a></p></td>
+<td><p>Deprecated, use <code class="docutils literal notranslate"><span class="pre">num_qubits</span></code> instead.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.num_ancillas.html#qiskit.circuit.library.PhaseEstimation.num_ancillas" title="qiskit.circuit.library.PhaseEstimation.num_ancillas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.num_ancillas</span></code></a></p></td>
+<td><p>Return the number of ancilla qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.num_clbits.html#qiskit.circuit.library.PhaseEstimation.num_clbits" title="qiskit.circuit.library.PhaseEstimation.num_clbits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.num_clbits</span></code></a></p></td>
+<td><p>Return number of classical bits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.num_parameters.html#qiskit.circuit.library.PhaseEstimation.num_parameters" title="qiskit.circuit.library.PhaseEstimation.num_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.num_parameters</span></code></a></p></td>
+<td><p>Convenience function to get the number of parameter objects in the circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.num_qubits.html#qiskit.circuit.library.PhaseEstimation.num_qubits" title="qiskit.circuit.library.PhaseEstimation.num_qubits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.num_qubits</span></code></a></p></td>
+<td><p>Return number of qubits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.parameters.html#qiskit.circuit.library.PhaseEstimation.parameters" title="qiskit.circuit.library.PhaseEstimation.parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.parameters</span></code></a></p></td>
+<td><p>Convenience function to get the parameters defined in the parameter table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.prefix.html#qiskit.circuit.library.PhaseEstimation.prefix" title="qiskit.circuit.library.PhaseEstimation.prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.prefix</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.qubits.html#qiskit.circuit.library.PhaseEstimation.qubits" title="qiskit.circuit.library.PhaseEstimation.qubits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.qubits</span></code></a></p></td>
+<td><p>Returns a list of quantum bits in the order that the registers were added.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.AND.html#qiskit.circuit.library.PhaseEstimation.AND" title="qiskit.circuit.library.PhaseEstimation.AND"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.AND</span></code></a>(qr_variables, qb_target, …)</p></td>
+<td><p>Build a collective conjunction (AND) circuit in place using mct.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.OR.html#qiskit.circuit.library.PhaseEstimation.OR" title="qiskit.circuit.library.PhaseEstimation.OR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.OR</span></code></a>(qr_variables, qb_target, …)</p></td>
+<td><p>Build a collective disjunction (OR) circuit in place using mct.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.__getitem__.html#qiskit.circuit.library.PhaseEstimation.__getitem__" title="qiskit.circuit.library.PhaseEstimation.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.__getitem__</span></code></a>(item)</p></td>
+<td><p>Return indexed operation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.__len__.html#qiskit.circuit.library.PhaseEstimation.__len__" title="qiskit.circuit.library.PhaseEstimation.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.__len__</span></code></a>()</p></td>
+<td><p>Return number of operations in circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.add_register.html#qiskit.circuit.library.PhaseEstimation.add_register" title="qiskit.circuit.library.PhaseEstimation.add_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.add_register</span></code></a>(*regs)</p></td>
+<td><p>Add registers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.append.html#qiskit.circuit.library.PhaseEstimation.append" title="qiskit.circuit.library.PhaseEstimation.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.append</span></code></a>(instruction[, qargs, …])</p></td>
+<td><p>Append one or more instructions to the end of the circuit, modifying the circuit in place.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.assign_parameters.html#qiskit.circuit.library.PhaseEstimation.assign_parameters" title="qiskit.circuit.library.PhaseEstimation.assign_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.assign_parameters</span></code></a>(param_dict)</p></td>
+<td><p>Assign parameters to new parameters or values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.barrier.html#qiskit.circuit.library.PhaseEstimation.barrier" title="qiskit.circuit.library.PhaseEstimation.barrier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.barrier</span></code></a>(*qargs)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">Barrier</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.bind_parameters.html#qiskit.circuit.library.PhaseEstimation.bind_parameters" title="qiskit.circuit.library.PhaseEstimation.bind_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.bind_parameters</span></code></a>(value_dict)</p></td>
+<td><p>Assign numeric parameters to values yielding a new circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cast.html#qiskit.circuit.library.PhaseEstimation.cast" title="qiskit.circuit.library.PhaseEstimation.cast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cast</span></code></a>(value, _type)</p></td>
+<td><p>Best effort to cast value to type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cbit_argument_conversion.html#qiskit.circuit.library.PhaseEstimation.cbit_argument_conversion" title="qiskit.circuit.library.PhaseEstimation.cbit_argument_conversion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cbit_argument_conversion</span></code></a>(…)</p></td>
+<td><p>Converts several classical bit representations (such as indexes, range, etc.) into a list of classical bits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ccx.html#qiskit.circuit.library.PhaseEstimation.ccx" title="qiskit.circuit.library.PhaseEstimation.ccx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ccx</span></code></a>(control_qubit1, …[, …])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CCXGate.html#qiskit.circuit.library.CCXGate" title="qiskit.circuit.library.CCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ch.html#qiskit.circuit.library.PhaseEstimation.ch" title="qiskit.circuit.library.PhaseEstimation.ch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ch</span></code></a>(control_qubit, …[, …])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CHGate.html#qiskit.circuit.library.CHGate" title="qiskit.circuit.library.CHGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CHGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cls_instances.html#qiskit.circuit.library.PhaseEstimation.cls_instances" title="qiskit.circuit.library.PhaseEstimation.cls_instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cls_instances</span></code></a>()</p></td>
+<td><p>Return the current number of instances of this class, useful for auto naming.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cls_prefix.html#qiskit.circuit.library.PhaseEstimation.cls_prefix" title="qiskit.circuit.library.PhaseEstimation.cls_prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cls_prefix</span></code></a>()</p></td>
+<td><p>Return the prefix to use for auto naming.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cnot.html#qiskit.circuit.library.PhaseEstimation.cnot" title="qiskit.circuit.library.PhaseEstimation.cnot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cnot</span></code></a>(control_qubit, …[, …])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CXGate.html#qiskit.circuit.library.CXGate" title="qiskit.circuit.library.CXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.combine.html#qiskit.circuit.library.PhaseEstimation.combine" title="qiskit.circuit.library.PhaseEstimation.combine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.combine</span></code></a>(rhs)</p></td>
+<td><p>Append rhs to self if self contains compatible registers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.compose.html#qiskit.circuit.library.PhaseEstimation.compose" title="qiskit.circuit.library.PhaseEstimation.compose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.compose</span></code></a>(other[, qubits, …])</p></td>
+<td><p>Compose circuit with <code class="docutils literal notranslate"><span class="pre">other</span></code> circuit or instruction, optionally permuting wires.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.control.html#qiskit.circuit.library.PhaseEstimation.control" title="qiskit.circuit.library.PhaseEstimation.control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.control</span></code></a>([num_ctrl_qubits, …])</p></td>
+<td><p>Control this circuit on <code class="docutils literal notranslate"><span class="pre">num_ctrl_qubits</span></code> qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.copy.html#qiskit.circuit.library.PhaseEstimation.copy" title="qiskit.circuit.library.PhaseEstimation.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.copy</span></code></a>([name])</p></td>
+<td><p>Copy the circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.count_ops.html#qiskit.circuit.library.PhaseEstimation.count_ops" title="qiskit.circuit.library.PhaseEstimation.count_ops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.count_ops</span></code></a>()</p></td>
+<td><p>Count each operation kind in the circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cp.html#qiskit.circuit.library.PhaseEstimation.cp" title="qiskit.circuit.library.PhaseEstimation.cp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cp</span></code></a>(theta, control_qubit, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CPhaseGate.html#qiskit.circuit.library.CPhaseGate" title="qiskit.circuit.library.CPhaseGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CPhaseGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.crx.html#qiskit.circuit.library.PhaseEstimation.crx" title="qiskit.circuit.library.PhaseEstimation.crx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.crx</span></code></a>(theta, control_qubit, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CRXGate.html#qiskit.circuit.library.CRXGate" title="qiskit.circuit.library.CRXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CRXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cry.html#qiskit.circuit.library.PhaseEstimation.cry" title="qiskit.circuit.library.PhaseEstimation.cry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cry</span></code></a>(theta, control_qubit, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CRYGate.html#qiskit.circuit.library.CRYGate" title="qiskit.circuit.library.CRYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CRYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.crz.html#qiskit.circuit.library.PhaseEstimation.crz" title="qiskit.circuit.library.PhaseEstimation.crz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.crz</span></code></a>(theta, control_qubit, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CRZGate.html#qiskit.circuit.library.CRZGate" title="qiskit.circuit.library.CRZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CRZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cswap.html#qiskit.circuit.library.PhaseEstimation.cswap" title="qiskit.circuit.library.PhaseEstimation.cswap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cswap</span></code></a>(control_qubit, …[, …])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CSwapGate.html#qiskit.circuit.library.CSwapGate" title="qiskit.circuit.library.CSwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.csx.html#qiskit.circuit.library.PhaseEstimation.csx" title="qiskit.circuit.library.PhaseEstimation.csx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.csx</span></code></a>(control_qubit, target_qubit)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CSXGate.html#qiskit.circuit.library.CSXGate" title="qiskit.circuit.library.CSXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cu.html#qiskit.circuit.library.PhaseEstimation.cu" title="qiskit.circuit.library.PhaseEstimation.cu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cu</span></code></a>(theta, phi, lam, gamma, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CUGate.html#qiskit.circuit.library.CUGate" title="qiskit.circuit.library.CUGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CUGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cu1.html#qiskit.circuit.library.PhaseEstimation.cu1" title="qiskit.circuit.library.PhaseEstimation.cu1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cu1</span></code></a>(theta, control_qubit, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CU1Gate.html#qiskit.circuit.library.CU1Gate" title="qiskit.circuit.library.CU1Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CU1Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cu3.html#qiskit.circuit.library.PhaseEstimation.cu3" title="qiskit.circuit.library.PhaseEstimation.cu3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cu3</span></code></a>(theta, phi, lam, …[, …])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CU3Gate.html#qiskit.circuit.library.CU3Gate" title="qiskit.circuit.library.CU3Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CU3Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cx.html#qiskit.circuit.library.PhaseEstimation.cx" title="qiskit.circuit.library.PhaseEstimation.cx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cx</span></code></a>(control_qubit, …[, …])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CXGate.html#qiskit.circuit.library.CXGate" title="qiskit.circuit.library.CXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cy.html#qiskit.circuit.library.PhaseEstimation.cy" title="qiskit.circuit.library.PhaseEstimation.cy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cy</span></code></a>(control_qubit, …[, …])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CYGate.html#qiskit.circuit.library.CYGate" title="qiskit.circuit.library.CYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.cz.html#qiskit.circuit.library.PhaseEstimation.cz" title="qiskit.circuit.library.PhaseEstimation.cz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.cz</span></code></a>(control_qubit, …[, …])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CZGate.html#qiskit.circuit.library.CZGate" title="qiskit.circuit.library.CZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.dcx.html#qiskit.circuit.library.PhaseEstimation.dcx" title="qiskit.circuit.library.PhaseEstimation.dcx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.dcx</span></code></a>(qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.DCXGate.html#qiskit.circuit.library.DCXGate" title="qiskit.circuit.library.DCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">DCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.decompose.html#qiskit.circuit.library.PhaseEstimation.decompose" title="qiskit.circuit.library.PhaseEstimation.decompose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.decompose</span></code></a>()</p></td>
+<td><p>Call a decomposition pass on this circuit, to decompose one level (shallow decompose).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.depth.html#qiskit.circuit.library.PhaseEstimation.depth" title="qiskit.circuit.library.PhaseEstimation.depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.depth</span></code></a>()</p></td>
+<td><p>Return circuit depth (i.e., length of critical path).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.diag_gate.html#qiskit.circuit.library.PhaseEstimation.diag_gate" title="qiskit.circuit.library.PhaseEstimation.diag_gate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.diag_gate</span></code></a>(diag, qubit)</p></td>
+<td><p>Deprecated version of QuantumCircuit.diagonal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.diagonal.html#qiskit.circuit.library.PhaseEstimation.diagonal" title="qiskit.circuit.library.PhaseEstimation.diagonal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.diagonal</span></code></a>(diag, qubit)</p></td>
+<td><p>Attach a diagonal gate to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.draw.html#qiskit.circuit.library.PhaseEstimation.draw" title="qiskit.circuit.library.PhaseEstimation.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.draw</span></code></a>([output, scale, …])</p></td>
+<td><p>Draw the quantum circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.extend.html#qiskit.circuit.library.PhaseEstimation.extend" title="qiskit.circuit.library.PhaseEstimation.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.extend</span></code></a>(rhs)</p></td>
+<td><p>Append QuantumCircuit to the right hand side if it contains compatible registers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.fredkin.html#qiskit.circuit.library.PhaseEstimation.fredkin" title="qiskit.circuit.library.PhaseEstimation.fredkin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.fredkin</span></code></a>(control_qubit, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CSwapGate.html#qiskit.circuit.library.CSwapGate" title="qiskit.circuit.library.CSwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.from_qasm_file.html#qiskit.circuit.library.PhaseEstimation.from_qasm_file" title="qiskit.circuit.library.PhaseEstimation.from_qasm_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.from_qasm_file</span></code></a>(path)</p></td>
+<td><p>Take in a QASM file and generate a QuantumCircuit object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.from_qasm_str.html#qiskit.circuit.library.PhaseEstimation.from_qasm_str" title="qiskit.circuit.library.PhaseEstimation.from_qasm_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.from_qasm_str</span></code></a>(qasm_str)</p></td>
+<td><p>Take in a QASM string and generate a QuantumCircuit object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.h.html#qiskit.circuit.library.PhaseEstimation.h" title="qiskit.circuit.library.PhaseEstimation.h"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.h</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.HGate.html#qiskit.circuit.library.HGate" title="qiskit.circuit.library.HGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">HGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.hamiltonian.html#qiskit.circuit.library.PhaseEstimation.hamiltonian" title="qiskit.circuit.library.PhaseEstimation.hamiltonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.hamiltonian</span></code></a>(operator, time, …)</p></td>
+<td><p>Apply hamiltonian evolution to to qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.has_register.html#qiskit.circuit.library.PhaseEstimation.has_register" title="qiskit.circuit.library.PhaseEstimation.has_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.has_register</span></code></a>(register)</p></td>
+<td><p>Test if this circuit has the register r.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.i.html#qiskit.circuit.library.PhaseEstimation.i" title="qiskit.circuit.library.PhaseEstimation.i"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.i</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.IGate.html#qiskit.circuit.library.IGate" title="qiskit.circuit.library.IGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.id.html#qiskit.circuit.library.PhaseEstimation.id" title="qiskit.circuit.library.PhaseEstimation.id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.id</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.IGate.html#qiskit.circuit.library.IGate" title="qiskit.circuit.library.IGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.iden.html#qiskit.circuit.library.PhaseEstimation.iden" title="qiskit.circuit.library.PhaseEstimation.iden"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.iden</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Deprecated identity gate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.initialize.html#qiskit.circuit.library.PhaseEstimation.initialize" title="qiskit.circuit.library.PhaseEstimation.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.initialize</span></code></a>(params, qubits)</p></td>
+<td><p>Apply initialize to circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.inverse.html#qiskit.circuit.library.PhaseEstimation.inverse" title="qiskit.circuit.library.PhaseEstimation.inverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.inverse</span></code></a>()</p></td>
+<td><p>Invert (take adjoint of) this circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.iso.html#qiskit.circuit.library.PhaseEstimation.iso" title="qiskit.circuit.library.PhaseEstimation.iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.iso</span></code></a>(isometry, q_input, …)</p></td>
+<td><p>Attach an arbitrary isometry from m to n qubits to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.isometry.html#qiskit.circuit.library.PhaseEstimation.isometry" title="qiskit.circuit.library.PhaseEstimation.isometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.isometry</span></code></a>(isometry, q_input, …)</p></td>
+<td><p>Attach an arbitrary isometry from m to n qubits to a circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.iswap.html#qiskit.circuit.library.PhaseEstimation.iswap" title="qiskit.circuit.library.PhaseEstimation.iswap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.iswap</span></code></a>(qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.iSwapGate.html#qiskit.circuit.library.iSwapGate" title="qiskit.circuit.library.iSwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">iSwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.mcmt.html#qiskit.circuit.library.PhaseEstimation.mcmt" title="qiskit.circuit.library.PhaseEstimation.mcmt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.mcmt</span></code></a>(gate, control_qubits, …)</p></td>
+<td><p>Apply a multi-control, multi-target using a generic gate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.mcrx.html#qiskit.circuit.library.PhaseEstimation.mcrx" title="qiskit.circuit.library.PhaseEstimation.mcrx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.mcrx</span></code></a>(theta, q_controls, q_target)</p></td>
+<td><p>Apply Multiple-Controlled X rotation gate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.mcry.html#qiskit.circuit.library.PhaseEstimation.mcry" title="qiskit.circuit.library.PhaseEstimation.mcry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.mcry</span></code></a>(theta, q_controls, …)</p></td>
+<td><p>Apply Multiple-Controlled Y rotation gate</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.mcrz.html#qiskit.circuit.library.PhaseEstimation.mcrz" title="qiskit.circuit.library.PhaseEstimation.mcrz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.mcrz</span></code></a>(lam, q_controls, q_target)</p></td>
+<td><p>Apply Multiple-Controlled Z rotation gate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.mct.html#qiskit.circuit.library.PhaseEstimation.mct" title="qiskit.circuit.library.PhaseEstimation.mct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.mct</span></code></a>(control_qubits, target_qubit)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.MCXGate.html#qiskit.circuit.library.MCXGate" title="qiskit.circuit.library.MCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.mcu1.html#qiskit.circuit.library.PhaseEstimation.mcu1" title="qiskit.circuit.library.PhaseEstimation.mcu1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.mcu1</span></code></a>(lam, control_qubits, …)</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">MCU1Gate</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.mcx.html#qiskit.circuit.library.PhaseEstimation.mcx" title="qiskit.circuit.library.PhaseEstimation.mcx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.mcx</span></code></a>(control_qubits, target_qubit)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.MCXGate.html#qiskit.circuit.library.MCXGate" title="qiskit.circuit.library.MCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.measure.html#qiskit.circuit.library.PhaseEstimation.measure" title="qiskit.circuit.library.PhaseEstimation.measure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.measure</span></code></a>(qubit, cbit)</p></td>
+<td><p>Measure quantum bit into classical bit (tuples).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.measure_active.html#qiskit.circuit.library.PhaseEstimation.measure_active" title="qiskit.circuit.library.PhaseEstimation.measure_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.measure_active</span></code></a>([inplace])</p></td>
+<td><p>Adds measurement to all non-idle qubits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.measure_all.html#qiskit.circuit.library.PhaseEstimation.measure_all" title="qiskit.circuit.library.PhaseEstimation.measure_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.measure_all</span></code></a>([inplace])</p></td>
+<td><p>Adds measurement to all qubits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.mirror.html#qiskit.circuit.library.PhaseEstimation.mirror" title="qiskit.circuit.library.PhaseEstimation.mirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.mirror</span></code></a>()</p></td>
+<td><p>DEPRECATED: use circuit.reverse_ops().</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ms.html#qiskit.circuit.library.PhaseEstimation.ms" title="qiskit.circuit.library.PhaseEstimation.ms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ms</span></code></a>(theta, qubits)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.MSGate.html#qiskit.circuit.library.MSGate" title="qiskit.circuit.library.MSGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">MSGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.num_connected_components.html#qiskit.circuit.library.PhaseEstimation.num_connected_components" title="qiskit.circuit.library.PhaseEstimation.num_connected_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.num_connected_components</span></code></a>([…])</p></td>
+<td><p>How many non-entangled subcircuits can the circuit be factored to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.num_nonlocal_gates.html#qiskit.circuit.library.PhaseEstimation.num_nonlocal_gates" title="qiskit.circuit.library.PhaseEstimation.num_nonlocal_gates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.num_nonlocal_gates</span></code></a>()</p></td>
+<td><p>Return number of non-local gates (i.e.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.num_tensor_factors.html#qiskit.circuit.library.PhaseEstimation.num_tensor_factors" title="qiskit.circuit.library.PhaseEstimation.num_tensor_factors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.num_tensor_factors</span></code></a>()</p></td>
+<td><p>Computes the number of tensor factors in the unitary (quantum) part of the circuit only.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.num_unitary_factors.html#qiskit.circuit.library.PhaseEstimation.num_unitary_factors" title="qiskit.circuit.library.PhaseEstimation.num_unitary_factors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.num_unitary_factors</span></code></a>()</p></td>
+<td><p>Computes the number of tensor factors in the unitary (quantum) part of the circuit only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.p.html#qiskit.circuit.library.PhaseEstimation.p" title="qiskit.circuit.library.PhaseEstimation.p"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.p</span></code></a>(theta, qubit)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.PhaseGate.html#qiskit.circuit.library.PhaseGate" title="qiskit.circuit.library.PhaseGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhaseGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.power.html#qiskit.circuit.library.PhaseEstimation.power" title="qiskit.circuit.library.PhaseEstimation.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.power</span></code></a>(power[, matrix_power])</p></td>
+<td><p>Raise this circuit to the power of <code class="docutils literal notranslate"><span class="pre">power</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.qasm.html#qiskit.circuit.library.PhaseEstimation.qasm" title="qiskit.circuit.library.PhaseEstimation.qasm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.qasm</span></code></a>([formatted, filename])</p></td>
+<td><p>Return OpenQASM string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.qbit_argument_conversion.html#qiskit.circuit.library.PhaseEstimation.qbit_argument_conversion" title="qiskit.circuit.library.PhaseEstimation.qbit_argument_conversion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.qbit_argument_conversion</span></code></a>(…)</p></td>
+<td><p>Converts several qubit representations (such as indexes, range, etc.) into a list of qubits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.r.html#qiskit.circuit.library.PhaseEstimation.r" title="qiskit.circuit.library.PhaseEstimation.r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.r</span></code></a>(theta, phi, qubit, *[, q])</p></td>
+<td><p>Apply <code class="xref py py-class docutils literal notranslate"><span class="pre">RGate</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.rcccx.html#qiskit.circuit.library.PhaseEstimation.rcccx" title="qiskit.circuit.library.PhaseEstimation.rcccx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.rcccx</span></code></a>(control_qubit1, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RC3XGate.html#qiskit.circuit.library.RC3XGate" title="qiskit.circuit.library.RC3XGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC3XGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.rccx.html#qiskit.circuit.library.PhaseEstimation.rccx" title="qiskit.circuit.library.PhaseEstimation.rccx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.rccx</span></code></a>(control_qubit1, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RCCXGate.html#qiskit.circuit.library.RCCXGate" title="qiskit.circuit.library.RCCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RCCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.remove_final_measurements.html#qiskit.circuit.library.PhaseEstimation.remove_final_measurements" title="qiskit.circuit.library.PhaseEstimation.remove_final_measurements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.remove_final_measurements</span></code></a>([…])</p></td>
+<td><p>Removes final measurement on all qubits if they are present.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.repeat.html#qiskit.circuit.library.PhaseEstimation.repeat" title="qiskit.circuit.library.PhaseEstimation.repeat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.repeat</span></code></a>(reps)</p></td>
+<td><p>Repeat this circuit <code class="docutils literal notranslate"><span class="pre">reps</span></code> times.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.reset.html#qiskit.circuit.library.PhaseEstimation.reset" title="qiskit.circuit.library.PhaseEstimation.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.reset</span></code></a>(qubit)</p></td>
+<td><p>Reset q.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.reverse_bits.html#qiskit.circuit.library.PhaseEstimation.reverse_bits" title="qiskit.circuit.library.PhaseEstimation.reverse_bits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.reverse_bits</span></code></a>()</p></td>
+<td><p>Return a circuit with the opposite order of wires.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.reverse_ops.html#qiskit.circuit.library.PhaseEstimation.reverse_ops" title="qiskit.circuit.library.PhaseEstimation.reverse_ops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.reverse_ops</span></code></a>()</p></td>
+<td><p>Reverse the circuit by reversing the order of instructions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.rx.html#qiskit.circuit.library.PhaseEstimation.rx" title="qiskit.circuit.library.PhaseEstimation.rx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.rx</span></code></a>(theta, qubit, *[, label, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RXGate.html#qiskit.circuit.library.RXGate" title="qiskit.circuit.library.RXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.rxx.html#qiskit.circuit.library.PhaseEstimation.rxx" title="qiskit.circuit.library.PhaseEstimation.rxx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.rxx</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RXXGate.html#qiskit.circuit.library.RXXGate" title="qiskit.circuit.library.RXXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RXXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ry.html#qiskit.circuit.library.PhaseEstimation.ry" title="qiskit.circuit.library.PhaseEstimation.ry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ry</span></code></a>(theta, qubit, *[, label, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RYGate.html#qiskit.circuit.library.RYGate" title="qiskit.circuit.library.RYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ryy.html#qiskit.circuit.library.PhaseEstimation.ryy" title="qiskit.circuit.library.PhaseEstimation.ryy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ryy</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RYYGate.html#qiskit.circuit.library.RYYGate" title="qiskit.circuit.library.RYYGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RYYGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.rz.html#qiskit.circuit.library.PhaseEstimation.rz" title="qiskit.circuit.library.PhaseEstimation.rz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.rz</span></code></a>(phi, qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RZGate.html#qiskit.circuit.library.RZGate" title="qiskit.circuit.library.RZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.rzx.html#qiskit.circuit.library.PhaseEstimation.rzx" title="qiskit.circuit.library.PhaseEstimation.rzx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.rzx</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RZXGate.html#qiskit.circuit.library.RZXGate" title="qiskit.circuit.library.RZXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RZXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.rzz.html#qiskit.circuit.library.PhaseEstimation.rzz" title="qiskit.circuit.library.PhaseEstimation.rzz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.rzz</span></code></a>(theta, qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.RZZGate.html#qiskit.circuit.library.RZZGate" title="qiskit.circuit.library.RZZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">RZZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.s.html#qiskit.circuit.library.PhaseEstimation.s" title="qiskit.circuit.library.PhaseEstimation.s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.s</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SGate.html#qiskit.circuit.library.SGate" title="qiskit.circuit.library.SGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.sdg.html#qiskit.circuit.library.PhaseEstimation.sdg" title="qiskit.circuit.library.PhaseEstimation.sdg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.sdg</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SdgGate.html#qiskit.circuit.library.SdgGate" title="qiskit.circuit.library.SdgGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SdgGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.size.html#qiskit.circuit.library.PhaseEstimation.size" title="qiskit.circuit.library.PhaseEstimation.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.size</span></code></a>()</p></td>
+<td><p>Returns total number of gate operations in circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.snapshot.html#qiskit.circuit.library.PhaseEstimation.snapshot" title="qiskit.circuit.library.PhaseEstimation.snapshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.snapshot</span></code></a>(label[, …])</p></td>
+<td><p>Take a statevector snapshot of the internal simulator representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.snapshot_density_matrix.html#qiskit.circuit.library.PhaseEstimation.snapshot_density_matrix" title="qiskit.circuit.library.PhaseEstimation.snapshot_density_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.snapshot_density_matrix</span></code></a>(label)</p></td>
+<td><p>Take a density matrix snapshot of simulator state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.snapshot_expectation_value.html#qiskit.circuit.library.PhaseEstimation.snapshot_expectation_value" title="qiskit.circuit.library.PhaseEstimation.snapshot_expectation_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.snapshot_expectation_value</span></code></a>(…)</p></td>
+<td><p>Take a snapshot of expectation value &lt;O&gt; of an Operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.snapshot_probabilities.html#qiskit.circuit.library.PhaseEstimation.snapshot_probabilities" title="qiskit.circuit.library.PhaseEstimation.snapshot_probabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.snapshot_probabilities</span></code></a>(…)</p></td>
+<td><p>Take a probability snapshot of the simulator state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.snapshot_stabilizer.html#qiskit.circuit.library.PhaseEstimation.snapshot_stabilizer" title="qiskit.circuit.library.PhaseEstimation.snapshot_stabilizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.snapshot_stabilizer</span></code></a>(label)</p></td>
+<td><p>Take a stabilizer snapshot of the simulator state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.snapshot_statevector.html#qiskit.circuit.library.PhaseEstimation.snapshot_statevector" title="qiskit.circuit.library.PhaseEstimation.snapshot_statevector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.snapshot_statevector</span></code></a>(label)</p></td>
+<td><p>Take a statevector snapshot of the simulator state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.squ.html#qiskit.circuit.library.PhaseEstimation.squ" title="qiskit.circuit.library.PhaseEstimation.squ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.squ</span></code></a>(unitary_matrix, qubit[, …])</p></td>
+<td><p>Decompose an arbitrary 2*2 unitary into three rotation gates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.swap.html#qiskit.circuit.library.PhaseEstimation.swap" title="qiskit.circuit.library.PhaseEstimation.swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.swap</span></code></a>(qubit1, qubit2)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SwapGate.html#qiskit.circuit.library.SwapGate" title="qiskit.circuit.library.SwapGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SwapGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.sx.html#qiskit.circuit.library.PhaseEstimation.sx" title="qiskit.circuit.library.PhaseEstimation.sx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.sx</span></code></a>(qubit)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SXGate.html#qiskit.circuit.library.SXGate" title="qiskit.circuit.library.SXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.sxdg.html#qiskit.circuit.library.PhaseEstimation.sxdg" title="qiskit.circuit.library.PhaseEstimation.sxdg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.sxdg</span></code></a>(qubit)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.SXdgGate.html#qiskit.circuit.library.SXdgGate" title="qiskit.circuit.library.SXdgGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SXdgGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.t.html#qiskit.circuit.library.PhaseEstimation.t" title="qiskit.circuit.library.PhaseEstimation.t"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.t</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.TGate.html#qiskit.circuit.library.TGate" title="qiskit.circuit.library.TGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.tdg.html#qiskit.circuit.library.PhaseEstimation.tdg" title="qiskit.circuit.library.PhaseEstimation.tdg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.tdg</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.TdgGate.html#qiskit.circuit.library.TdgGate" title="qiskit.circuit.library.TdgGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">TdgGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.to_gate.html#qiskit.circuit.library.PhaseEstimation.to_gate" title="qiskit.circuit.library.PhaseEstimation.to_gate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.to_gate</span></code></a>([parameter_map, label])</p></td>
+<td><p>Create a Gate out of this circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.to_instruction.html#qiskit.circuit.library.PhaseEstimation.to_instruction" title="qiskit.circuit.library.PhaseEstimation.to_instruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.to_instruction</span></code></a>([parameter_map])</p></td>
+<td><p>Create an Instruction out of this circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.toffoli.html#qiskit.circuit.library.PhaseEstimation.toffoli" title="qiskit.circuit.library.PhaseEstimation.toffoli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.toffoli</span></code></a>(control_qubit1, …)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.CCXGate.html#qiskit.circuit.library.CCXGate" title="qiskit.circuit.library.CCXGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCXGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.u.html#qiskit.circuit.library.PhaseEstimation.u" title="qiskit.circuit.library.PhaseEstimation.u"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.u</span></code></a>(theta, phi, lam, qubit)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.UGate.html#qiskit.circuit.library.UGate" title="qiskit.circuit.library.UGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">UGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.u1.html#qiskit.circuit.library.PhaseEstimation.u1" title="qiskit.circuit.library.PhaseEstimation.u1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.u1</span></code></a>(theta, qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.U1Gate.html#qiskit.circuit.library.U1Gate" title="qiskit.circuit.library.U1Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">U1Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.u2.html#qiskit.circuit.library.PhaseEstimation.u2" title="qiskit.circuit.library.PhaseEstimation.u2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.u2</span></code></a>(phi, lam, qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.U2Gate.html#qiskit.circuit.library.U2Gate" title="qiskit.circuit.library.U2Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">U2Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.u3.html#qiskit.circuit.library.PhaseEstimation.u3" title="qiskit.circuit.library.PhaseEstimation.u3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.u3</span></code></a>(theta, phi, lam, qubit, *)</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.U3Gate.html#qiskit.circuit.library.U3Gate" title="qiskit.circuit.library.U3Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">U3Gate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.uc.html#qiskit.circuit.library.PhaseEstimation.uc" title="qiskit.circuit.library.PhaseEstimation.uc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.uc</span></code></a>(gate_list, q_controls, …)</p></td>
+<td><p>Attach a uniformly controlled gates (also called multiplexed gates) to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ucg.html#qiskit.circuit.library.PhaseEstimation.ucg" title="qiskit.circuit.library.PhaseEstimation.ucg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ucg</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Deprecated version of uc.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ucrx.html#qiskit.circuit.library.PhaseEstimation.ucrx" title="qiskit.circuit.library.PhaseEstimation.ucrx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ucrx</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Attach a uniformly controlled (also called multiplexed) Rx rotation gate to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ucry.html#qiskit.circuit.library.PhaseEstimation.ucry" title="qiskit.circuit.library.PhaseEstimation.ucry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ucry</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Attach a uniformly controlled (also called multiplexed) Ry rotation gate to a circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ucrz.html#qiskit.circuit.library.PhaseEstimation.ucrz" title="qiskit.circuit.library.PhaseEstimation.ucrz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ucrz</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Attach a uniformly controlled (also called multiplexed gates) Rz rotation gate to a circuit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ucx.html#qiskit.circuit.library.PhaseEstimation.ucx" title="qiskit.circuit.library.PhaseEstimation.ucx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ucx</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Deprecated version of ucrx.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ucy.html#qiskit.circuit.library.PhaseEstimation.ucy" title="qiskit.circuit.library.PhaseEstimation.ucy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ucy</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Deprecated version of ucry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.ucz.html#qiskit.circuit.library.PhaseEstimation.ucz" title="qiskit.circuit.library.PhaseEstimation.ucz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.ucz</span></code></a>(angle_list, q_controls, …)</p></td>
+<td><p>Deprecated version of ucrz.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.unitary.html#qiskit.circuit.library.PhaseEstimation.unitary" title="qiskit.circuit.library.PhaseEstimation.unitary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.unitary</span></code></a>(obj, qubits[, label])</p></td>
+<td><p>Apply unitary gate to q.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.width.html#qiskit.circuit.library.PhaseEstimation.width" title="qiskit.circuit.library.PhaseEstimation.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.width</span></code></a>()</p></td>
+<td><p>Return number of qubits plus clbits in circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.x.html#qiskit.circuit.library.PhaseEstimation.x" title="qiskit.circuit.library.PhaseEstimation.x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.x</span></code></a>(qubit, *[, label, …])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.XGate.html#qiskit.circuit.library.XGate" title="qiskit.circuit.library.XGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">XGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.y.html#qiskit.circuit.library.PhaseEstimation.y" title="qiskit.circuit.library.PhaseEstimation.y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.y</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.YGate.html#qiskit.circuit.library.YGate" title="qiskit.circuit.library.YGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">YGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.z.html#qiskit.circuit.library.PhaseEstimation.z" title="qiskit.circuit.library.PhaseEstimation.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.z</span></code></a>(qubit, *[, q])</p></td>
+<td><p>Apply <a class="reference internal" href="qiskit.circuit.library.ZGate.html#qiskit.circuit.library.ZGate" title="qiskit.circuit.library.ZGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZGate</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.__len__.html#qiskit.circuit.library.PhaseEstimation.__len__" title="qiskit.circuit.library.PhaseEstimation.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.__len__</span></code></a>()</p></td>
+<td><p>Return number of operations in circuit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qiskit.circuit.library.PhaseEstimation.__getitem__.html#qiskit.circuit.library.PhaseEstimation.__getitem__" title="qiskit.circuit.library.PhaseEstimation.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimation.__getitem__</span></code></a>(item)</p></td>
+<td><p>Return indexed operation.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"ec2c2818c9bb485bb0aacbae071e22e2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6f28f56f9882403cb56f8ca00b7c7ad5": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "5fbf23f470394e1b9d5d049f8dd7d98b": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_ec2c2818c9bb485bb0aacbae071e22e2", "placeholder": "\u200b", "style": "IPY_MODEL_6f28f56f9882403cb56f8ca00b7c7ad5", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>Circuit Properties</p>"}}, "baaa4dd4fe0a4e3d8e16bf584e9bb37e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": "right", "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": "0px 0px 0px 0px", "right": null, "top": null, "visibility": null, "width": "70px"}}, "b13da00e727f4acfbd55ca51327e7ea6": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "26453ac422df4777ba8692e7c0485c6e": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "primary", "description": "Clear", "disabled": false, "icon": "", "layout": "IPY_MODEL_baaa4dd4fe0a4e3d8e16bf584e9bb37e", "style": "IPY_MODEL_b13da00e727f4acfbd55ca51327e7ea6", "tabbable": null, "tooltip": null}}, "2bdd4b29a8d94d99a3f264a677e72869": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": "\n                                       \". . . . right \"\n                                        ", "grid_template_columns": "20% 20% 20% 20% 20%", "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "dccbadc243d049978fae30102d2fc21c": {"model_name": "GridBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "GridBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "GridBoxView", "box_style": "", "children": ["IPY_MODEL_26453ac422df4777ba8692e7c0485c6e"], "layout": "IPY_MODEL_2bdd4b29a8d94d99a3f264a677e72869", "tabbable": null, "tooltip": null}}, "b3a857d0b1794751b3c6c13aedd76f90": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "190px"}}, "3301b7e30b6547b7bd3d695837d70a82": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "aa9ee8b0fb284707b4892498b0ef7c86": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_b3a857d0b1794751b3c6c13aedd76f90", "placeholder": "\u200b", "style": "IPY_MODEL_3301b7e30b6547b7bd3d695837d70a82", "tabbable": null, "tooltip": null, "value": "<h5>Job ID</h5>"}}, "c908567338cf42628271dab699142c96": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "145px"}}, "a4d54522410e46bca6d42254b0ec5aa4": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "afa06b773b6b400eb388f3ef9893e8cf": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_c908567338cf42628271dab699142c96", "placeholder": "\u200b", "style": "IPY_MODEL_a4d54522410e46bca6d42254b0ec5aa4", "tabbable": null, "tooltip": null, "value": "<h5>Backend</h5>"}}, "79ae0682e3044356bdd41ecaf8ae4847": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "95px"}}, "0989974dea52406e867b5e5b7c4240c6": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "00b218330e3b45dc8da1f96dd09e9db1": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_79ae0682e3044356bdd41ecaf8ae4847", "placeholder": "\u200b", "style": "IPY_MODEL_0989974dea52406e867b5e5b7c4240c6", "tabbable": null, "tooltip": null, "value": "<h5>Status</h5>"}}, "5561c4f6843d4430ba6e3ac744993601": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "70px"}}, "3041db1492154b16971d9d7deffe1146": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "4b2215952ba046dd959a2fadf7aa550c": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_5561c4f6843d4430ba6e3ac744993601", "placeholder": "\u200b", "style": "IPY_MODEL_3041db1492154b16971d9d7deffe1146", "tabbable": null, "tooltip": null, "value": "<h5>Queue</h5>"}}, "84cacedc1c3745d4a3f45bd978ca0e69": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f603c6e789894d3abfa721caa1f17270": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "6942e82a4ae649e8ba462bc1d630f1e0": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_84cacedc1c3745d4a3f45bd978ca0e69", "placeholder": "\u200b", "style": "IPY_MODEL_f603c6e789894d3abfa721caa1f17270", "tabbable": null, "tooltip": null, "value": "<h5>Message</h5>"}}, "3820786dd1d14085b023c094695f4b5b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 37px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "600px"}}, "868c3e958d66416e854568757ab88374": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_aa9ee8b0fb284707b4892498b0ef7c86", "IPY_MODEL_afa06b773b6b400eb388f3ef9893e8cf", "IPY_MODEL_00b218330e3b45dc8da1f96dd09e9db1", "IPY_MODEL_4b2215952ba046dd959a2fadf7aa550c", "IPY_MODEL_6942e82a4ae649e8ba462bc1d630f1e0"], "layout": "IPY_MODEL_3820786dd1d14085b023c094695f4b5b", "tabbable": null, "tooltip": null}}, "52eaecb2e13243199a2138ba88e6f2b3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "688436362b22409aaa2379ebf6570173": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "e78da70a84124c5f801028d8b33e3ca7": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_52eaecb2e13243199a2138ba88e6f2b3", "placeholder": "\u200b", "style": "IPY_MODEL_688436362b22409aaa2379ebf6570173", "tabbable": null, "tooltip": null, "value": "\n    <style>\n     .highlight\n                {\n                    font-family: monospace;\n                    font-size: 14px;\n                    line-height: 1.7em;\n                }\n     .highlight .err { color: #000000; background-color: #FFFFFF }\n    .highlight .hll { background-color: #ffffcc }\n.highlight  { background: #ffffff; }\n.highlight .kd { color: #007f00 } /* Keyword.Declaration */\n.highlight .kr { color: #007f00 } /* Keyword.Reserved */\n.highlight .kt { color: #7f007f } /* Keyword.Type */\n.highlight .m { color: #007f7f } /* Literal.Number */\n.highlight .s { color: #7f0000 } /* Literal.String */\n.highlight .nb { color: #00007f } /* Name.Builtin */\n.highlight .nf { color: #7f7fe0 } /* Name.Function */\n.highlight .mb { color: #007f7f } /* Literal.Number.Bin */\n.highlight .mf { color: #007f7f } /* Literal.Number.Float */\n.highlight .mh { color: #007f7f } /* Literal.Number.Hex */\n.highlight .mi { color: #007f7f } /* Literal.Number.Integer */\n.highlight .mo { color: #007f7f } /* Literal.Number.Oct */\n.highlight .sa { color: #7f0000 } /* Literal.String.Affix */\n.highlight .sb { color: #7f0000 } /* Literal.String.Backtick */\n.highlight .sc { color: #7f0000 } /* Literal.String.Char */\n.highlight .dl { color: #7f0000 } /* Literal.String.Delimiter */\n.highlight .sd { color: #7f0000 } /* Literal.String.Doc */\n.highlight .s2 { color: #7f0000 } /* Literal.String.Double */\n.highlight .se { color: #7f0000 } /* Literal.String.Escape */\n.highlight .sh { color: #7f0000 } /* Literal.String.Heredoc */\n.highlight .si { color: #7f0000 } /* Literal.String.Interpol */\n.highlight .sx { color: #7f0000 } /* Literal.String.Other */\n.highlight .sr { color: #7f0000 } /* Literal.String.Regex */\n.highlight .s1 { color: #7f0000 } /* Literal.String.Single */\n.highlight .ss { color: #7f0000 } /* Literal.String.Symbol */\n.highlight .bp { color: #00007f } /* Name.Builtin.Pseudo */\n.highlight .fm { color: #7f7fe0 } /* Name.Function.Magic */\n.highlight .il { color: #007f7f } /* Literal.Number.Integer.Long */\n    </style>\n    <div class=\"highlight\"><pre><span></span><span class=\"kr\">OPENQASM</span><span class=\"err\"> </span><span class=\"m\">2</span><span class=\"err\">.</span><span class=\"m\">0</span><span class=\"err\">;</span>\n<span class=\"kr\">include</span><span class=\"s\"> &quot;qelib1.inc&quot;</span><span class=\"err\">;</span>\n<span class=\"nf\">gate</span><span class=\"err\"> qf</span><span class=\"kt\">t</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\"> {h q</span><span class=\"kt\">2</span><span class=\"err\">; c</span><span class=\"kt\">u1</span><span class=\"err\">(-p</span><span class=\"kt\">i</span><span class=\"err\">/</span><span class=\"kt\">2</span><span class=\"err\">) q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; h q</span><span class=\"kt\">1</span><span class=\"err\">; c</span><span class=\"kt\">u1</span><span class=\"err\">(-p</span><span class=\"kt\">i</span><span class=\"err\">/</span><span class=\"kt\">4</span><span class=\"err\">) q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; c</span><span class=\"kt\">u1</span><span class=\"err\">(-p</span><span class=\"kt\">i</span><span class=\"err\">/</span><span class=\"kt\">2</span><span class=\"err\">) q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">; h q</span><span class=\"kt\">0</span><span class=\"err\">; }</span>\n<span class=\"nf\">gate</span><span class=\"err\"> c_c</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">4</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\"> {cc</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">4</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; }</span>\n<span class=\"nf\">gate</span><span class=\"err\"> c_c</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">2</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\"> {cc</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">2</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; }</span>\n<span class=\"nf\">gate</span><span class=\"err\"> c_c</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">1</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\"> {cc</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">1</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; }</span>\n<span class=\"kd\">qreg</span> eval<span class=\"err\">[</span><span class=\"m\">3</span><span class=\"err\">];</span>\n<span class=\"kd\">qreg</span> q<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>eval<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>eval<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>eval<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">];</span>\nc_circuit7<span class=\"err\">**</span><span class=\"m\">1</span> eval<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\nc_circuit7<span class=\"err\">**</span><span class=\"m\">2</span> eval<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\nc_circuit7<span class=\"err\">**</span><span class=\"m\">4</span> eval<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\nqft<span class=\"err\"> eval[</span><span class=\"m\">0</span><span class=\"err\">],</span>eval<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">],</span>eval<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">];</span>\n</pre></div>\n"}}, "01b85cacaa0347dd9c2484c64b078c05": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "77aeb3ebe3054f1d882ffd468998dfd4": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "9562d5526acc4089af961f6ef82c8c06": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_01b85cacaa0347dd9c2484c64b078c05", "placeholder": "\u200b", "style": "IPY_MODEL_77aeb3ebe3054f1d882ffd468998dfd4", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>OpenQASM</p>"}}, "e705cd78e8564d6eb3cf1b784e62d9c5": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 20px", "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "83f8a5e270a04736966a039a001adc75": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_9562d5526acc4089af961f6ef82c8c06", "IPY_MODEL_e78da70a84124c5f801028d8b33e3ca7"], "layout": "IPY_MODEL_e705cd78e8564d6eb3cf1b784e62d9c5", "tabbable": null, "tooltip": null}}, "ee6f9a38fc2041afa0538efa9dc87c1f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "40px 0px 0px 20px", "max_height": "495px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0fe37fb4134641f884b946b6a7ecacaf": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "0422634ca6164f7f8ee5560b76863221": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_ee6f9a38fc2041afa0538efa9dc87c1f", "placeholder": "\u200b", "style": "IPY_MODEL_0fe37fb4134641f884b946b6a7ecacaf", "tabbable": null, "tooltip": null, "value": "<div style='border-left: 3px solid #212121;height: 320px;'></div>"}}, "7ff9716045bd42e6ba4de2f966a3155e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "903efa341df24465b090727aa3296f34": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "fcb29cd66e794c21952e2b58defe244d": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_7ff9716045bd42e6ba4de2f966a3155e", "placeholder": "\u200b", "style": "IPY_MODEL_903efa341df24465b090727aa3296f34", "tabbable": null, "tooltip": null, "value": "<table><style>\ntable {\n    font-family: \"IBM Plex Sans\", Arial, Helvetica, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n    border-left: 2px solid #212121;\n}\n\nth {\n    text-align: left;\n    padding: 5px 5px 5px 5px;\n    width: 100%;\n    background-color: #3700BE;\n    color: #fff;\n    font-size: 16px;\n    border-left: 2px solid #3700BE;\n}\n\ntd {\n    font-family: \"IBM Plex Mono\", monospace;\n    text-align: left;\n    padding: 5px 5px 5px 5px;\n    width: 100%;\n    font-size: 13px;\n    font-weight: medium;\n}\n\ntr:nth-child(even) {background-color: #f6f6f6;}\n</style><tr><th>QPE</th><th></tr><tr><td>Width</td><td>5</td></tr><tr><td>Depth</td><td>5</td></tr><tr><td>Total Gates</td><td>7</td></tr><tr><td>Non-local Gates</td><td>4</td></tr></table>"}}, "da0f0b5ecd0f489daf291619e20cbf28": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "40%"}}, "12ac52231b4e4e509447d1a6ebf454eb": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_5fbf23f470394e1b9d5d049f8dd7d98b", "IPY_MODEL_fcb29cd66e794c21952e2b58defe244d"], "layout": "IPY_MODEL_da0f0b5ecd0f489daf291619e20cbf28", "tabbable": null, "tooltip": null}}, "09f3e1959b2e4f22953e6b046cf10d91": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c150afa07cd1464fb0d0ff7dc3162ff9": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "a58f5e9559784745b299034d69c21114": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_09f3e1959b2e4f22953e6b046cf10d91", "placeholder": "\u200b", "style": "IPY_MODEL_c150afa07cd1464fb0d0ff7dc3162ff9", "tabbable": null, "tooltip": null, "value": "\n    <style>\n     .highlight\n                {\n                    font-family: monospace;\n                    font-size: 14px;\n                    line-height: 1.7em;\n                }\n     .highlight .err { color: #000000; background-color: #FFFFFF }\n    .highlight .hll { background-color: #ffffcc }\n.highlight  { background: #ffffff; }\n.highlight .kd { color: #007f00 } /* Keyword.Declaration */\n.highlight .kr { color: #007f00 } /* Keyword.Reserved */\n.highlight .kt { color: #7f007f } /* Keyword.Type */\n.highlight .m { color: #007f7f } /* Literal.Number */\n.highlight .s { color: #7f0000 } /* Literal.String */\n.highlight .nb { color: #00007f } /* Name.Builtin */\n.highlight .nf { color: #7f7fe0 } /* Name.Function */\n.highlight .mb { color: #007f7f } /* Literal.Number.Bin */\n.highlight .mf { color: #007f7f } /* Literal.Number.Float */\n.highlight .mh { color: #007f7f } /* Literal.Number.Hex */\n.highlight .mi { color: #007f7f } /* Literal.Number.Integer */\n.highlight .mo { color: #007f7f } /* Literal.Number.Oct */\n.highlight .sa { color: #7f0000 } /* Literal.String.Affix */\n.highlight .sb { color: #7f0000 } /* Literal.String.Backtick */\n.highlight .sc { color: #7f0000 } /* Literal.String.Char */\n.highlight .dl { color: #7f0000 } /* Literal.String.Delimiter */\n.highlight .sd { color: #7f0000 } /* Literal.String.Doc */\n.highlight .s2 { color: #7f0000 } /* Literal.String.Double */\n.highlight .se { color: #7f0000 } /* Literal.String.Escape */\n.highlight .sh { color: #7f0000 } /* Literal.String.Heredoc */\n.highlight .si { color: #7f0000 } /* Literal.String.Interpol */\n.highlight .sx { color: #7f0000 } /* Literal.String.Other */\n.highlight .sr { color: #7f0000 } /* Literal.String.Regex */\n.highlight .s1 { color: #7f0000 } /* Literal.String.Single */\n.highlight .ss { color: #7f0000 } /* Literal.String.Symbol */\n.highlight .bp { color: #00007f } /* Name.Builtin.Pseudo */\n.highlight .fm { color: #7f7fe0 } /* Name.Function.Magic */\n.highlight .il { color: #007f7f } /* Literal.Number.Integer.Long */\n    </style>\n    <div class=\"highlight\"><pre><span></span><span class=\"kr\">OPENQASM</span><span class=\"err\"> </span><span class=\"m\">2</span><span class=\"err\">.</span><span class=\"m\">0</span><span class=\"err\">;</span>\n<span class=\"kr\">include</span><span class=\"s\"> &quot;qelib1.inc&quot;</span><span class=\"err\">;</span>\n<span class=\"nf\">gate</span><span class=\"err\"> qf</span><span class=\"kt\">t</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\"> {h q</span><span class=\"kt\">2</span><span class=\"err\">; c</span><span class=\"kt\">u1</span><span class=\"err\">(-p</span><span class=\"kt\">i</span><span class=\"err\">/</span><span class=\"kt\">2</span><span class=\"err\">) q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; h q</span><span class=\"kt\">1</span><span class=\"err\">; c</span><span class=\"kt\">u1</span><span class=\"err\">(-p</span><span class=\"kt\">i</span><span class=\"err\">/</span><span class=\"kt\">4</span><span class=\"err\">) q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; c</span><span class=\"kt\">u1</span><span class=\"err\">(-p</span><span class=\"kt\">i</span><span class=\"err\">/</span><span class=\"kt\">2</span><span class=\"err\">) q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">; h q</span><span class=\"kt\">0</span><span class=\"err\">; }</span>\n<span class=\"nf\">gate</span><span class=\"err\"> c_c</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">4</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\"> {cc</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">4</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; }</span>\n<span class=\"nf\">gate</span><span class=\"err\"> c_c</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">2</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\"> {cc</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">2</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; }</span>\n<span class=\"nf\">gate</span><span class=\"err\"> c_c</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">1</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\"> {cc</span><span class=\"kt\">ir</span><span class=\"err\">c</span><span class=\"kt\">uit7</span><span class=\"err\">**</span><span class=\"kt\">1</span><span class=\"err\"> q</span><span class=\"kt\">0</span><span class=\"err\">,q</span><span class=\"kt\">1</span><span class=\"err\">,q</span><span class=\"kt\">2</span><span class=\"err\">; }</span>\n<span class=\"kd\">qreg</span> eval<span class=\"err\">[</span><span class=\"m\">3</span><span class=\"err\">];</span>\n<span class=\"kd\">qreg</span> q<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>eval<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>eval<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\n<span class=\"kt\">h</span><span class=\"err\"> </span>eval<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">];</span>\nc_circuit7<span class=\"err\">**</span><span class=\"m\">1</span> eval<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\nc_circuit7<span class=\"err\">**</span><span class=\"m\">2</span> eval<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\nc_circuit7<span class=\"err\">**</span><span class=\"m\">4</span> eval<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">0</span><span class=\"err\">],</span>q<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">];</span>\nqft<span class=\"err\"> eval[</span><span class=\"m\">0</span><span class=\"err\">],</span>eval<span class=\"err\">[</span><span class=\"m\">1</span><span class=\"err\">],</span>eval<span class=\"err\">[</span><span class=\"m\">2</span><span class=\"err\">];</span>\n</pre></div>\n"}}, "1e14213f71104540880775030a311555": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 10px 0px", "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a017384bc9724193991d07bb14ba567d": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "dd16084f77d64e62adea4295cd3c0ce6": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "layout": "IPY_MODEL_1e14213f71104540880775030a311555", "placeholder": "\u200b", "style": "IPY_MODEL_a017384bc9724193991d07bb14ba567d", "tabbable": null, "tooltip": null, "value": "<p style='font-family: IBM Plex Sans, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: medium;'>OpenQASM</p>"}}, "082afcc41902429a9c6d68f29dee8a45": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": "0px 0px 0px 20px", "max_height": "500px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "bf48fea00f4d41dea9a1e5a3615d047d": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_dd16084f77d64e62adea4295cd3c0ce6", "IPY_MODEL_a58f5e9559784745b299034d69c21114"], "layout": "IPY_MODEL_082afcc41902429a9c6d68f29dee8a45", "tabbable": null, "tooltip": null}}, "7e1c3569e53443f9831665f61c2ae335": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "550px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "07fc0e04289342019ae7bd88e1c00aae": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_12ac52231b4e4e509447d1a6ebf454eb", "IPY_MODEL_0422634ca6164f7f8ee5560b76863221", "IPY_MODEL_bf48fea00f4d41dea9a1e5a3615d047d"], "layout": "IPY_MODEL_7e1c3569e53443f9831665f61c2ae335", "tabbable": null, "tooltip": null}}, "c3353650b49943c1a9749bd75e8605e8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "1000px", "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "hidden scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "c044606cab174be1b2b7ffd370d05d82": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_c3353650b49943c1a9749bd75e8605e8", "msg_id": "", "outputs": [], "tabbable": null, "tooltip": null}}, "b0e1ee32a44b4634a33b9860b20529e3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "807d376c2de44ff58e5cf9389a701af4": {"model_name": "BoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "BoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "BoxView", "box_style": "", "children": ["IPY_MODEL_c044606cab174be1b2b7ffd370d05d82"], "layout": "IPY_MODEL_b0e1ee32a44b4634a33b9860b20529e3", "tabbable": null, "tooltip": null}}, "71b4b309120141009ce6b587f8348be6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "b58432cca226409c8a3aef9042883af8": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_807d376c2de44ff58e5cf9389a701af4", "IPY_MODEL_07fc0e04289342019ae7bd88e1c00aae"], "layout": "IPY_MODEL_71b4b309120141009ce6b587f8348be6", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qiskit.circuit.library.PhaseEstimation.ancillas.html" class="btn btn-neutral float-right" title="PhaseEstimation.ancillas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qiskit.circuit.library.QuantumVolume.z.html" class="btn btn-neutral float-left" title="QuantumVolume.z" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Qiskit Development Team
+      <span class="lastupdated">
+        Zuletzt aktualisiert am 2020/08/18.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Zu sehen ist</span>
+    lang: German
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Sprachen</dt>
+      
+        <dd><a class="version" href="/documentation/stubs/qiskit.circuit.library.PhaseEstimation.html">English</a></dd>
+      
+        <dd><a class="version" href="/documentation/locale/ja_JP/stubs/qiskit.circuit.library.PhaseEstimation.html">Japanese</a></dd>
+      
+        <dd><a class="version" href="/documentation/locale/de_DE/stubs/qiskit.circuit.library.PhaseEstimation.html">German</a></dd>
+      
+        <dd><a class="version" href="/documentation/locale/ko_KR/stubs/qiskit.circuit.library.PhaseEstimation.html">Korean</a></dd>
+      
+    </dl>
+    
+  </div>
+  <script>
+    jQuery('.version').click((evt) => {
+      const hash = window.location.hash
+      const complete_url = evt.target.href + hash
+      window.location = complete_url
+      evt.preventDefault()
+    })
+  </script>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
