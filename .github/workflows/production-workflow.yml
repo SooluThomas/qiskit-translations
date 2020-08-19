@@ -16,8 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Add more: de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR
+         # Add more: de_DE, ja_JP, es_ES, es_MX, fr_FR, it_IT, ko_KR, pt_BR, pt_PT, tr_TR
         language: [de_DE]
+       
+        
     if: contains( github.event.pull_request.labels.*.name, 'gh-pages' )
     steps:
     - uses: actions/checkout@v2
@@ -39,6 +41,7 @@ jobs:
           echo "the last commit log \"$last_commit_log\" contains \"$COMMIT_FILTER\", stopping"
           exit 78
         fi
+        
         
           
 #     - name: Set up Python
