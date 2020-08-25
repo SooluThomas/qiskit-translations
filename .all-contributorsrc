@@ -1,14 +1,24 @@
 {
-   "files": [
-     "SUPERSTARS.md"
-   ],
-   "imageSize": 100,
-   "commit": false,
-   "contributors": [],
-   "contributorsPerLine": 7,
-   "projectName": "qiskit-translations",
-   "projectOwner": "SooluThomas",
-   "repoType": "github",
-   "repoHost": "https://github.com",
-   "skipCi": true
- }
+  "files": [
+    "SUPERSTARS.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "SooluThomas",
+      "name": "SooluThomas",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11485594?v=4",
+      "profile": "https://github.com/SooluThomas",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "qiskit-translations",
+  "projectOwner": "SooluThomas",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
